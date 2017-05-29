@@ -1,0 +1,9 @@
+################################################
+## Z-Wave
+################################################
+
+zwave:
+  config_path: !secret zwave_config_path
+  usb_path: !secret zwave_usb_path
+  device_config: !include ../zwave_device_config.yaml
+  
