@@ -26,4 +26,5 @@ harmony_woonkamer.conf
 html5_push_registrations.conf
 pyozw.sqlite
 .*
+.ssh
 !/.gitignore
