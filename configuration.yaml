@@ -1,62 +1,91 @@
+################################################################
+## Configuration
+################################################################
+
 homeassistant:
-  # Name of the location where Home Assistant is running
   name: Home
-  # Location required to calculate the time the sun rises and sets
-  latitude: 52.3824
-  longitude: 4.8995
-  # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: 1
-  # metric for Metric, imperial for Imperial
-  unit_system: metric
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: !secret home_elevation
   time_zone: Europe/Amsterdam
+  unit_system: metric
+  customize: !include customize.yaml
+  packages: !include_dir_named packages
 
-# Show links to resources in log and frontend
-introduction:
-
-# Enables the frontend
-frontend:
-
-# Enables configuration UI
 config:
-
-http:
-  # Uncomment this to add a password (recommended!)
-  # api_password: PASSWORD
-  # Uncomment this if you are using SSL or running in Docker etc
-  # base_url: example.duckdns.org:8123
-
-# Checks for available updates
-# Note: This component will send some information about your system to
-# the developers to assist with development of Home Assistant.
-# For more information, please see:
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
-updater:
-
-# Discover some devices automatically
-discovery:
-
-# Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
-
-# Enables support for tracking state changes over time.
+# discovery:
+frontend:
 history:
-
-# View all events in a logbook
-logbook:
-
-# Track the sun
 sun:
 
-# Weather Prediction
-sensor:
-  platform: yr
+################################################
+## Components (Non-Includes)
+################################################
 
-# Text to speech
+ffmpeg:
+
+http:
+  api_password: !secret http_api_password
+  base_url: !secret http_base_url
+  use_x_forwarded_for: true
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+
+logbook:
+  exclude:
+    entities:
+      - sensor.time
+      - sensor.date
+      - sensor.ups_status_date
+    domains:
+      - sun
+
+mqtt:
+  broker: !secret mqtt_broker
+  port: !secret mqtt_port
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
 tts:
-  platform: google
+  - platform: google
 
-group: !include groups.yaml
-automation: !include automations.yaml
-zwave:
+  - platform: amazon_polly
+    aws_access_key_id: !secret aws_access_key_id
+    aws_secret_access_key: !secret aws_secret_access_key
+    region_name: !secret aws_region_name
+    voice: Salli
 
+################################################
+## Component Includes (Single File)
+################################################
+
+ios: !include ios.yaml
+
+################################################
+## Component Includes (Named)
+################################################
+
+# alexa:
+#   intents: !include_dir_named alexa
+
+################################################
+## Component Includes (Merge List)
+################################################
+
+automation: !include_dir_merge_list automation
+device_tracker: !include_dir_merge_list device_tracker
+light: !include_dir_merge_list light
+media_player: !include_dir_merge_list media_player
+notify: !include_dir_merge_list notify
+zone: !include_dir_merge_list zone
+
+################################################
+## Component Includes (Merge Named)
+################################################
+
+group: !include_dir_merge_named group
+input_boolean: !include_dir_merge_named input_boolean
+input_slider: !include_dir_merge_named input_slider
+panel_iframe: !include_dir_merge_named panel_iframe
+script: !include_dir_merge_named script
