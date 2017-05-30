@@ -18,9 +18,9 @@ homeassistant:
     packages.energy_contained: &customize_contained
       <<: *customize
 
-    group.energy:
+    group.smart_meter_readings:
       <<: *customize_contained
-      friendly_name: "Energy"
+      friendly_name: "Meterstanden"
       icon: mdi:gauge
 
     sensor.gas_consumption:
@@ -47,6 +47,11 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Actief tarief"
 
+    group.current_power_consumption:
+      <<: *customize_contained
+      friendly_name: "Huidig verbruik"
+      icon: mdi:flash
+
 ################################################
 ## Automation
 ################################################
@@ -72,15 +77,20 @@ automation:
 ## Group
 ################################################
 group:
-  energy:
+  smart_meter_readings:
     control: hidden
     entities:
       - sensor.gas_consumption
-      - sensor.hourly_gas_consumption
-      - sensor.power_consumption
       - sensor.power_consumption_low
       - sensor.power_consumption_normal
       - sensor.energytariff_nl
+
+  current_power_consumption:
+    control: hidden
+    entities:
+      - sensor.hourly_gas_consumption
+      - sensor.power_consumption
+
 ################################################
 ## Sensor
 ################################################
