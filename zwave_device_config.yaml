@@ -1,0 +1,19 @@
+################################################################
+## Z-Wave / Device Config
+################################################################
+
+################################################
+## Scullery multisensor
+################################################
+
+!secret sensor_scullery_alarm_level:
+  ignored: true
+
+!secret sensor_scullery_alarm_type:
+  ignored: true
+
+!secret sensor_scullery_source_nodeid:
+  ignored: true
+
+!secret sensor_scullery_ultraviolet:
+  ignored: true
