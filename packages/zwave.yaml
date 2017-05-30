@@ -2,8 +2,46 @@
 ## Z-Wave
 ################################################
 
+################################################
+## Component setup
+################################################
 zwave:
   config_path: !secret zwave_config_path
   usb_path: !secret zwave_usb_path
   device_config: !include ../zwave_device_config.yaml
-  
+
+################################################
+## Customize
+################################################
+
+homeassistant:
+  customize:
+    packages.zwave: &customize
+      package: 'zwave'
+
+    packages.zwave_exposed: &customize_exposed
+      <<: *customize
+
+    packages.zwave_contained: &customize_contained
+      <<: *customize
+
+    !secret sensor_scullery_motion:
+      <<: *customize_contained
+      friendly_name: "Bijkeuken beweging"
+      device_class: motion
+
+    !secret sensor_scullery_temperature:
+      <<: *customize_contained
+      friendly_name: "Bijkeuken temperatuur"
+      icon: mdi:thermometer
+
+    !secret sensor_scullery_humidity:
+      <<: *customize_contained
+      friendly_name: "Bijkeuken luchtvochtigheid"
+      device_class: moisture
+
+    !secret sensor_scullery_luminance:
+      <<: *customize_contained
+      friendly_name: "Bijkeuken lichtniveau"
+      hidden: true
+      icon: mdi:theme-light-dark
