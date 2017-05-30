@@ -1,9 +1,9 @@
 language: python
 python:
-  - "3.4"
+  - "3.4.3"
 install:
-  - pip3 install homeassistant
-script:
-  - hass -c . --script check_config
-before_install:
-  - mv travis_secrets.yaml secrets.yaml
+  - "pip install homeassistant"
+  - "bash $TRAVIS_BUILD_DIR/bin/dummy_secrets.sh"
+script: "bash $TRAVIS_BUILD_DIR/bin/check_config.sh"
+notifications:
+  email: false
