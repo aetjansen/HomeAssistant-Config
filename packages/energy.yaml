@@ -16,7 +16,7 @@ homeassistant:
 ## Group
 ################################################
 group:
-  ups:
+  energy:
     control: hidden
     entities:
       - sensor.gas_consumption
