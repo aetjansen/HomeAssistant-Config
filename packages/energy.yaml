@@ -1,0 +1,101 @@
+################################################################
+## Packages / Energy usage and measurements.
+################################################################
+## 30-may-17 - Added Smart Meter info
+
+################################################
+## Customize
+################################################
+
+homeassistant:
+  customize:
+    packages.energy: &customize
+      package: 'energy'
+
+    packages.energy_exposed: &customize_exposed
+      <<: *customize
+
+    packages.energy_contained: &customize_contained
+      <<: *customize
+
+    group.energy:
+      <<: *customize_contained
+      friendly_name: "Energy"
+      icon: mdi:gauge
+
+    sensor.gas_consumption:
+      <<: *customize_contained
+      friendly_name: "Meterstand Gas"
+
+    sensor.hourly_gas_consumption:
+      <<: *customize_contained
+      friendly_name: "Gasverbruik per uur"
+
+    sensor.power_consumption:
+      <<: *customize_contained
+      friendly_name: "Electriciteit verbruik"
+
+    sensor.power_consumption_low:
+      <<: *customize_contained
+      friendly_name: "Meterstand daltarief"
+
+    sensor.power_consumption_normaal:
+      <<: *customize_contained
+      friendly_name: "Meterstand normaal tarief"
+
+    sensor.energytariff_nl:
+      <<: *customize_contained
+      friendly_name: "Actief tarief"
+
+################################################
+## Automation
+################################################
+
+automation:
+
+  ################################################
+  ## Notification at midnight with readings from the smart meter
+  ################################################
+  - alias: notify_meter_readings_at_midnight
+  initial_state: 'on'
+  trigger:
+    - platform: time
+      after: '23:59:00'
+  action:
+    service: notify.homeassistant
+    data_template:
+      title: "Meterstanden"
+      message: "Hoog: {{ states.sensor.power_consumption_normal.state }}, Laag: {{ states.sensor.power_consumption_low.state }}, Gas: {{ states.sensor.gas_consumption.state }}. Min-temp: {{ states.sensor.dark_sky_daily_low_temperature.state }}, Max-temp: {{ states.sensor.dark_sky_daily_high_temperature.state }}"
+
+
+################################################
+## Group
+################################################
+group:
+  energy:
+    control: hidden
+    entities:
+      - sensor.gas_consumption
+      - sensor.hourly_gas_consumption
+      - sensor.power_consumption
+      - sensor.power_consumption_low
+      - sensor.power_consumption_normal
+      - sensor.energytariff_nl
+################################################
+## Sensor
+################################################
+
+sensor:
+  - platform: dsmr
+    port: /dev/slimmemeter
+    dsmr_version: 4
+  - platform: template
+    sensors:
+      energytariff_nl:
+        friendly_name: 'Tarief'
+        value_template: >-
+            {%- if is_state("sensor.power_tariff", "low") %}
+                Dal (€ 0,1669/kWh)
+            {% elif is_state("sensor.power_tariff", "normal") %}
+                Normaal (€ 0,1781/kWh)
+            {%- endif %}
