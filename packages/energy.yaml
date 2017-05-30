@@ -12,6 +12,41 @@ homeassistant:
     packages.energy: &customize
       package: 'energy'
 
+    packages.energy_exposed: &customize_exposed
+      <<: *customize
+
+    packages.energy_contained: &customize_contained
+      <<: *customize
+
+    group.energy:
+      <<: *customize_contained
+      friendly_name: "Energy"
+      icon: mdi:gauge
+
+    sensor.gas_consumption:
+      <<: *customize_contained
+      friendly_name: "Meterstand Gas"
+
+    sensor.hourly_gas_consumption:
+      <<: *customize_contained
+      friendly_name: "Gasverbruik per uur"
+
+    sensor.power_consumption:
+      <<: *customize_contained
+      friendly_name: "Electriciteit verbruik"
+
+    sensor.power_consumption_low:
+      <<: *customize_contained
+      friendly_name: "Meterstand daltarief"
+
+    sensor.power_consumption_normaal:
+      <<: *customize_contained
+      friendly_name: "Meterstand normaal tarief"
+
+    sensor.energytariff_nl:
+      <<: *customize_contained
+      friendly_name: "Actief tarief"
+      
 ################################################
 ## Group
 ################################################
