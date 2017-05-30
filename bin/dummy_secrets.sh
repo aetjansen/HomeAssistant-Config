@@ -14,8 +14,8 @@ echo "mqtt_broker: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "mqtt_port: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "mqtt_username: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "mqtt_password: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "zwave_usb_path: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "zwave_config_path: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "zwave_usb_path: /dummy/zwave" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "zwave_config_path: /dummy/zwaveconfig" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "sensor_scullery_motion: dummysensor_scullery_motion" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "sensor_scullery_temperature: dummysensor_scullery_temperature" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "sensor_scullery_humidity: dummysensor_scullery_humidity" >> $TRAVIS_BUILD_DIR/secrets.yaml
