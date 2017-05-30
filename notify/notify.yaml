@@ -1,0 +1,31 @@
+################################################################
+## Notify
+################################################################
+
+################################################
+## Pushover
+################################################
+
+  - platform: pushover
+    name: pushover
+    api_key: !secret pushover_api_key
+    user_key: !secret pushover_user_key
+
+################################################
+## HTML5 Push notifications
+################################################
+
+  - platform: html5
+    name: htmlpush
+    gcm_api_key: !secret html5_gcm_api_key
+    gcm_sender_id: !secret html5_gcm_sender_id
+
+################################################
+## System Log
+################################################
+
+  - platform: syslog
+    name: syslog
+    facility: syslog
+    option: pid
+    priority: 4
