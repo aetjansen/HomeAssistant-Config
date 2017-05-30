@@ -27,6 +27,8 @@ ffmpeg:
 
 http:
   api_password: !secret http_api_password
+  ssl_certificate: !secret ssl_cerificate_file
+  ssl_key: !secret ssl_key_file
   base_url: !secret http_base_url
   ip_ban_enabled: true
   login_attempts_threshold: 3
