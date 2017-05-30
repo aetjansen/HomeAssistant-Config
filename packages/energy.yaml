@@ -18,6 +18,11 @@ homeassistant:
     packages.energy_contained: &customize_contained
       <<: *customize
 
+    automation.notify_meter_readings_at_midnight:
+      <<: *customize
+      friendly_name: "Meterstanden notificatie"
+      icon: mdi:comment-alert-outline
+
     group.smart_meter_readings:
       <<: *customize_contained
       friendly_name: "Meterstanden"
