@@ -1,10 +1,10 @@
 #!/bin/bash
 
-echo "home_latitude: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "home_longitude: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "home_elevation: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "home_latitude: 00.0000" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "home_longitude: 00.0000" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "home_elevation: 0" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "http_api_password: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "http_base_url: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "http_base_url: dummy.base.url" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "recorder_db_url: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "ssl_cerificate_file: ssl_cert.pem" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "ssl_key_file: ssl_key.pem" >> $TRAVIS_BUILD_DIR/secrets.yaml
@@ -26,7 +26,7 @@ echo "sensor_scullery_source_nodeid: dummysensor_scullery_source_nodeid" >> $TRA
 echo "sensor_scullery_ultraviolet: dummysensor_scullery_ultraviolet" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "wunderground_api: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "darksky_api_key: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "google_calendar_api_clientid: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "google_calendar_api_clientid: clientidsecretsecretsecret.apps.googleusercontent.com" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "google_calendar_api_clientsecret: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "html5_gcm_api_key: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "html5_gcm_sender_id: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
