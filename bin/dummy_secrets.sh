@@ -16,6 +16,7 @@ echo "mqtt_username: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "mqtt_password: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zwave_usb_path: /dummy/zwave" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zwave_config_path: /dummy/zwaveconfig" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "binary_sensor_scullery: binary_sensor.dummysensor_scullery" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "sensor_scullery_motion: sensor.dummysensor_scullery_motion" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "sensor_scullery_temperature: sensor.dummysensor_scullery_temperature" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "sensor_scullery_humidity: sensor.dummysensor_scullery_humidity" >> $TRAVIS_BUILD_DIR/secrets.yaml
@@ -24,6 +25,15 @@ echo "sensor_scullery_alarm_level: sensor.dummysensor_scullery_alarm_level" >> $
 echo "sensor_scullery_alarm_type: sensor.dummysensor_scullery_alarm_type" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "sensor_scullery_source_nodeid: sensor.dummysensor_scullery_source_nodeid" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "sensor_scullery_ultraviolet: sensor.dummysensor_scullery_ultraviolet" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "binary_sensor_hallway: binary_sensor.dummysensor_hallway" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "sensor_hallway_motion: sensor.dummysensor_hallway_motion" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "sensor_hallway_temperature: sensor.dummysensor_hallway_temperature" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "sensor_hallway_humidity: sensor.dummysensor_hallway_humidity" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "sensor_hallway_luminance: sensor.dummysensor_hallway_luminance" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "sensor_hallway_alarm_level: sensor.dummysensor_hallway_alarm_level" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "sensor_hallway_alarm_type: sensor.dummysensor_hallway_alarm_type" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "sensor_hallway_source_nodeid: sensor.dummysensor_hallway_source_nodeid" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "sensor_hallway_ultraviolet: sensor.dummysensor_hallway_ultraviolet" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "wunderground_api: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "darksky_api_key: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "google_calendar_api_clientid: clientidsecretsecretsecret.apps.googleusercontent.com" >> $TRAVIS_BUILD_DIR/secrets.yaml

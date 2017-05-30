@@ -25,6 +25,7 @@ homeassistant:
     packages.zwave_contained: &customize_contained
       <<: *customize
 
+    ### Scullery Multisensor
     !secret sensor_scullery_motion:
       <<: *customize_contained
       friendly_name: "Bijkeuken beweging"
@@ -43,5 +44,27 @@ homeassistant:
     !secret sensor_scullery_luminance:
       <<: *customize_contained
       friendly_name: "Bijkeuken lichtniveau"
+      hidden: true
+      icon: mdi:theme-light-dark
+
+    ### Hallway Multisensor
+    !secret sensor_hallway_motion:
+      <<: *customize_contained
+      friendly_name: "Hal beweging"
+      device_class: motion
+
+    !secret sensor_hallway_temperature:
+      <<: *customize_contained
+      friendly_name: "Hal temperatuur"
+      icon: mdi:thermometer
+
+    !secret sensor_hallway_humidity:
+      <<: *customize_contained
+      friendly_name: "Hal luchtvochtigheid"
+      device_class: moisture
+
+    !secret sensor_hallway_luminance:
+      <<: *customize_contained
+      friendly_name: "Hal lichtniveau"
       hidden: true
       icon: mdi:theme-light-dark

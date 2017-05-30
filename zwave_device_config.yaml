@@ -6,6 +6,9 @@
 ## Scullery multisensor
 ################################################
 
+!secret binary_sensor_scullery:
+  ignored: true
+
 !secret sensor_scullery_alarm_level:
   ignored: true
 
@@ -16,4 +19,23 @@
   ignored: true
 
 !secret sensor_scullery_ultraviolet:
+  ignored: true
+
+################################################
+## Hallway multisensor
+################################################
+
+!secret binary_sensor_hallway:
+  ignored: true
+  
+!secret sensor_hallway_alarm_level:
+  ignored: true
+
+!secret sensor_hallway_alarm_type:
+  ignored: true
+
+!secret sensor_hallway_source_nodeid:
+  ignored: true
+
+!secret sensor_hallway_ultraviolet:
   ignored: true
