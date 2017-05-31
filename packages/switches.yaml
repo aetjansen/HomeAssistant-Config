@@ -25,6 +25,6 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Bijkeuken lamp"
 
-    switch.achterdeur_schakelaars_switch_4_0:
+    switch.achterdeur_schakelaars_switch_4_0_2:
       <<: *customize_contained
       friendly_name: "Buitenlamp achterdeur"
