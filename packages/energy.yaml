@@ -109,7 +109,7 @@ automation:
       - platform: time
         after: '23:59:00'
     action:
-      service: notify.homeassistant
+      service: notify.pushover
       data_template:
         title: "Meterstanden"
         message: "Hoog: {{ states.sensor.power_consumption_normal.state }}, Laag: {{ states.sensor.power_consumption_low.state }}, Gas: {{ states.sensor.gas_consumption.state }}. Min-temp: {{ states.sensor.dark_sky_daily_low_temperature.state }}, Max-temp: {{ states.sensor.dark_sky_daily_high_temperature.state }}"
