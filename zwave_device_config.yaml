@@ -27,7 +27,7 @@
 
 !secret binary_sensor_hallway:
   ignored: true
-  
+
 !secret sensor_hallway_alarm_level:
   ignored: true
 
@@ -38,4 +38,41 @@
   ignored: true
 
 !secret sensor_hallway_ultraviolet:
+  ignored: true
+
+################################################
+## Dishwasher switch with energy measurements
+################################################
+
+!secret sensor_dishwasher_exporting:
+  ignored: true
+
+!secret sensor_dishwasher_param10:
+  ignored: true
+
+!secret sensor_dishwasher_param18:
+  ignored: true
+
+!secret sensor_dishwasher_param2:
+  ignored: true
+
+!secret sensor_dishwasher_param22:
+  ignored: true
+
+!secret sensor_dishwasher_powermanagement:
+  ignored: true
+
+!secret sensor_dishwasher_kwh_previous_reading:
+  ignored: true
+
+!secret sensor_dishwasher_current_previous_reading:
+  ignored: true
+
+!secret sensor_dishwasher_power_previous_reading:
+  ignored: true
+
+!secret sensor_dishwasher_source_nodeId:
+  ignored: true
+
+!secret sensor_dishwasher_mains_voltage_previous_reading:
   ignored: true

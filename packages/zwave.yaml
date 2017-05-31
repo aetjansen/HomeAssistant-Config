@@ -68,3 +68,17 @@ homeassistant:
       friendly_name: "Hal lichtniveau"
       hidden: true
       icon: mdi:theme-light-dark
+
+    ### Dishwasher switch and energy sensor
+    !secret sensor_dishwasher_current:
+      <<: *customized_contained
+      friendly_name: "Vaatwasser stroom"
+      icon: mdi:power-plug
+
+    !secret sensor_dishwasher_power:
+      <<: *customized_contained
+      friendly_name: "Vaatwasser verbruik"
+
+    !secret sensor_dishwasher_mains_voltage:
+      <<: *customized_contained
+      friendly_name: "Vaatwasser spanning"
