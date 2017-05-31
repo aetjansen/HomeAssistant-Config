@@ -46,33 +46,44 @@
 
 !secret sensor_dishwasher_exporting:
   ignored: true
+  hidden: true
 
 !secret sensor_dishwasher_param10:
   ignored: true
+  hidden: true
 
 !secret sensor_dishwasher_param18:
   ignored: true
+  hidden: true
 
 !secret sensor_dishwasher_param2:
   ignored: true
+  hidden: true
 
 !secret sensor_dishwasher_param22:
   ignored: true
+  hidden: true
 
 !secret sensor_dishwasher_powermanagement:
   ignored: true
+  hidden: true
 
 !secret sensor_dishwasher_kwh_previous_reading:
   ignored: true
+  hidden: true
 
 !secret sensor_dishwasher_current_previous_reading:
   ignored: true
+  hidden: true
 
 !secret sensor_dishwasher_power_previous_reading:
   ignored: true
+  hidden: true
 
 !secret sensor_dishwasher_source_nodeId:
   ignored: true
+  hidden: true
 
 !secret sensor_dishwasher_mains_voltage_previous_reading:
   ignored: true
+  hidden: true
