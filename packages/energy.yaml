@@ -23,9 +23,9 @@ homeassistant:
       friendly_name: "Meterstanden notificatie"
       icon: mdi:comment-alert-outline
 
-    group.smart_meter_readings:
+    group.total_energy_consumption:
       <<: *customize_contained
-      friendly_name: "Meterstanden"
+      friendly_name: "Energy verbruik"
       icon: mdi:gauge
 
     sensor.gas_consumption:
@@ -82,19 +82,23 @@ automation:
 ## Group
 ################################################
 group:
-  smart_meter_readings:
+  total_energy_consumption:
     control: hidden
     entities:
       - sensor.gas_consumption
       - sensor.power_consumption_low
       - sensor.power_consumption_normal
       - sensor.energytariff_nl
+      - sensor.neo_coolcam_power_plug_12a_energy_6_0   # Dishwasher kWh
 
   current_power_consumption:
     control: hidden
     entities:
       - sensor.hourly_gas_consumption
       - sensor.power_consumption
+      - sensor.neo_coolcam_power_plug_12a_power_6_8    # Dishwasher: Watts
+      - sensor.neo_coolcam_power_plug_12a_voltage_6_16 # Dishwasher: Volts
+      - sensor.neo_coolcam_power_plug_12a_current_6_20 # Dishwasher: Amps
 
 ################################################
 ## Sensor
