@@ -1,0 +1,30 @@
+################################################
+## Switches
+################################################
+
+################################################
+## Customize
+################################################
+
+homeassistant:
+  customize:
+    packages.switches: &customize
+      package: 'switches'
+
+    packages.switches_exposed: &customize_exposed
+      <<: *customize
+
+    packages.switches_contained: &customize_contained
+      <<: *customize
+
+    switch.neo_coolcam_power_plug_12a_switch_6_0:
+      <<: *customize_contained
+      friendly_name: "Vaatwassser"
+
+    switch.achterdeur_schakelaars_switch_4_0:
+      <<: *customize_contained
+      friendly_name: "Bijkeuken lamp"
+
+    switch.achterdeur_schakelaars_switch_4_0:
+      <<: *customize_contained
+      friendly_name: "Buitenlamp achterdeur"
