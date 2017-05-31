@@ -95,7 +95,7 @@ homeassistant:
 
     sensor.vaatwasser_energy_6_0: # Dishwasher: Current power usage
       <<: *customize_contained
-      friendly_name: "Vaatwasser totaal"
+      friendly_name: "Vaatwasser"
       icon: mdi:power-plug
 
 ################################################
