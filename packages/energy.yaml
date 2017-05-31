@@ -25,7 +25,7 @@ homeassistant:
 
     group.total_energy_consumption:
       <<: *customize_contained
-      friendly_name: "Energy verbruik"
+      friendly_name: "Energie verbruik"
       icon: mdi:gauge
 
     sensor.gas_consumption:
