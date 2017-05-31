@@ -86,13 +86,17 @@ homeassistant:
     sensor.vaatwasser_voltage_6_16: # Dishwasher: Volts
       <<: *customize_contained
       friendly_name: "Vaatwasser spanning"
-      icon: mdi:power-socket-eu
+      icon: mdi:power-plug
 
     sensor.vaatwasser_current_6_20: # Dishwasher: Amps
       <<: *customize_contained
       friendly_name: "Vaatwasser stroom"
       icon: mdi:power-plug
 
+    sensor.vaatwasser_energy_6_0: # Dishwasher: Current power usage
+      <<: *customize_contained
+      friendly_name: "Vaatwasser totaal"
+      icon: mdi:power-plug
 
 ################################################
 ## Automation
