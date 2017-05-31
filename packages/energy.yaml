@@ -43,10 +43,12 @@ homeassistant:
     sensor.power_consumption_low:
       <<: *customize_contained
       friendly_name: "Meterstand daltarief"
+      icon: mdi:speedometer
 
     sensor.power_consumption_normal:
       <<: *customize_contained
       friendly_name: "Meterstand normaal tarief"
+      icon: mdi:speedometer
 
     sensor.energytariff_nl:
       <<: *customize_contained
