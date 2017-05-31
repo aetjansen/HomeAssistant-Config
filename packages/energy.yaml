@@ -51,6 +51,7 @@ homeassistant:
     sensor.energytariff_nl:
       <<: *customize_contained
       friendly_name: "Actief tarief"
+      icon: mdi:currency-eur
 
     sensor.achterdeur_schakelaars_energy_4_0:
       <<: *customize_contained
