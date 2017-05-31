@@ -18,14 +18,16 @@ homeassistant:
     packages.switches_contained: &customize_contained
       <<: *customize
 
-    switch.neo_coolcam_power_plug_12a_switch_6_0:
+    switch.vaatwasser_switch_6_0:
       <<: *customize_contained
       friendly_name: "Vaatwassser"
 
     switch.achterdeur_schakelaars_switch_4_0:
       <<: *customize_contained
       friendly_name: "Bijkeuken lamp"
+      icon: mdi:lightbulb
 
     switch.achterdeur_schakelaars_switch_4_0_2:
       <<: *customize_contained
       friendly_name: "Buitenlamp achterdeur"
+      icon: mdi:lightbulb

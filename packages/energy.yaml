@@ -98,7 +98,7 @@ group:
       - sensor.power_consumption_low
       - sensor.power_consumption_normal
       - sensor.energytariff_nl
-      - sensor.neo_coolcam_power_plug_12a_energy_6_0   # Dishwasher kWh
+      - sensor.vaatwasser_energy_6_0   # Dishwasher kWh
       - sensor.achterdeur_schakelaars_energy_4_0       # Scullery light
       - sensor.achterdeur_schakelaars_energy_4_0_2     # Backdoor outside light
 
@@ -107,9 +107,9 @@ group:
     entities:
       - sensor.hourly_gas_consumption
       - sensor.power_consumption
-      - sensor.neo_coolcam_power_plug_12a_power_6_8    # Dishwasher: Watts
-      - sensor.neo_coolcam_power_plug_12a_voltage_6_16 # Dishwasher: Volts
-      - sensor.neo_coolcam_power_plug_12a_current_6_20 # Dishwasher: Amps
+      - sensor.vaatwasser_power_6_8    # Dishwasher: Watts
+      - sensor.vaatwasser_voltage_6_16 # Dishwasher: Volts
+      - sensor.vaatwasser_current_6_20 # Dishwasher: Amps
       - sensor.achterdeur_schakelaars_power_4_8        # Scullery light
       - sensor.achterdeur_schakelaars_power_4_8_2      # Backdoor outside light
 
