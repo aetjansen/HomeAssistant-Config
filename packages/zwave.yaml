@@ -71,14 +71,14 @@ homeassistant:
 
     ### Dishwasher switch and energy sensor
     !secret sensor_dishwasher_current:
-      <<: *customized_contained
+      <<: *customize_contained
       friendly_name: "Vaatwasser stroom"
       icon: mdi:power-plug
 
     !secret sensor_dishwasher_power:
-      <<: *customized_contained
+      <<: *customize_contained
       friendly_name: "Vaatwasser verbruik"
 
     !secret sensor_dishwasher_mains_voltage:
-      <<: *customized_contained
+      <<: *customize_contained
       friendly_name: "Vaatwasser spanning"
