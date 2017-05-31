@@ -1,0 +1,22 @@
+################################################################
+## Packages / Hallway
+################################################################
+
+
+################################################
+## Customize
+################################################
+## Note: The zwave sensor stuff is already customized in the zwave package
+
+homeassistant:
+  customize:
+    packages.hallway: &customize
+      package: 'energy'
+
+    packages.hallway_exposed: &customize_exposed
+      <<: *customize
+
+    packages.hallway_contained: &customize_contained
+      <<: *customize
+
+      
