@@ -10,10 +10,10 @@ echo "ssl_cerificate_file: ssl_cert.pem" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "ssl_key_file: ssl_key.pem" >> $TRAVIS_BUILD_DIR/secrets.yaml
 touch "ssl_key.pem"
 touch "ssl_cert.pem"
-echo "mqtt_broker: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "mqtt_port: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "mqtt_username: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "mqtt_password: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "mqtt_broker: dummybroker" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "mqtt_port: 12345" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "mqtt_username: dummyuser" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "mqtt_password: dummypassword" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zwave_usb_path: /dummy/zwave" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zwave_config_path: /dummy/zwaveconfig" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "binary_sensor_scullery: binary_sensor.dummysensor_scullery" >> $TRAVIS_BUILD_DIR/secrets.yaml
