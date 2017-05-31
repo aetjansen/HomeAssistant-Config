@@ -21,6 +21,7 @@ homeassistant:
     switch.vaatwasser_switch_6_0:
       <<: *customize_contained
       friendly_name: "Vaatwassser"
+      icon: mdi:powerplug 
 
     switch.achterdeur_schakelaars_switch_4_0:
       <<: *customize_contained
