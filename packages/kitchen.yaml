@@ -93,7 +93,7 @@ automation:
       service: notify.pushover
       data_template:
         title: "Vaatwasser klaar"
-        message: "De vaatwasser is klaar met het wasprogramma!"
+        message: "De afwas is klaar :-)"
 
 
 
