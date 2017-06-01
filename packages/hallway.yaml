@@ -6,8 +6,6 @@
 ################################################
 ## Customize
 ################################################
-## Note: The zwave sensor stuff is already customized in the zwave package
-
 homeassistant:
   customize:
     packages.hallway: &customize
