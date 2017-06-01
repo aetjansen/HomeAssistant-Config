@@ -49,30 +49,7 @@ homeassistant:
       hidden: true
       icon: mdi:theme-light-dark
 
-    ### Hallway Multisensor
-    !secret sensor_hallway_motion:
-      <<: *customize_contained
-      friendly_name: "Hal beweging"
-      device_class: motion
-      icon: mdi:walk
-
-    !secret sensor_hallway_temperature:
-      <<: *customize_contained
-      friendly_name: "Hal temperatuur"
-      icon: mdi:thermometer
-
-    !secret sensor_hallway_humidity:
-      <<: *customize_contained
-      friendly_name: "Hal luchtvochtigheid"
-      device_class: moisture
-      icon: mdi:water-percent
-
-    !secret sensor_hallway_luminance:
-      <<: *customize_contained
-      friendly_name: "Hal lichtniveau"
-      hidden: true
-      icon: mdi:theme-light-dark
-
+    
     ### Dishwasher switch and energy sensor
     !secret sensor_dishwasher_current:
       <<: *customize_contained
