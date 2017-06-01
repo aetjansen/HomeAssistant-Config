@@ -11,7 +11,7 @@
 homeassistant:
   customize:
     packages.hallway: &customize
-      package: 'energy'
+      package: 'hallway'
 
     packages.hallway_exposed: &customize_exposed
       <<: *customize
@@ -29,19 +29,19 @@ homeassistant:
       friendly_name: "Hal beweging"
       icon: mdi:walk
 
-    !secret sensor_hallway_motion:
+    sensor.hal_sensor_burglar_3_10:
       <<: *customize_contained
       friendly_name: "Beweging"
       device_class: motion
       icon: mdi:walk
       hidden: true
 
-    !secret sensor_hallway_temperature:
+    sensor.hal_sensor_temperature_3_1:
       <<: *customize_contained
       friendly_name: "Temperatuur"
       icon: mdi:thermometer
 
-    !secret sensor_hallway_humidity:
+    sensor.hal_sensor_relative_humidity_3_5:
       <<: *customize_contained
       friendly_name: "Luchtvochtigheid"
       device_class: moisture
