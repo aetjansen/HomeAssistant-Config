@@ -6,19 +6,19 @@
 ## Scullery multisensor
 ################################################
 
-!secret binary_sensor_scullery:
+binary_sensor.bijkeuken_sensor_sensor_2_0:
   ignored: true
 
-!secret sensor_scullery_alarm_level:
+sensor.bijkeuken_sensor_alarm_level_2_1:
   ignored: true
 
-!secret sensor_scullery_alarm_type:
+sensor.bijkeuken_sensor_alarm_type_2_0:
   ignored: true
 
-!secret sensor_scullery_source_nodeid:
+sensor.bijkeuken_sensor_sourcenodeid_2_2:
   ignored: true
 
-!secret sensor_scullery_ultraviolet:
+sensor.bijkeuken_sensor_ultraviolet_2_27:
   ignored: true
 
 ################################################
