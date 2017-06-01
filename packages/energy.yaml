@@ -68,6 +68,15 @@ homeassistant:
       friendly_name: "Buitenlamp achterdeur"
       icon: mdi:lightbulb
 
+    sensor.power_production:
+      hidden: true
+
+    sensor.power_production_low:
+      hidden: true
+
+    sensor.power_production_normal:
+      hidden: true
+
     group.current_power_consumption:
       <<: *customize_contained
       friendly_name: "Huidig verbruik"
