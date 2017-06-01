@@ -19,6 +19,11 @@ homeassistant:
     packages.hallway_contained: &customize_contained
       <<: *customize
 
+    group.hallway:
+      <<: *customize_contained
+      friendly_name: "Hal"
+
+
 
 ################################################
 ## Group
@@ -31,3 +36,20 @@ group:
       - sensor.hal_sensor_temperature_3_1
       - sensor.hal_sensor_relative_humidity_3_5
       - ensor.hal_sensor_luminance_3_3
+
+
+################################################
+## Sensor
+################################################
+
+sensor:
+  - platform: template
+    sensors:
+      motion_detector:
+        friendly_name: 'Beweging'
+        value_template: >-
+            {%- if is_state("sensor.hal_sensor_burglar_3_10", "8") %}
+                Beweging
+            {% elif is_state("sensor.hal_sensor_burglar_3_10", "0") %}
+                Geen beweging
+            {%- endif %}
