@@ -9,32 +9,3 @@ zwave:
   config_path: !secret zwave_config_path
   usb_path: !secret zwave_usb_path
   device_config: !include ../zwave_device_config.yaml
-
-################################################
-## Customize
-################################################
-
-homeassistant:
-  customize:
-    packages.zwave: &customize
-      package: 'zwave'
-
-    packages.zwave_exposed: &customize_exposed
-      <<: *customize
-
-    packages.zwave_contained: &customize_contained
-      <<: *customize
-
-    ### Dishwasher switch and energy sensor
-    !secret sensor_dishwasher_current:
-      <<: *customize_contained
-      friendly_name: "Vaatwasser stroom"
-      icon: mdi:power-plug
-
-    !secret sensor_dishwasher_power:
-      <<: *customize_contained
-      friendly_name: "Vaatwasser verbruik"
-
-    !secret sensor_dishwasher_mains_voltage:
-      <<: *customize_contained
-      friendly_name: "Vaatwasser spanning"

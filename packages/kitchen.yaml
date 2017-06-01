@@ -22,3 +22,36 @@ homeassistant:
       friendly_name: "Vaatwassser"
       icon: mdi:powerplug
       hidden: true
+
+    sensor.vaatwasser_previous_reading_6_21:
+      hidden: true
+
+    sensor.vaatwasser_exporting_6_32:
+      hidden: true
+
+    sensor.vaatwasser_interval_6_10:
+      hidden: true
+
+    sensor.vaatwasser_interval_6_18:
+      hidden: true
+
+    sensor.vaatwasser_interval_6_2:
+      hidden: true
+
+    sensor.vaatwasser_interval_6_22:
+      hidden: true
+
+    sensor.vaatwasser_previous_reading_6_9:
+      hidden: true
+
+    sensor.vaatwasser_power_management_6_11:
+      hidden: true
+
+    sensor.vaatwasser_previous_reading_6_1:
+      hidden: true
+
+    sensor.vaatwasser_previous_reading_6_17:
+      hidden: true
+
+    sensor.vaatwasser_sourcenodeid_6_2:
+      hidden: true
