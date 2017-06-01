@@ -78,8 +78,8 @@ zone: !include_dir_merge_list zone
 ## Component Includes (Merge Named)
 ################################################
 
-group: !include_dir_merge_named group
-input_boolean: !include_dir_merge_named input_boolean
-input_slider: !include_dir_merge_named input_slider
-panel_iframe: !include_dir_merge_named panel_iframe
-script: !include_dir_merge_named script
+#group: !include_dir_merge_named group
+#input_boolean: !include_dir_merge_named input_boolean
+#input_slider: !include_dir_merge_named input_slider
+#panel_iframe: !include_dir_merge_named panel_iframe
+#script: !include_dir_merge_named script
