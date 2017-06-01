@@ -25,31 +25,6 @@ homeassistant:
     packages.zwave_contained: &customize_contained
       <<: *customize
 
-    ### Scullery Multisensor
-    !secret sensor_scullery_motion:
-      <<: *customize_contained
-      friendly_name: "Bijkeuken beweging"
-      device_class: motion
-      icon: mdi:walk
-
-    !secret sensor_scullery_temperature:
-      <<: *customize_contained
-      friendly_name: "Bijkeuken temperatuur"
-      icon: mdi:thermometer
-
-    !secret sensor_scullery_humidity:
-      <<: *customize_contained
-      friendly_name: "Bijkeuken luchtvochtigheid"
-      device_class: moisture
-      icon: mdi:water-percent
-
-    !secret sensor_scullery_luminance:
-      <<: *customize_contained
-      friendly_name: "Bijkeuken lichtniveau"
-      hidden: true
-      icon: mdi:theme-light-dark
-
-    
     ### Dishwasher switch and energy sensor
     !secret sensor_dishwasher_current:
       <<: *customize_contained
