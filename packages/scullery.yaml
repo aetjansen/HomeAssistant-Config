@@ -17,11 +17,11 @@ homeassistant:
     packages.scullery_contained: &customize_contained
       <<: *customize
 
-    group.hallway:
+    group.scullery:
       <<: *customize_contained
       friendly_name: "Bijkeuken"
 
-    ### Hallway Multisensor
+    ### Scullery Multisensor
     sensor.scullery_motion_detector:
       <<: *customize_contained
       friendly_name: "Beweging"
@@ -54,7 +54,7 @@ homeassistant:
 ## Group
 ################################################
 group:
-  hallway:
+  scullery:
     control: hidden
     entities:
       - sensor.scullery_motion_detector
