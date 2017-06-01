@@ -1,24 +1,24 @@
 ################################################
-## Switches
+## Packages / Kitchen
 ################################################
-## ToDo:
-## - Secretize switch names
+
 ################################################
 ## Customize
 ################################################
 
 homeassistant:
   customize:
-    packages.switches: &customize
-      package: 'switches'
+    packages.kitchen: &customize
+      package: 'kitchen'
 
-    packages.switches_exposed: &customize_exposed
+    packages.kitchen_exposed: &customize_exposed
       <<: *customize
 
-    packages.switches_contained: &customize_contained
+    packages.kitchen_contained: &customize_contained
       <<: *customize
 
     switch.vaatwasser_switch_6_0:
       <<: *customize_contained
       friendly_name: "Vaatwassser"
       icon: mdi:powerplug
+      hidden: true
