@@ -61,3 +61,44 @@ homeassistant:
 
     sensor.vaatwasser_alarm_type_6_0:
       hidden: true
+
+################################################
+## Automation
+################################################
+automation:
+
+  ################################################
+  ## Notification when the dishwasher is ready.
+  ## It's power usage drops to 0W when ready,
+  ## so if it is a 0W for 2 minutes, send a notification
+  ## (power consumption can briefly drop to (near) 0W
+  ## during a washing cycle for a few seconds, hence
+  ## the 2 minute wait time)
+  ################################################
+  - alias: "Notify when dishwasher is done"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.vaatwasser_power_usage_templated
+        from: 'off'
+        to: 'on'
+        for:
+          minutes: 2
+          seconds: 0
+    action:
+      service: notify.pushover
+      data_template:
+        title: "Vaatwasser klaar"
+        message: "De vaatwasser is klaar met het wasprogramma!"
+
+
+
+################################################
+## Sensor
+################################################
+
+binary_sensor:
+  - platform: template
+    sensors:
+      vaatwasser_power_usage_templated:
+        value_template: "{{ states('sensor.vaatwasser_power_6_8') | int < 5 }}"
+        entity_id: sensor.vaatwasser_power_6_8
