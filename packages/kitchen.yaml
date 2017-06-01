@@ -17,6 +17,11 @@ homeassistant:
     packages.kitchen_contained: &customize_contained
       <<: *customize
 
+    automation.notify_when_dishwasher_is_done:
+      <<: *customize
+      friendly_name: "Vaatwasser klaar notificatie"
+      icon: mdi:comment-alert-outline
+
     switch.vaatwasser_switch_6_0:
       <<: *customize_contained
       friendly_name: "Vaatwassser"
@@ -75,7 +80,7 @@ automation:
   ## during a washing cycle for a few seconds, hence
   ## the 2 minute wait time)
   ################################################
-  - alias: "Notify when dishwasher is done"
+  - alias: notify_when_dishwasher_is_done
     trigger:
       - platform: state
         entity_id: binary_sensor.vaatwasser_power_usage_templated
