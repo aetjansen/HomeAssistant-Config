@@ -55,6 +55,9 @@ homeassistant:
       friendly_name: "Actief tarief"
       icon: mdi:currency-eur
 
+    sensor.power_tariff:
+      hidden: true
+
     sensor.achterdeur_schakelaars_energy_4_0:
       <<: *customize_contained
       friendly_name: "Bijkeuken lamp"
