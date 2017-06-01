@@ -31,25 +31,25 @@ homeassistant:
 
     !secret sensor_hallway_motion:
       <<: *customize_contained
-      friendly_name: "Hal beweging"
+      friendly_name: "Beweging"
       device_class: motion
       icon: mdi:walk
       hidden: true
 
     !secret sensor_hallway_temperature:
       <<: *customize_contained
-      friendly_name: "Hal temperatuur"
+      friendly_name: "Temperatuur"
       icon: mdi:thermometer
 
     !secret sensor_hallway_humidity:
       <<: *customize_contained
-      friendly_name: "Hal luchtvochtigheid"
+      friendly_name: "Luchtvochtigheid"
       device_class: moisture
       icon: mdi:water-percent
 
-    !secret sensor_hallway_luminance:
+    sensor.hal_sensor_luminance_3_3:
       <<: *customize_contained
-      friendly_name: "Hal lichtniveau"
+      friendly_name: "Lichtniveau"
       hidden: true
       icon: mdi:theme-light-dark
 
