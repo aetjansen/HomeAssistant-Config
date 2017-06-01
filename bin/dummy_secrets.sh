@@ -16,15 +16,6 @@ echo "mqtt_username: dummyuser" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "mqtt_password: dummypassword" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zwave_usb_path: /dummy/zwave" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zwave_config_path: /dummy/zwaveconfig" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "binary_sensor_scullery: binary_sensor.dummysensor_scullery" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "sensor_scullery_motion: sensor.dummysensor_scullery_motion" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "sensor_scullery_temperature: sensor.dummysensor_scullery_temperature" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "sensor_scullery_humidity: sensor.dummysensor_scullery_humidity" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "sensor_scullery_luminance: sensor.dummysensor_scullery_luminance" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "sensor_scullery_alarm_level: sensor.dummysensor_scullery_alarm_level" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "sensor_scullery_alarm_type: sensor.dummysensor_scullery_alarm_type" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "sensor_scullery_source_nodeid: sensor.dummysensor_scullery_source_nodeid" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "sensor_scullery_ultraviolet: sensor.dummysensor_scullery_ultraviolet" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "sensor_dishwasher_current: sensor.dummysensor_dishwasher_current" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "sensor_dishwasher_current_previous_reading: sensor.dummysensor_dishwasher_current_previous_reading" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "sensor_dishwasher_exporting: sensor.dummysensor_dishwasher_exporting" >> $TRAVIS_BUILD_DIR/secrets.yaml
