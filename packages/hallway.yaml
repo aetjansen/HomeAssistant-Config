@@ -32,7 +32,7 @@ group:
   hallway:
     control: hidden
     entities:
-      - sensor.hal_sensor_burglar_3_10
+      - sensor.hallway_motion_detector
       - sensor.hal_sensor_temperature_3_1
       - sensor.hal_sensor_relative_humidity_3_5
       - ensor.hal_sensor_luminance_3_3
@@ -45,8 +45,8 @@ group:
 sensor:
   - platform: template
     sensors:
-      motion_detector:
-        friendly_name: 'Beweging'
+      hallway_motion_detector:
+        friendly_name: 'Hal bewegingssensor'
         value_template: >-
             {%- if is_state("sensor.hal_sensor_burglar_3_10", "8") %}
                 Beweging
