@@ -21,14 +21,4 @@ homeassistant:
     switch.vaatwasser_switch_6_0:
       <<: *customize_contained
       friendly_name: "Vaatwassser"
-      icon: mdi:powerplug 
-
-    switch.achterdeur_schakelaars_switch_4_0:
-      <<: *customize_contained
-      friendly_name: "Bijkeuken lamp"
-      icon: mdi:lightbulb
-
-    switch.achterdeur_schakelaars_switch_4_0_2:
-      <<: *customize_contained
-      friendly_name: "Buitenlamp achterdeur"
-      icon: mdi:lightbulb
+      icon: mdi:powerplug

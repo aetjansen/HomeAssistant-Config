@@ -56,6 +56,11 @@ homeassistant:
       persistent: true
       icon: mdi:lightbulb
 
+    switch.achterdeur_schakelaars_switch_4_0_2:
+      <<: *customize_contained
+      friendly_name: "Buitenlamp achterdeur"
+      icon: mdi:lightbulb
+
 ################################################
 ## Group
 ################################################
@@ -68,6 +73,7 @@ group:
       - sensor.bijkeuken_sensor_relative_humidity_2_5
       - sensor.bijkeuken_sensor_luminance_2_3
       - switch.achterdeur_schakelaars_switch_4_0
+      - switch.achterdeur_schakelaars_switch_4_0_2
 
 
 ################################################
