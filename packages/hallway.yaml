@@ -26,7 +26,7 @@ homeassistant:
     ### Hallway Multisensor
     sensor.hallway_motion_detector:
       <<: *customize_contained
-      friendly_name: "Hal beweging"
+      friendly_name: "Beweging"
       icon: mdi:walk
 
     sensor.hal_sensor_burglar_3_10:
@@ -50,7 +50,6 @@ homeassistant:
     sensor.hal_sensor_luminance_3_3:
       <<: *customize_contained
       friendly_name: "Lichtniveau"
-      hidden: true
       icon: mdi:theme-light-dark
 
 ################################################
