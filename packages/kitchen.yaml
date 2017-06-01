@@ -55,3 +55,9 @@ homeassistant:
 
     sensor.vaatwasser_sourcenodeid_6_2:
       hidden: true
+
+    sensor.vaatwasser_alarm_level_6_1:
+      hidden: true
+
+    sensor.vaatwasser_alarm_type_6_0:
+      hidden: true
