@@ -79,7 +79,8 @@ homeassistant:
     sensor.achterdeur_schakelaars_power_management_4_11:
       hidden: true
 
-    
+    sensor.achterdeur_schakelaars_sourcenodeid_4_2:
+      hidden: true
 
 ################################################
 ## Group
