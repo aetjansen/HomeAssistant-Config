@@ -61,6 +61,7 @@ group:
       - sensor.hal_sensor_temperature_3_1
       - sensor.hal_sensor_relative_humidity_3_5
       - sensor.hal_sensor_luminance_3_3
+      - light.hal
 
 
 ################################################
