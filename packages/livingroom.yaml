@@ -1,0 +1,59 @@
+################################################################
+## Packages / livingroom.
+################################################################
+
+
+################################################
+## Customize
+################################################
+homeassistant:
+  customize:
+    packages.livingroom: &customize
+      package: 'livingroom'
+
+    packages.livingroom_exposed: &customize_exposed
+      <<: *customize
+
+    packages.livingroom_contained: &customize_contained
+      <<: *customize
+
+    group.livingroom:
+      <<: *customize_contained
+      friendly_name: "Hal"
+
+    light.woonkamer_dimmer_step_size_5_6_2:
+      hidden: true
+
+    light.woonkamer_dimmer_step_size_5_6:
+      hidden: true
+
+    light.woonkamer_dimmer_level_5_0_2:
+      hidden: true
+
+    light.woonkamer_dimmer_level_5_0:
+      <<: *customize_contained
+      friendly_name: "Zithoek"
+
+    light.plafondlamp_speelkamer:
+      <<: *customize_contained
+      friendly_name: "Speelhoek"
+
+    light.iris:
+      <<: *customize_contained
+      friendly_name: "Iris"
+
+    light.leeslamp:
+      <<: *customize_contained
+      friendly_name: "Leeslamp"
+
+################################################
+## Group
+################################################
+group:
+  livingroom:
+    control: hidden
+    entities:
+      - light.woonkamer_dimmer_level_5_0
+      - light.plafondlamp_speelkamer
+      - light.iris
+      - light.leeslamp
