@@ -19,7 +19,7 @@ homeassistant:
 
     group.livingroom:
       <<: *customize_contained
-      friendly_name: "Hal"
+      friendly_name: "Woonkamer"
 
     light.woonkamer_dimmer_step_size_5_6_2:
       hidden: true
