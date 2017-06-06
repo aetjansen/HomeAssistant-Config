@@ -1,0 +1,29 @@
+################################################################
+## Packages / Weather
+################################################################
+
+################################################################
+## Darksky
+################################################################
+- platform: darksky
+  api_key: !secret darksky_api_key
+  units: si
+  monitored_conditions:
+    - summary
+    - icon
+    - precip_type
+    - precip_intensity
+    - precip_probability
+    - temperature
+    - apparent_temperature
+    - dew_point
+    - wind_speed
+    - wind_bearing
+    - cloud_cover
+    - humidity
+    - pressure
+    - visibility
+    - ozone
+    - temperature_max
+    - temperature_min
+    - precip_intensity_max
