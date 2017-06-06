@@ -63,3 +63,5 @@ echo "zone5_lon: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zone6_name: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zone6_lat: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zone6_lon: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "wife_phone: dummywifephone" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "husband_phone: dummyhusbandphone" >> $TRAVIS_BUILD_DIR/secrets.yaml
