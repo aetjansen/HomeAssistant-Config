@@ -23,13 +23,13 @@
 ## Google Chromecast
 ################################################
 - platform: cast
-  host: ***REMOVED***74
+  host: 10.0.1.174
   name: Keuken
 - platform: cast
-  host: ***REMOVED***27
+  host: 10.0.1.127
   name: Slaapkamer
 - platform: cast
-  host: ***REMOVED***5
+  host: 10.0.1.15
   name: Woonkamer
 
 ################################################
