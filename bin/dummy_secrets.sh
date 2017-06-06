@@ -43,6 +43,8 @@ echo "woonkamer_receiver_ip: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "asus_router_ip: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "asus_router_username: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "asus_router_password: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "asus_router_port: 1234" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "asus_router_key_path: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "pushover_api_key: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "pushover_user_key: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zone1_name: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
