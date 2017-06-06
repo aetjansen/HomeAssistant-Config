@@ -87,10 +87,13 @@ homeassistant:
       friendly_name: "Huidig verbruik"
       icon: mdi:flash
 
-    sensor.woonkamer_dimmer_power_5_4:
+    sensor.woonkamer_dimmer_power_5_8:
       <<: *customize_contained
       friendly_name: "Zithoek dimmer"
       icon: mdi:lightbulb
+
+    sensor.woonkamer_dimmer_power_5_4:
+      hidden: true
 
     sensor.achterdeur_schakelaars_power_4_8:
       <<: *customize_contained
@@ -167,7 +170,7 @@ group:
       - sensor.vaatwasser_power_6_8    # Dishwasher: Watts
       - sensor.vaatwasser_current_6_20 # Dishwasher: Amps
       - sensor.vaatwasser_voltage_6_16 # Dishwasher: Volts
-      - sensor.woonkamer_dimmer_power_5_4
+      - sensor.woonkamer_dimmer_power_5_8
       - sensor.achterdeur_schakelaars_power_4_8        # Scullery light
       - sensor.achterdeur_schakelaars_power_4_8_2      # Backdoor outside light
 

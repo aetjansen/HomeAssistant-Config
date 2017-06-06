@@ -34,6 +34,27 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Zithoek"
 
+    sensor.woonkamer_dimmer_alarm_level_5_1	0:
+      hidden: true
+
+    sensor.woonkamer_dimmer_alarm_type_5_0:
+      hidden: true
+
+    sensor.woonkamer_dimmer_exporting_5_32:
+      hidden: true
+
+    sensor.woonkamer_dimmer_heat_5_7:
+      hidden: true
+
+    sensor.woonkamer_dimmer_power_management_5_11:
+      hidden: true
+
+    sensor.woonkamer_dimmer_sourcenodeid_5_2:
+      hidden: true
+
+    sensor.woonkamer_dimmer_system_5_12:
+      hidden: true
+      
     light.plafondlamp_speelkamer:
       <<: *customize_contained
       friendly_name: "Speelhoek"

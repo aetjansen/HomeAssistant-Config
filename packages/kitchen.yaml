@@ -67,6 +67,9 @@ homeassistant:
     sensor.vaatwasser_alarm_type_6_0:
       hidden: true
 
+    binary_sensor.vaatwasser_power_usage_templated:
+      hidden: true
+
 ################################################
 ## Automation
 ################################################
