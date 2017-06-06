@@ -82,6 +82,19 @@ homeassistant:
     sensor.husband_phone:
       <<: *customize_contained
       icon: mdi:cellphone-iphone
+      hidden: true # replaced by iphone running the ios homeassistant app
+
+    device_tracker.iphone_van_arno:
+      <<: *customize_contained
+      icon: mdi:cellphone-iphone
+
+    sensor.iphone_van_arno_battery_level:
+      <<: *customize_contained
+      icon: mdi:battery
+
+    sensor.iphone_van_arno_battery_state:
+      <<: *customize_contained
+      icon: mdi:battery
 
     sensor.samsunggalaxytaba:
       <<: *customize_contained
