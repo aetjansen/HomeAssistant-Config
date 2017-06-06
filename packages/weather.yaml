@@ -109,6 +109,26 @@ homeassistant:
       icon: mdi:thermometer
 
 ################################################
+## Automation
+################################################
+
+automation:
+
+  ################################################
+  ## Notification at midnight with readings from the smart meter
+  ################################################
+  - alias: send_weather_forecast_in_the_morning
+    initial_state: 'on'
+    trigger:
+      - platform: time
+        after: '06:00:00'
+    action:
+      service: notify.ios_iphone_van_arno
+      data_template:
+        title: "Weersverwachting"
+        message: "Vandaag: {{ states.sensor.pws_weather_1d_metric.state }}"
+
+################################################
 ## Group
 ################################################
 
