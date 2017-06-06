@@ -1,0 +1,37 @@
+################################################################
+## Packages / People
+################################################################
+
+
+################################################
+## Customize
+################################################
+
+homeassistant:
+  customize:
+    packages.people: &customize
+      package: 'People'
+
+    packages.people_exposed: &customize_exposed
+      <<: *customize
+
+    packages.people_contained: &customize_contained
+      <<: *customize
+
+    group.family:
+      <<: *customize_contained
+      friendly_name: "Familie"
+      icon: mdi:account-multiple
+
+
+################################################
+## Group
+################################################
+group:
+  family:
+    control: hidden
+    entities:
+      - device_tracker.iphone_van_arno
+      - sensor.iphone_van_arno_battery_level
+      - sensor.iphone_van_arno_battery_state
+      - sensor.wife_phone
