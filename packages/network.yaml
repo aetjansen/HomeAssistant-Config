@@ -82,7 +82,7 @@ sensor:
         value_template: "{{ 'Online' if is_state('device_tracker.husband_phone', 'home') else 'Offline' }}"
 
       homeassistant:
-        friendly_name: 'HomeAssistant
+        friendly_name: 'HomeAssistant'
         value_template: "{{ 'Online' if is_state('device_tracker.homeassistant', 'home') else 'Offline' }}"
 
       huehub:
