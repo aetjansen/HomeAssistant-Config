@@ -1,0 +1,11 @@
+################################################################
+## Device Tracker / AsusWRT
+################################################################
+- platform: asuswrt
+  host: !secret asus_router_ip
+  username: !secret asus_router_username
+  port: !secret asus_router_port
+  ssh_key: !secret asus_router_key_path
+  interval_seconds: 10
+  consider_home: 180
+  track_new_devices: false
