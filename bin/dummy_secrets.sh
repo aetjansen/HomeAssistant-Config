@@ -65,3 +65,5 @@ echo "zone6_lat: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zone6_lon: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "wife_phone: dummywifephone" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "husband_phone: dummyhusbandphone" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "spotify_client_id: spotifyclientid" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "spotify_client_secret: spotifyclientsecret" >> $TRAVIS_BUILD_DIR/secrets.yaml
