@@ -23,6 +23,54 @@ homeassistant:
       friendly_name: "Netwerk devices"
       icon: mdi:gauge
 
+    device_tracker.chromecast_slaapkamer:
+      hidden: true
+
+    device_tracker.chromecast_woonkamer:
+      hidden: true
+
+    device_tracker.chromecastkeuken:
+      hidden: true
+
+    device_tracker.harmonyhub:
+      hidden: true
+
+    device_tracker.bankhanger:
+      hidden: true
+
+    device_tracker.epsonprinter:
+      hidden: true
+
+    device_tracker.wife_phone:
+      hidden: true
+
+    device_tracker.husband_phone:
+      hidden: true
+
+    device_tracker.homeassistant:
+      hidden: true
+
+    device_tracker.huehub:
+      hidden: true
+
+    device_tracker.onkyoreceiver:
+      hidden: true
+
+    device_tracker.retropie:
+      hidden: true
+
+    device_tracker.samsunggalaxytaba:
+      hidden: true
+
+    device_tracker.slaapkamertv:
+      hidden: true
+
+    device_tracker.steamlink:
+      hidden: true
+
+    device_tracker.woonkamertv:
+      hidden: true
+
 ################################################
 ## Sensor
 ################################################
@@ -40,7 +88,7 @@ group:
       - sensor.bankhanger
       - sensor.wife_phone
       - sensor.husband_phone
-      - light.leeslamp
+
 
 ################################################
 ## Sensor
