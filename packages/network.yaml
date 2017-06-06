@@ -1,0 +1,114 @@
+################################################################
+## Packages / Network
+################################################################
+## Everything related to the home (automation) network
+
+################################################
+## Customize
+################################################
+
+homeassistant:
+  customize:
+    packages.network: &customize
+      package: 'Netwerk'
+
+    packages.network_exposed: &customize_exposed
+      <<: *customize
+
+    packages.network_contained: &customize_contained
+      <<: *customize
+
+    group.network_devices:
+      <<: *customize_contained
+      friendly_name: "Netwerk devices"
+      icon: mdi:gauge
+
+################################################
+## Sensor
+################################################
+group:
+  network:
+    control: hidden
+    entities:
+      - sensor.homeassistant
+      - sensor.harmonyhub
+      - sensor.onkyoreceiver
+      - sensor.chromecast_bedroom
+      - sensor.chromecast_livingroom
+      - sensor.chromecast_kitchen
+      - sensor.printer
+      - sensor.bankhanger
+      - sensor.wife_phone
+      - sensor.husband_phone
+      - light.leeslamp
+
+################################################
+## Sensor
+################################################
+
+sensor:
+  - platform: template
+    sensors:
+      chromecast_bedroom:
+        friendly_name: 'Chromecast Slaapkamer'
+        value_template: "{{ 'Online' if is_state('device_tracker.chromecast_slaapkamer', 'home') else 'Offline' }}"
+
+      chromecast_livingroom:
+        friendly_name: 'Chromecast Woonkamer'
+        value_template: "{{ 'Online' if is_state('device_tracker.chromecast_woonkamer', 'home') else 'Offline' }}"
+
+      chromecast_kitchen:
+        friendly_name: 'Chromecast Keuken'
+        value_template: "{{ 'Online' if is_state('device_tracker.chromecastkeuken', 'home') else 'Offline' }}"
+
+      harmonyhub:
+        friendly_name: 'Harmony Hub'
+        value_template: "{{ 'Online' if is_state('device_tracker.harmonyhub', 'home') else 'Offline' }}"
+
+      bankhanger:
+        friendly_name: 'Bankhanger Airport Express'
+        value_template: "{{ 'Online' if is_state('device_tracker.bankhanger', 'home') else 'Offline' }}"
+
+      printer:
+        friendly_name: 'Epson printer'
+        value_template: "{{ 'Online' if is_state('device_tracker.epsonprinter', 'home') else 'Offline' }}"
+
+      wife_phone:
+        friendly_name: !secret wife_phone
+        value_template: "{{ 'Online' if is_state('device_tracker.wife_phone', 'home') else 'Offline' }}"
+
+      husband_phone:
+        friendly_name: !secret husband_phone
+        value_template: "{{ 'Online' if is_state('device_tracker.husband_phone', 'home') else 'Offline' }}"
+
+      homeassistant:
+        friendly_name: 'HomeAssistant
+        value_template: "{{ 'Online' if is_state('device_tracker.homeassistant', 'home') else 'Offline' }}"
+
+      huehub:
+        friendly_name: 'Philips Hue hub'
+        value_template: "{{ 'Online' if is_state('device_tracker.huehub', 'home') else 'Offline' }}"
+
+      onkyoreceiver:
+        friendly_name: 'Receiver woonkamer'
+        value_template: "{{ 'Online' if is_state('device_tracker.onkyoreceiver', 'home') else 'Offline' }}"
+
+      retropie:
+        friendly_name: 'Retropie console'
+        value_template: "{{ 'Online' if is_state('device_tracker.retropie', 'home') else 'Offline' }}"
+
+      samsunggalaxytaba:
+        friendly_name: 'Samsung tablet'
+        value_template: "{{ 'Online' if is_state('device_tracker.samsunggalaxytaba', 'home') else 'Offline' }}"
+
+      bedroomtv:
+        friendly_name: 'Slaapkamer tv'
+        value_template: "{{ 'Online' if is_state('device_tracker.slaapkamertv', 'home') else 'Offline' }}"
+
+      steamlink:
+        friendly_name: 'Steamlink'
+        value_template: "{{ 'Online' if is_state('device_tracker.steamlink', 'home') else 'Offline' }}"
+
+      livingroomtv:
+        friendly_name: 'Woonkamer tv'
+        value_template: "{{ 'Online' if is_state('device_tracker.woonkamertv', 'home') else 'Offline' }}"
