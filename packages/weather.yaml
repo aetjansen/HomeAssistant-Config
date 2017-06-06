@@ -88,35 +88,7 @@ homeassistant:
       <<: *customize
       friendly_name: "Huidige condities"
 
-    sensor.season:
-      <<: *customize
-      friendly_name: "Seizoen"
-      icon: mdi:weather-snowy-rainy
 
-    sensor.yr_cloudiness:
-      <<: *customize
-      friendly_name: "Bewolking"
-      icon: mdi:weather-partlycloudy
-
-    sensor.yr_condition:
-      <<: *customize
-      friendly_name: "Condities"
-      icon: mdi:weather-sunny
-
-    sensor.yr_humidity:
-      <<: *customize
-      friendly_name: "Luchtvochtigheid"
-      icon: mdi:water-percent
-
-    sensor.yr_precipitation:
-      <<: *customize
-      friendly_name: "Neerslag"
-      icon: mdi:weather-rainy
-
-    sensor.yr_temperature:
-      <<: *customize
-      friendly_name: "Temperatuur"
-      icon: mdi:thermometer
 
 ################################################
 ## Automation
@@ -153,37 +125,21 @@ automation:
 ################################################
 
 group:
-  weather_general:
+  weather_combined:
+    name: Weer
     control: hidden
     entities:
       - sun.sun
-      - sensor.season
-
-  weather_darksky:
-    control: hidden
-    entities:
       - sensor.dark_sky_cloud_coverage
       - sensor.dark_sky_humidity
       - sensor.dark_sky_precip_probability
       - sensor.dark_sky_temperature
-
-  weather_wunderground:
-    control: hidden
-    entities:
       - sensor.pws_feelslike_c
       - sensor.pws_heat_index_c
       - sensor.pws_relative_humidity
       - sensor.pws_precip_today_mm
       - sensor.pws_temp_c
       - sensor.pws_weather
-
-  weather_yr:
-    control: hidden
-    entities:
-      - sensor.yr_cloudiness
-      - sensor.yr_humidity
-      - sensor.yr_precipitation
-      - sensor.yr_temperature
 
   dialy_forecast:
     name: Vooruitzichten
@@ -236,28 +192,3 @@ sensor:
       - weather_3n_metric
       - weather_4d_metric
       - weather_4n_metric
-
-  - platform: yr
-    monitored_conditions:
-      - cloudiness
-      - humidity
-      - precipitation
-      - temperature
-
-  - platform: template
-    sensors:
-      season:
-        value_template: >-
-          {% set temp_entity = 'sensor.pws_temp_c' %}
-          {% set temp = states(temp_entity)|float(none) %}
-          {% set temp_min = states.input_slider.season_winter.state|default(68)|float %}
-          {% set temp_max = states.input_slider.season_summer.state|default(84)|float %}
-          {% if temp is none %}
-            {{ states(temp_entity) }}
-          {% elif temp < temp_min %}
-            Winter
-          {% elif temp > temp_max %}
-            Summer
-          {% else %}
-            Awesome
-          {% endif %}
