@@ -145,6 +145,18 @@ group:
       - sensor.yr_precipitation
       - sensor.yr_temperature
 
+  dialy_forecast:
+    name: Vooruitzichten
+    entities:
+      - sensor.pws_weather_1d_metric
+      - sensor.pws_weather_1n_metric
+      - sensor.pws_weather_2d_metric
+      - sensor.pws_weather_2n_metric
+      - sensor.pws_weather_3d_metric
+      - sensor.pws_weather_3n_metric
+      - sensor.pws_weather_4d_metric
+      - sensor.pws_weather_4n_metric
+
 ################################################
 ## Sensor
 ################################################
@@ -169,7 +181,20 @@ sensor:
       - precip_1d
       - relative_humidity
       - temp_c
+      - temp_high_record_c
+      - temp_low_record_c
+      - temp_high_1d_c
+      - temp_low_1d_c
+      - wind_1d_kph
       - weather
+      - weather_1d_metric
+      - weather_1n_metric
+      - weather_2d_metric
+      - weather_2n_metric
+      - weather_3d_metric
+      - weather_3n_metric
+      - weather_4d_metric
+      - weather_4n_metric
 
   - platform: yr
     monitored_conditions:
