@@ -61,7 +61,7 @@ homeassistant:
 
     sensor.retropie:
       <<: *customize_contained
-      icon: mdi:gaepad-variant
+      icon: mdi:gamepad-variant
 
     sensor.steamlink:
       <<: *customize_contained
