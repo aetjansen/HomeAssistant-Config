@@ -2,28 +2,193 @@
 ## Packages / Weather
 ################################################################
 
-################################################################
-## Darksky
-################################################################
-- platform: darksky
-  api_key: !secret darksky_api_key
-  units: si
-  monitored_conditions:
-    - summary
-    - icon
-    - precip_type
-    - precip_intensity
-    - precip_probability
-    - temperature
-    - apparent_temperature
-    - dew_point
-    - wind_speed
-    - wind_bearing
-    - cloud_cover
-    - humidity
-    - pressure
-    - visibility
-    - ozone
-    - temperature_max
-    - temperature_min
-    - precip_intensity_max
+################################################
+## Customize
+################################################
+
+homeassistant:
+  customize:
+    packages.weather: &customize
+      haaska_hidden: true
+      homebridge_hidden: true
+      package: 'Weer'
+
+    group.weather_darksky:
+      <<: *customize
+      friendly_name: "Dark Sky"
+
+    group.weather_general:
+      <<: *customize
+      friendly_name: "General"
+
+    group.weather_wunderground:
+      <<: *customize
+      friendly_name: "Weather Underground"
+
+    group.weather_yr:
+      <<: *customize
+      friendly_name: "YR"
+
+    sensor.dark_sky_cloud_coverage:
+      <<: *customize
+      friendly_name: "Bewolking"
+      icon: mdi:weather-partlycloudy
+
+    sensor.dark_sky_humidity:
+      <<: *customize
+      friendly_name: "Luchtvochtigheid"
+      icon: mdi:water-percent
+
+    sensor.dark_sky_precip_probability:
+      <<: *customize
+      friendly_name: "Neerslag"
+      icon: mdi:weather-rainy
+
+    sensor.dark_sky_temperature:
+      <<: *customize
+      friendly_name: "Temperatuur"
+      icon: mdi:thermometer
+
+    sensor.pws_feelslike_c:
+      <<: *customize
+      friendly_name: "Gevoelstemperatuur"
+      icon: mdi:thermometer
+
+    sensor.pws_heat_index_c:
+      <<: *customize
+      friendly_name: "Temperatuur index"
+      icon: mdi:thermometer
+
+    sensor.pws_precip_today_mm:
+      <<: *customize
+      friendly_name: "Neerslag"
+      icon: mdi:weather-rainy
+
+    sensor.pws_relative_humidity:
+      <<: *customize
+      friendly_name: "Luchtvochtigheid"
+      icon: mdi:water-percent
+
+    sensor.pws_temp_c:
+      <<: *customize
+      friendly_name: "Temperatuur"
+      icon: mdi:thermometer
+
+    sensor.pws_weather:
+      <<: *customize
+      friendly_name: "Huidige condities"
+
+    sensor.season:
+      <<: *customize
+      friendly_name: "Seizoen"
+      icon: mdi:weather-snowy-rainy
+
+    sensor.yr_cloudiness:
+      <<: *customize
+      friendly_name: "Bewolking"
+      icon: mdi:weather-partlycloudy
+
+    sensor.yr_condition:
+      <<: *customize
+      friendly_name: "Condities"
+      icon: mdi:weather-sunny
+
+    sensor.yr_humidity:
+      <<: *customize
+      friendly_name: "Luchtvochtigheid"
+      icon: mdi:water-percent
+
+    sensor.yr_precipitation:
+      <<: *customize
+      friendly_name: "Neerslag"
+      icon: mdi:weather-rainy
+
+    sensor.yr_temperature:
+      <<: *customize
+      friendly_name: "Temperatuur"
+      icon: mdi:thermometer
+
+################################################
+## Group
+################################################
+
+group:
+  weather_general:
+    control: hidden
+    entities:
+      - sun.sun
+      - sensor.season
+
+  weather_darksky:
+    control: hidden
+    entities:
+      - sensor.dark_sky_cloud_coverage
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_temperature
+
+  weather_wunderground:
+    control: hidden
+    entities:
+      - sensor.pws_feelslike_c
+      - sensor.pws_heat_index_c
+      - sensor.pws_relative_humidity
+      - sensor.pws_precip_today_mm
+      - sensor.pws_temp_c
+      - sensor.pws_weather
+
+  weather_yr:
+    control: hidden
+    entities:
+      - sensor.yr_cloudiness
+      - sensor.yr_humidity
+      - sensor.yr_precipitation
+      - sensor.yr_temperature
+
+################################################
+## Sensor
+################################################
+
+sensor:
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    monitored_conditions:
+      - cloud_cover
+      - humidity
+      - precip_probability
+      - temperature
+
+  - platform: wunderground
+    api_key: !secret wunderground_api
+    monitored_conditions:
+      - feelslike_c
+      - heat_index_c
+      - precip_today_mm
+      - relative_humidity
+      - temp_c
+      - weather
+
+  - platform: yr
+    monitored_conditions:
+      - cloudiness
+      - humidity
+      - precipitation
+      - temperature
+
+  - platform: template
+    sensors:
+      season:
+        value_template: >-
+          {% set temp_entity = 'sensor.pws_temp_c' %}
+          {% set temp = states(temp_entity)|float(none) %}
+          {% set temp_min = states.input_slider.season_winter.state|default(68)|float %}
+          {% set temp_max = states.input_slider.season_summer.state|default(84)|float %}
+          {% if temp is none %}
+            {{ states(temp_entity) }}
+          {% elif temp < temp_min %}
+            Winter
+          {% elif temp > temp_max %}
+            Summer
+          {% else %}
+            Awesome
+          {% endif %}
