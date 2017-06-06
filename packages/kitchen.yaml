@@ -26,7 +26,8 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Vaatwassser"
       icon: mdi:powerplug
-      hidden: true
+      persistent: true
+
 
     sensor.vaatwasser_previous_reading_6_21:
       hidden: true
