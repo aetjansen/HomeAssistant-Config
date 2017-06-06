@@ -6,7 +6,7 @@
 ################################################
 ## Customize
 ################################################
-
+## Note that many/most of the sensors and device trackers here are customized in the network package
 homeassistant:
   customize:
     packages.people: &customize
