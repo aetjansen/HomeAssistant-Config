@@ -163,7 +163,10 @@ sensor:
     monitored_conditions:
       - feelslike_c
       - heat_index_c
-      - precip_today_mm
+      - precip_today_metric
+      - precip_1hr_metric
+      - precip_1d_mm
+      - precip_1d
       - relative_humidity
       - temp_c
       - weather
