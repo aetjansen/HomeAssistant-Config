@@ -148,6 +148,12 @@ homeassistant:
     device_tracker.woonkamertv:
       hidden: true
 
+    device_tracker.husbandlaptop:
+      hidden: true
+
+    device_tracker.ipad:
+      hidden: true
+
 ################################################
 ## Sensor
 ################################################
