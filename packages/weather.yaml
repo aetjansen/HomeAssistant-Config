@@ -172,6 +172,7 @@ sensor:
 
   - platform: wunderground
     api_key: !secret wunderground_api
+    lang: NL
     monitored_conditions:
       - feelslike_c
       - heat_index_c
