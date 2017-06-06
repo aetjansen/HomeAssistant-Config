@@ -1,0 +1,40 @@
+################################################################
+## Media Player / Media Player setups
+################################################################
+
+################################################
+## Samsung TV
+################################################
+- platform: samsungtv
+  host: !secret woonkamer_tv_ip
+  name: "Woonkamer tv"
+- platform: samsungtv
+  host: 10.0.1.245
+  name: "Slaapkamer tv"
+
+################################################
+## Onkyo TX-NR626
+################################################
+- platform: onkyo
+  host: !secret woonkamer_receiver_ip
+  name: "Receiver Woonkamer"
+
+################################################
+## Google Chromecast
+################################################
+- platform: cast
+  host: ***REMOVED***74
+  name: Keuken
+- platform: cast
+  host: ***REMOVED***27
+  name: Slaapkamer
+- platform: cast
+  host: ***REMOVED***5
+  name: Woonkamer
+
+################################################
+## Spotify
+################################################
+- platform: spotify
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
