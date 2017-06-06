@@ -18,10 +18,74 @@ homeassistant:
     packages.network_contained: &customize_contained
       <<: *customize
 
-    group.network_devices:
+    group.network:
       <<: *customize_contained
-      friendly_name: "Netwerk devices"
-      icon: mdi:gauge
+      friendly_name: "Netwerk"
+      icon: mdi:access-point-network
+
+    sensor.homeassistant:
+      <<: *customize_contained
+      icon: mdi:ethernet
+
+    sensor.huehub:
+      <<: *customize_contained
+      icon: mdi:lightbulb-on-outline
+
+    sensor.harmonyhub:
+      <<: *customize_contained
+      icon: mdi:remote
+
+    sensor.onkyoreceiver:
+      <<: *customize_contained
+      icon: mdi:access-point-network
+
+    sensor.livingroomtv:
+      <<: *customize_contained
+      icon: mdi:television
+
+    sensor.chromecast_livingroom:
+      <<: *customize_contained
+      icon: mdi:cast
+
+    sensor.bedroomtv:
+      <<: *customize_contained
+      icon: mdi:television
+
+    sensor.chromecast_bedroom:
+      <<: *customize_contained
+      icon: mdi:cast
+
+    sensor.chromecast_kitchen:
+      <<: *customize_contained
+      icon: mdi:cast
+
+    sensor.retropie:
+      <<: *customize_contained
+      icon: mdi:gaepad-variant
+
+    sensor.steamlink:
+      <<: *customize_contained
+      icon: mdi:gamepad-variant
+
+    sensor.printer:
+      <<: *customize_contained
+      icon: mdi:printer
+
+    sensor.bankhanger:
+      <<: *customize_contained
+      icon: mdi:volume-high
+
+    sensor.wife_phone:
+      <<: *customize_contained
+      icon: mdi:cellphone-iphone
+
+    sensor.husband_phone:
+      <<: *customize_contained
+      icon: mdi:cellphone-iphone
+
+    sensor.samsunggalaxytaba:
+      <<: *customize_contained
+      icon: mdi:tablet-android
 
     device_tracker.chromecast_slaapkamer:
       hidden: true
@@ -79,15 +143,21 @@ group:
     control: hidden
     entities:
       - sensor.homeassistant
+      - sensor.huehub
       - sensor.harmonyhub
       - sensor.onkyoreceiver
-      - sensor.chromecast_bedroom
+      - sensor.livingroomtv
       - sensor.chromecast_livingroom
+      - sensor.bedroomtv
+      - sensor.chromecast_bedroom
       - sensor.chromecast_kitchen
+      - sensor.retropie
+      - sensor.steamlink
       - sensor.printer
       - sensor.bankhanger
       - sensor.wife_phone
       - sensor.husband_phone
+      - sensor.samsunggalaxytaba
 
 
 ################################################
