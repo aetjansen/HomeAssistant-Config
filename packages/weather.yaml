@@ -29,6 +29,16 @@ homeassistant:
       <<: *customize
       friendly_name: "YR"
 
+    automation.send_weather_forecast_in_the_morning:
+      <<: *customize
+      friendly_name: "Weersverwachting vandaag"
+      icon: mdi:comment-alert-outline
+
+    automation.send_weather_forecast_in_the_evening:
+      <<: *customize
+      friendly_name: "Weersverwachting vannacht"
+      icon: mdi:comment-alert-outline
+
     sensor.dark_sky_cloud_coverage:
       <<: *customize
       friendly_name: "Bewolking"
@@ -128,6 +138,16 @@ automation:
         title: "Weersverwachting"
         message: "Vandaag: {{ states.sensor.pws_weather_1d_metric.state }}"
 
+  - alias: send_weather_forecast_in_the_evening
+    initial_state: 'on'
+    trigger:
+      - platform: time
+        after: '18:00:00'
+    action:
+      service: notify.ios_iphone_van_arno
+      data_template:
+        title: "Weersverwachting"
+        message: "Avond & nacht: {{ states.sensor.pws_weather_1n_metric.state }}"
 ################################################
 ## Group
 ################################################
