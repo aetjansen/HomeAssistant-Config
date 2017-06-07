@@ -17,6 +17,10 @@ homeassistant:
     packages.server_contained: &customize_contained
       <<: *customize
 
+    group.server:
+      <<: *customize_contained
+      friendly_name: "Server"
+
     sensor.cpu_use:
       <<: *customize
       friendly_name: "CPU gebruik"
