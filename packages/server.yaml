@@ -112,6 +112,7 @@ group:
       - sensor.homeassistant_uptime
       - sensor.last_boot
       - sensor.latest_ha_release
+      - sensor.badlogin
       - sensor.cpu_use
       - sensor.stats_mean_2
       - sensor.cpu_temperature
