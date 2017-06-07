@@ -17,14 +17,89 @@ homeassistant:
     packages.server_contained: &customize_contained
       <<: *customize
 
+    sensor.cpu_use:
+      <<: *customize
+      friendly_name: "CPU gebruik"
+
+    sensor.disk_use_home:
+      <<: *customize
+      friendly_name: "Disk Gebruik"
+
+    sensor.ipv4_address_eth0:
+      <<: *customize
+      friendly_name: "IPv4 adres"
+
+    sensor.ipv6_address_eth0:
+      <<: *customize
+      friendly_name: "IPv6 adres"
+
+    sensor.last_boot:
+      <<: *customize
+      friendly_name: "Boot"
+
+    sensor.pihole_ads_blocked_today:
+      <<: *customize
+      friendly_name: "Aantal ads geblokkeerd"
+
+    sensor.pihole_ads_percentage_blocked_today:
+      <<: *customize
+      friendly_name: "Percentage ads geblokkeerd"
+
+    sensor.pihole_dns_queries_today:
+      <<: *customize
+      friendly_name: "Aantal DNS queries"
+
+    sensor.ram_free:
+      <<: *customize
+      friendly_name: "RAM beschikbaar"
+
+    sensor.received_eth0:
+      <<: *customize
+      friendly_name: "Data in"
+
+    sensor.sent_eth0:
+      <<: *customize
+      friendly_name: "Data uit"
+
+    sensor.speedtest_ping:
+      <<: *customize
+      friendly_name: "Internet Ping"
+
+    sensor.speedtest_download:
+      <<: *customize
+      friendly_name: "Download snelheid"
+
+    sensor.speedtest_upload:
+      <<: *customize
+      friendly_name: "Upload snelheid"
+
+    sensor.stats_mean:
+      <<: *customize
+      friendly_name: "Gemiddelde CPU belasting"
+
+
 ################################################
 ## Group
 ################################################
-#group:
-#  server:
-#    control: hidden
-#    entities:
-#      - sensor.homeassistant
+group:
+  server:
+    control: hidden
+    entities:
+      - sensor.cpu_use
+      - sensor.disk_use_home
+      - sensor.ram_free
+      - sensor.ipv4_address_eth0
+      - sensor.ipv6_address_eth0
+      - sensor.received_eth0
+      - sensor.sent_eth0
+      - sensor.last_boot
+      - sensor.pihole_ads_blocked_today
+      - sensor.pihole_ads_percentage_blocked_today
+      - sensor.pihole_dns_queries_today
+      - sensor.speedtest_ping
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.stats_mean
 
 ################################################
 ## Sensor
