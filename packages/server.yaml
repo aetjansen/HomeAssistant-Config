@@ -39,7 +39,7 @@ homeassistant:
 
     sensor.last_boot:
       <<: *customize
-      friendly_name: "Boot"
+      friendly_name: "Laatste reboot"
 
     sensor.pihole_ads_blocked_today:
       <<: *customize
@@ -82,7 +82,7 @@ homeassistant:
       friendly_name: "Upload snelheid"
       icon: mdi:upload-network
 
-    sensor.stats_mean:
+    sensor.stats_mean_2:
       <<: *customize
       friendly_name: "Gemiddelde CPU belasting"
       icon: mdi:memory
@@ -113,7 +113,7 @@ group:
       - sensor.last_boot
       - sensor.latest_ha_release
       - sensor.cpu_use
-      - sensor.stats_mean
+      - sensor.stats_mean_2
       - sensor.cpu_temperature
       - sensor.disk_use_home
       - sensor.ram_free
