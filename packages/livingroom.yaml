@@ -37,7 +37,13 @@ homeassistant:
     sensor.woonkamer_dimmer_alarm_level_5_1:
       hidden: true
 
+    sensor.woonkamer_dimmer_alarm_level_5_1_2:
+      hiden: true
+
     sensor.woonkamer_dimmer_alarm_type_5_0:
+      hidden: true
+
+    sensor.woonkamer_dimmer_alarm_type_5_0_2:
       hidden: true
 
     sensor.woonkamer_dimmer_exporting_5_32:
@@ -53,6 +59,21 @@ homeassistant:
       hidden: true
 
     sensor.woonkamer_dimmer_system_5_12:
+      hidden: true
+
+    sensor.woonkamer_dimmer_unknown_5_0_2:
+      hidden: true
+
+    light.woonkamer_dimmer_level_5_0_3:
+      hidden: true
+
+    light.woonkamer_dimmer_level_5_0_4:
+      hidden: true
+
+    light.woonkamer_dimmer_step_size_5_6_3:
+      hidden: true
+
+    light.woonkamer_dimmer_step_size_5_6_4:
       hidden: true
 
     light.plafondlamp_speelkamer:
