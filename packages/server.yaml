@@ -87,6 +87,20 @@ homeassistant:
       friendly_name: "Gemiddelde CPU belasting"
       icon: mdi:memory
 
+    sensor.cpu_temperature:
+      <<: *customize
+      friendly_name: "CPU temperatuur"
+      icon: mdi:thermometer
+
+    sensor.latest_ha_release:
+      <<: *customize
+      friendly_name: "Nieuwste HA versie beschikbaar"
+      icon: mdi:floppy
+
+    sensor.badlogin:
+      <<: *customize
+      friendly_name: "Mislukte inlog pogingen"
+      icon: mdi:security
 
 ################################################
 ## Group
@@ -97,8 +111,10 @@ group:
     entities:
       - sensor.homeassistant_uptime
       - sensor.last_boot
+      - sensor.latest_ha_release
       - sensor.cpu_use
       - sensor.stats_mean
+      - sensor.cpu_temperature
       - sensor.disk_use_home
       - sensor.ram_free
       - sensor.ipv4_address_eth0
@@ -150,6 +166,17 @@ sensor:
   - platform: statistics
     entity_id: sensor.power_consumption
   - platform: command_line
+    name: "CPU temperature"
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    unit_of_measurement: "°C"
+    value_template: '{{ value | multiply(0.001) }}'
+  - platform: command_line
+    name: "Latest HA release"
+    command: python3 -c "import requests; print(requests.get('https://pypi.python.org/pypi/homeassistant/json').json()['info']['version'])"
+  - platform: command_line
+    name: badlogin
+    command: grep -c 'Login attempt' /home/homeassistant/.homeassistant/home-assistant.log
+  - platform: command_line
     name: "HomeAssistant Uptime"
     command: echo "$(($(date +%s) - $(date --date="`systemctl show home-assistant.service -p ActiveEnterTimestamp | awk -F'=' '{print $2}'`" "+%s")))"
     scan_interval: 60
@@ -187,13 +214,3 @@ sensor:
           {{ minutes }} minutes
         {%- endif -%}
       {%- endif -%}
-    #  {%- if seconds > 0 -%}
-    #    {%- if days > 0 or hours > 0 or minutes > 0 -%}
-    #      {{ ', ' }}
-    #    {%- endif -%}
-    #    {%- if seconds == 1 -%}
-    #      1 second
-    #    {%- else -%}
-    #      {{ seconds }} seconds
-    #    {%- endif -%}
-    #  {%- endif -%}
