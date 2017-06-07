@@ -79,13 +79,13 @@ homeassistant:
       <<: *customize
       friendly_name: "Laagste temperatuur vandaag"
 
-    sensor.pws_temp_high_record_c:
-      <<: *customize
-      friendly_name: "Hoogst gemeten temperatuur op deze dag"
+    #sensor.pws_temp_high_record_c:
+    #  <<: *customize
+    #  friendly_name: "Hoogst gemeten temperatuur op deze dag"
 
-    sensor.pws_temp_low_record_c:
-      <<: *customize
-      friendly_name: "Laagst gemeten temperatuur op deze dag"
+    #sensor.pws_temp_low_record_c:
+    #  <<: *customize
+    #  friendly_name: "Laagst gemeten temperatuur op deze dag"
 
     sensor.pws_precip_1hr_metric:
       <<: *customize
@@ -146,7 +146,7 @@ group:
       - sensor.pws_temp_high_1d_c
       - sensor.pws_temp_low_1d_c
       - sun.sun
-      #- sensor.pws_temp_high_record_c
+      - sensor.pws_temp_high_record_c
       #- sensor.pws_temp_low_record_c
 
 
