@@ -89,6 +89,29 @@ homeassistant:
       friendly_name: "Leeslamp"
 
 ################################################
+## Automation
+################################################
+
+automation:
+
+  ################################################
+  ## Notification at midnight with readings from the smart meter
+  ################################################
+  - alias: Notify_double_click_fibaro_dimmer
+    trigger:
+      - platform: event
+        event_type: zwave.scene_activated
+        event_data:
+        scene_id: 14
+        object_id: woonkamer_dimmer_5
+    action:
+      service: notify.ios_iphone_van_arno
+      data_template:
+        title: "Double Click detected!"
+        message: "Als dit werkt betekent het dat je kunt automatiseren als reactie op een dubbel klik van de fibaro dimmer 2!"
+
+
+################################################
 ## Group
 ################################################
 group:
