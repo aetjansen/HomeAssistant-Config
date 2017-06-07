@@ -86,7 +86,7 @@ homeassistant:
 
     device_tracker.iphone_van_arno:
       <<: *customize_contained
-      friendly_name: "Arno's mobiel"
+      friendly_name: "Arno"
       icon: mdi:cellphone-iphone
 
     sensor.iphone_van_arno_battery_level:
@@ -97,6 +97,21 @@ homeassistant:
     sensor.iphone_van_arno_battery_state:
       <<: *customize_contained
       friendly_name: "Arno's mobiel oplader"
+      icon: mdi:battery
+
+    device_tracker.iphone_van_heddy:
+      <<: *customize_contained
+      friendly_name: "Heddy"
+      icon: mdi:cellphone-iphone
+
+    sensor.iphone_van_heddy_battery_level:
+      <<: *customize_contained
+      friendly_name: "Heddy's mobiel accu"
+      icon: mdi:battery
+
+    sensor.iphone_van_heddy_battery_state:
+      <<: *customize_contained
+      friendly_name: "Heddy's mobiel oplader"
       icon: mdi:battery
 
     sensor.samsunggalaxytaba:
