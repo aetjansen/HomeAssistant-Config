@@ -1,0 +1,35 @@
+- name: !secret zone1_name
+  latitude: !secret zone1_lat
+  longitude: !secret zone1_lon
+  radius: 25
+  icon: mdi:briefcase
+
+- name: !secret zone2_name
+  latitude: !secret zone2_lat
+  longitude: !secret zone2_lon
+  radius: 100
+  icon: mdi:school
+
+- name: !secret zone3_name
+  latitude: !secret zone3_lat
+  longitude: !secret zone3_lon
+  radius: 100
+  icon: mdi:school
+
+- name: !secret zone4_name
+  latitude: !secret zone4_lat
+  longitude: !secret zone4_lon
+  radius: 25
+  icon: mdi:home
+
+- name: !secret zone5_name
+  latitude: !secret zone5_lat
+  longitude: !secret zone5_lon
+  radius: 25
+  icon: mdi:music-note
+
+- name: !secret zone6_name
+  latitude: !secret zone6_lat
+  longitude: !secret zone6_lon
+  radius: 50
+  icon: mdi:baby-buggy
