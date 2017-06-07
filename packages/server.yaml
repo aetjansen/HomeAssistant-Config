@@ -48,6 +48,7 @@ homeassistant:
     sensor.pihole_dns_queries_today:
       <<: *customize
       friendly_name: "Aantal DNS queries"
+      icon: mdi:help-network
 
     sensor.ram_free:
       <<: *customize
@@ -56,10 +57,12 @@ homeassistant:
     sensor.received_eth0:
       <<: *customize
       friendly_name: "Data in"
+      icon: mdi:download-network
 
     sensor.sent_eth0:
       <<: *customize
       friendly_name: "Data uit"
+      icon: mdi:upload-network
 
     sensor.speedtest_ping:
       <<: *customize
@@ -68,14 +71,17 @@ homeassistant:
     sensor.speedtest_download:
       <<: *customize
       friendly_name: "Download snelheid"
+      icon: mdi:download-network
 
     sensor.speedtest_upload:
       <<: *customize
       friendly_name: "Upload snelheid"
+      icon: mdi:upload-network
 
     sensor.stats_mean:
       <<: *customize
       friendly_name: "Gemiddelde CPU belasting"
+      icon: mdi:memory
 
 
 ################################################
@@ -86,6 +92,7 @@ group:
     control: hidden
     entities:
       - sensor.cpu_use
+      - sensor.stats_mean
       - sensor.disk_use_home
       - sensor.ram_free
       - sensor.ipv4_address_eth0
@@ -99,7 +106,7 @@ group:
       - sensor.speedtest_ping
       - sensor.speedtest_download
       - sensor.speedtest_upload
-      - sensor.stats_mean
+
 
 ################################################
 ## Sensor
@@ -137,3 +144,51 @@ sensor:
     entity_id: sensor.cpu
   - platform: statistics
     entity_id: sensor.power_consumption
+  - platform: command_line
+    name: "HomeAssistant Uptime"
+    command: echo "$(($(date +%s) - $(date --date="`systemctl show home-assistant.service -p ActiveEnterTimestamp | awk -F'=' '{print $2}'`" "+%s")))"
+    scan_interval: 60
+    value_template: >-
+      {% set uptime = value | int %}
+      {% set seconds = uptime % 60 %}
+      {% set minutes = ((uptime % 3600) / 60) | int %}
+      {% set hours = ((uptime % 86400) / 3600) | int %}
+      {% set days = (uptime / 86400) | int %}
+
+      {%- if days > 0 -%}
+        {%- if days == 1 -%}
+          1 day
+        {%- else -%}
+          {{ days }} days
+        {%- endif -%}
+      {%- endif -%}
+      {%- if hours > 0 -%}
+        {%- if days > 0 -%}
+          {{ ', ' }}
+        {%- endif -%}
+        {%- if hours == 1 -%}
+          1 hour
+        {%- else -%}
+          {{ hours }} hours
+        {%- endif -%}
+      {%- endif -%}
+      {%- if minutes > 0 -%}
+        {%- if days > 0 or hours > 0 -%}
+          {{ ', ' }}
+        {%- endif -%}
+        {%- if minutes == 1 -%}
+          1 minute
+        {%- else -%}
+          {{ minutes }} minutes
+        {%- endif -%}
+      {%- endif -%}
+    #  {%- if seconds > 0 -%}
+    #    {%- if days > 0 or hours > 0 or minutes > 0 -%}
+    #      {{ ', ' }}
+    #    {%- endif -%}
+    #    {%- if seconds == 1 -%}
+    #      1 second
+    #    {%- else -%}
+    #      {{ seconds }} seconds
+    #    {%- endif -%}
+    #  {%- endif -%}
