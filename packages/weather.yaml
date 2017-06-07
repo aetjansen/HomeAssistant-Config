@@ -147,7 +147,7 @@ group:
       - sensor.pws_temp_low_1d_c
       - sun.sun
       - sensor.pws_temp_high_record_c
-      #- sensor.pws_temp_low_record_c
+      - sensor.pws_temp_low_record_c
 
 
   dialy_forecast:
