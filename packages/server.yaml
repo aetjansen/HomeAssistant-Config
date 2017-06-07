@@ -21,6 +21,14 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Server"
 
+    group.homeassistant_install:
+      <<: *customize_contained
+      friendly_name: "Over HomeAssistant"
+
+    group.internet_connection:
+      <<: *customize_contained
+      friendly_name: "Internetverbinding"
+
     sensor.cpu_use:
       <<: *customize
       friendly_name: "CPU gebruik"
@@ -114,11 +122,6 @@ group:
   server:
     control: hidden
     entities:
-      - sensor.homeassistant_uptime
-      - sensor.last_boot
-      - sensor.installed_ha_version
-      - sensor.latest_ha_release
-      - sensor.badlogin
       - sensor.cpu_use
       - sensor.stats_mean_2
       - sensor.cpu_temperature
@@ -128,6 +131,17 @@ group:
       - sensor.ipv6_address_eth0
       - sensor.received_eth0
       - sensor.sent_eth0
+  homeassistant_install:
+    control: hidden
+    entities:
+      - sensor.homeassistant_uptime
+      - sensor.last_boot
+      - sensor.installed_ha_version
+      - sensor.latest_ha_release
+      - sensor.badlogin
+  internet_connection:
+    control: hidden
+    entities:
       - sensor.pihole_ads_blocked_today
       - sensor.pihole_ads_percentage_blocked_today
       - sensor.pihole_dns_queries_today
