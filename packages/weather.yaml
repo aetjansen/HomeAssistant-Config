@@ -13,9 +13,9 @@ homeassistant:
       homebridge_hidden: true
       package: 'Weer'
 
-    group.weather_darksky:
-      <<: *customize
-      friendly_name: "Dark Sky"
+    #group.weather_darksky:
+    #  <<: *customize
+    #  friendly_name: "Dark Sky"
 
     group.weather_general:
       <<: *customize
@@ -39,25 +39,25 @@ homeassistant:
       friendly_name: "Weersverwachting vannacht"
       icon: mdi:comment-alert-outline
 
-    sensor.dark_sky_cloud_coverage:
-      <<: *customize
-      friendly_name: "Bewolking"
-      icon: mdi:weather-partlycloudy
+    #sensor.dark_sky_cloud_coverage:
+    #  <<: *customize
+    #  friendly_name: "Bewolking"
+    #  icon: mdi:weather-partlycloudy
 
-    sensor.dark_sky_humidity:
-      <<: *customize
-      friendly_name: "Luchtvochtigheid"
-      icon: mdi:water-percent
+    #sensor.dark_sky_humidity:
+    #  <<: *customize
+    #  friendly_name: "Luchtvochtigheid"
+    #  icon: mdi:water-percent
 
-    sensor.dark_sky_precip_probability:
-      <<: *customize
-      friendly_name: "Neerslag"
-      icon: mdi:weather-rainy
+    #sensor.dark_sky_precip_probability:
+    #  <<: *customize
+    #  friendly_name: "Neerslag"
+    #  icon: mdi:weather-rainy
 
-    sensor.dark_sky_temperature:
-      <<: *customize
-      friendly_name: "Temperatuur"
-      icon: mdi:thermometer
+    #sensor.dark_sky_temperature:
+    #  <<: *customize
+    #  friendly_name: "Temperatuur"
+    #  icon: mdi:thermometer
 
     sensor.pws_feelslike_c:
       <<: *customize
@@ -130,10 +130,10 @@ group:
     control: hidden
     entities:
       - sun.sun
-      - sensor.dark_sky_cloud_coverage
-      - sensor.dark_sky_humidity
-      - sensor.dark_sky_precip_probability
-      - sensor.dark_sky_temperature
+      #- sensor.dark_sky_cloud_coverage
+      #- sensor.dark_sky_humidity
+      #- sensor.dark_sky_precip_probability
+      #- sensor.dark_sky_temperature
       - sensor.pws_feelslike_c
       - sensor.pws_heat_index_c
       - sensor.pws_relative_humidity
@@ -158,13 +158,13 @@ group:
 ################################################
 
 sensor:
-  - platform: darksky
-    api_key: !secret darksky_api_key
-    monitored_conditions:
-      - cloud_cover
-      - humidity
-      - precip_probability
-      - temperature
+#  - platform: darksky
+#    api_key: !secret darksky_api_key
+#    monitored_conditions:
+#      - cloud_cover
+#      - humidity
+#      - precip_probability
+#      - temperature
 
   - platform: wunderground
     api_key: !secret wunderground_api
