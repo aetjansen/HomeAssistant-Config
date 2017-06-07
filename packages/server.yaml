@@ -97,6 +97,11 @@ homeassistant:
       friendly_name: "Nieuwste HA versie beschikbaar"
       icon: mdi:floppy
 
+    sensor.installed_ha_version:
+      <<: *customize
+      friendly_name: "Geinstalleerde HA versie"
+      icon: mdi:floppy
+
     sensor.badlogin:
       <<: *customize
       friendly_name: "Mislukte inlog pogingen"
@@ -111,6 +116,7 @@ group:
     entities:
       - sensor.homeassistant_uptime
       - sensor.last_boot
+      - sensor.installed_ha_version
       - sensor.latest_ha_release
       - sensor.badlogin
       - sensor.cpu_use
@@ -177,6 +183,9 @@ sensor:
   - platform: command_line
     name: badlogin
     command: grep -c 'Login attempt' /home/homeassistant/.homeassistant/home-assistant.log
+  - platform: file
+    name: "Installed HA version"
+    file_path: /home/homeassistant/.homeassistant/.HA_VERSION
   - platform: command_line
     name: "HomeAssistant Uptime"
     command: echo "$(($(date +%s) - $(date --date="`systemctl show home-assistant.service -p ActiveEnterTimestamp | awk -F'=' '{print $2}'`" "+%s")))"
