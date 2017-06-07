@@ -34,4 +34,6 @@ group:
       - device_tracker.iphone_van_arno
       - sensor.iphone_van_arno_battery_level
       - sensor.iphone_van_arno_battery_state
-      - sensor.wife_phone
+      - device_tracker.iphone_van_heddy
+      - sensor.iphone_van_heddy_battery_level
+      - sensor.iphone_van_heddy_battery_state

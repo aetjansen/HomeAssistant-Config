@@ -231,17 +231,9 @@ sensor:
         friendly_name: 'Epson printer'
         value_template: "{{ 'Online' if is_state('device_tracker.epsonprinter', 'home') else 'Offline' }}"
 
-      wife_phone:
-        friendly_name: !secret wife_phone
-        value_template: "{{ 'Online' if is_state('device_tracker.wife_phone', 'home') else 'Offline' }}"
-
-      husband_phone:
-        friendly_name: !secret husband_phone
-        value_template: "{{ 'Online' if is_state('device_tracker.husband_phone', 'home') else 'Offline' }}"
-
       homeassistant:
         friendly_name: 'HomeAssistant'
-        value_template: "{{ 'Online' if is_state('device_tracker.homeassistant', 'home') else 'Offline' }}"
+        value_template: "{{ 'Online' if is_state('device_tracker.odroidjessie64', 'home') else 'Offline' }}"
 
       huehub:
         friendly_name: 'Philips Hue hub'
