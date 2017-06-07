@@ -186,6 +186,9 @@ sensor:
   - platform: file
     name: "Installed HA version"
     file_path: /home/homeassistant/.homeassistant/.HA_VERSION
+  - platform: cert_expiry
+    name: "Geldigheid certificaat"
+    host: !secret http_base_url
   - platform: command_line
     name: "HomeAssistant Uptime"
     command: echo "$(($(date +%s) - $(date --date="`systemctl show home-assistant.service -p ActiveEnterTimestamp | awk -F'=' '{print $2}'`" "+%s")))"
