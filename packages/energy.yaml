@@ -125,7 +125,7 @@ homeassistant:
       friendly_name: "Vaatwasser"
       icon: mdi:power-plug
 
-    sensor.stats_mean_2:
+    sensor.stats_mean:
       <<: *customize_contained
       friendly_name: "Gemiddeld stroomverbruik"
       icon: mdi:flash
@@ -161,7 +161,7 @@ group:
       - sensor.gas_consumption
       - sensor.power_consumption_low
       - sensor.power_consumption_normal
-      - sensor.stats_mean_2
+      - sensor.stats_mean
       - sensor.energytariff_nl
       - sensor.vaatwasser_energy_6_0   # Dishwasher kWh
       - sensor.woonkamer_dimmer_energy_5_0
