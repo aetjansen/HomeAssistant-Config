@@ -13,10 +13,6 @@ homeassistant:
       homebridge_hidden: true
       package: 'Weer'
 
-    #group.weather_darksky:
-    #  <<: *customize
-    #  friendly_name: "Dark Sky"
-
     group.weather_general:
       <<: *customize
       friendly_name: "General"
@@ -38,26 +34,6 @@ homeassistant:
       <<: *customize
       friendly_name: "Weersverwachting vannacht"
       icon: mdi:comment-alert-outline
-
-    #sensor.dark_sky_cloud_coverage:
-    #  <<: *customize
-    #  friendly_name: "Bewolking"
-    #  icon: mdi:weather-partlycloudy
-
-    #sensor.dark_sky_humidity:
-    #  <<: *customize
-    #  friendly_name: "Luchtvochtigheid"
-    #  icon: mdi:water-percent
-
-    #sensor.dark_sky_precip_probability:
-    #  <<: *customize
-    #  friendly_name: "Neerslag"
-    #  icon: mdi:weather-rainy
-
-    #sensor.dark_sky_temperature:
-    #  <<: *customize
-    #  friendly_name: "Temperatuur"
-    #  icon: mdi:thermometer
 
     sensor.pws_feelslike_c:
       <<: *customize
@@ -88,6 +64,33 @@ homeassistant:
       <<: *customize
       friendly_name: "Huidige condities"
 
+    sensor.pws_precip_1d:
+      <<: *customize
+      friendly_name: "Neerslagkans vandaag"
+
+    sensor.pws_precip_1d_mm:
+      <<: *customize
+      friendly_name: "Neerslag voorspelling"
+
+    sensor.pws_precip_today_metric:
+      <<: *customize
+      friendly_name: "Neerslag vandaag"
+
+    sensor.pws_temp_high_1d_c:
+      <<: *customize
+      friendly_name: "Hoogste temperatuur vandaag"
+
+    sensor.pws_temp_low_1d_c:
+      <<: *customize
+      friendly_name: "Laagste temperatuur vandaag"
+
+    sensor.pws_temp_high_record_c:
+      <<: *customize
+      friendly_name: "Hoogst gemeten temperatuur op deze dag"
+
+    sensor.pws_temp_low_record_c:
+      <<: *customize
+      friendly_name: "Laagst gemeten temperatuur op deze dag"
 
 
 ################################################
@@ -129,17 +132,18 @@ group:
     name: Weer
     control: hidden
     entities:
-      - sun.sun
-      #- sensor.dark_sky_cloud_coverage
-      #- sensor.dark_sky_humidity
-      #- sensor.dark_sky_precip_probability
-      #- sensor.dark_sky_temperature
-      - sensor.pws_feelslike_c
-      - sensor.pws_heat_index_c
-      - sensor.pws_relative_humidity
-      - sensor.pws_precip_today_mm
       - sensor.pws_temp_c
+      - sensor.pws_feelslike_c
+      - sensor.pws_relative_humidity
+      - sensor.pws_precip_1d
+      - sensor.pws_precip_1d_mm
+      - sensor.pws_precip_today_metric
       - sensor.pws_weather
+      - sensor.pws_temp_high_1d_c
+      - sensor.pws_temp_low_1d_c
+      - sensor.pws_temp_high_record_c
+      - sensor.pws_temp_low_record_c
+      - sun.sun
 
   dialy_forecast:
     name: Vooruitzichten
