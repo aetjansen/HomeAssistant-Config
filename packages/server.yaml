@@ -1,0 +1,64 @@
+################################################################
+## Packages / Server
+################################################################
+
+################################################
+## Customize
+################################################
+
+homeassistant:
+  customize:
+    packages.server: &customize
+      package: 'Server'
+
+    packages.server_exposed: &customize_exposed
+      <<: *customize
+
+    packages.server_contained: &customize_contained
+      <<: *customize
+
+################################################
+## Group
+################################################
+#group:
+#  server:
+#    control: hidden
+#    entities:
+#      - sensor.homeassistant
+
+################################################
+## Sensor
+################################################
+
+sensor:
+  - platform: speedtest
+    minute:
+      - 0
+      - 15
+      - 30
+      - 45
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+  - platform: cpuspeed
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /home
+      - type: memory_free
+      - type: processor_use
+      - type: ipv4_address
+        arg: eth0
+      - type: ipv6_address
+        arg: eth0
+      - type: network_in
+        arg: eth0
+      - type: network_out
+        arg: eth0
+      - type: last_boot
+  - platform: pi_hole
+  - platform: statistics
+    entity_id: sensor.cpu
+  - platform: statistics
+    entity_id: sensor.power_consumption
