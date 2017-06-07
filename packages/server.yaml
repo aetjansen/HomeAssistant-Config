@@ -91,6 +91,8 @@ group:
   server:
     control: hidden
     entities:
+      - sensor.homeassistant_uptime
+      - sensor.last_boot
       - sensor.cpu_use
       - sensor.stats_mean
       - sensor.disk_use_home
@@ -99,7 +101,6 @@ group:
       - sensor.ipv6_address_eth0
       - sensor.received_eth0
       - sensor.sent_eth0
-      - sensor.last_boot
       - sensor.pihole_ads_blocked_today
       - sensor.pihole_ads_percentage_blocked_today
       - sensor.pihole_dns_queries_today
