@@ -40,11 +40,6 @@ homeassistant:
       friendly_name: "Gevoelstemperatuur"
       icon: mdi:thermometer
 
-    sensor.pws_heat_index_c:
-      <<: *customize
-      friendly_name: "Temperatuur index"
-      icon: mdi:thermometer
-
     sensor.pws_precip_today_mm:
       <<: *customize
       friendly_name: "Neerslag"
@@ -92,6 +87,13 @@ homeassistant:
       <<: *customize
       friendly_name: "Laagst gemeten temperatuur op deze dag"
 
+    sensor.pws_precip_1hr_metric:
+      <<: *customize
+      friendly_name: "Verwachtte neerslag het komende uur"
+
+    sensor.wind_1d_kph:
+      <<: *customize
+      friendly_name: "Windverwachting"
 
 ################################################
 ## Automation
@@ -135,15 +137,18 @@ group:
       - sensor.pws_temp_c
       - sensor.pws_feelslike_c
       - sensor.pws_relative_humidity
+      - sensor.wind_1d_kph
+      - sensor.pws_precip_1hr_metric
       - sensor.pws_precip_1d
       - sensor.pws_precip_1d_mm
       - sensor.pws_precip_today_metric
       - sensor.pws_weather
       - sensor.pws_temp_high_1d_c
       - sensor.pws_temp_low_1d_c
-      - sensor.pws_temp_high_record_c
-      - sensor.pws_temp_low_record_c
       - sun.sun
+      #- sensor.pws_temp_high_record_c
+      #- sensor.pws_temp_low_record_c
+
 
   dialy_forecast:
     name: Vooruitzichten
