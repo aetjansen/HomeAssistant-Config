@@ -139,6 +139,7 @@ group:
       - sensor.installed_ha_version
       - sensor.latest_ha_release
       - sensor.badlogin
+      - sensor.geldigheid_certificaat
   internet_connection:
     control: hidden
     entities:
