@@ -102,8 +102,8 @@ automation:
       - platform: event
         event_type: zwave.scene_activated
         event_data:
-        scene_id: 14
-        object_id: woonkamer_dimmer_5
+          scene_id: 14
+          object_id: woonkamer_dimmer_5
     action:
       service: notify.ios_iphone_van_arno
       data_template:
