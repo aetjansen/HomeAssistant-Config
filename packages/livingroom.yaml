@@ -38,7 +38,7 @@ homeassistant:
       hidden: true
 
     sensor.woonkamer_dimmer_alarm_level_5_1_2:
-      hiden: true
+      hidden: true
 
     sensor.woonkamer_dimmer_alarm_type_5_0:
       hidden: true
