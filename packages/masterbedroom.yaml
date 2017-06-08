@@ -17,7 +17,7 @@ homeassistant:
     packages.masterbedroom_contained: &customize_contained
       <<: *customize
 
-    group.landing:
+    group.masterbedroom:
       <<: *customize_contained
       friendly_name: "Ouderslaapkamer"
 
@@ -25,7 +25,7 @@ homeassistant:
 ## Group
 ################################################
 group:
-  landing:
+  masterbedroom:
     control: hidden
     entities:
       - light.plafondlamp_slaapkamer
