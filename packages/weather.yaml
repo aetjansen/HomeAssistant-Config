@@ -79,14 +79,6 @@ homeassistant:
       <<: *customize
       friendly_name: "Laagste temperatuur vandaag"
 
-    #sensor.pws_temp_high_record_c:
-    #  <<: *customize
-    #  friendly_name: "Hoogst gemeten temperatuur op deze dag"
-
-    #sensor.pws_temp_low_record_c:
-    #  <<: *customize
-    #  friendly_name: "Laagst gemeten temperatuur op deze dag"
-
     sensor.pws_precip_1hr_metric:
       <<: *customize
       friendly_name: "Verwachtte neerslag het komende uur"
@@ -114,7 +106,7 @@ automation:
       - platform: time
         after: '06:00:00'
     action:
-      service: notify.ios_iphone_van_arno
+      service: notify.all_iphones
       data_template:
         title: "Weersverwachting"
         message: "Vandaag: {{ states.sensor.pws_weather_1d_metric.state }}"
@@ -125,7 +117,7 @@ automation:
       - platform: time
         after: '18:00:00'
     action:
-      service: notify.ios_iphone_van_arno
+      service: notify.all_iphones
       data_template:
         title: "Weersverwachting"
         message: "Avond & nacht: {{ states.sensor.pws_weather_1n_metric.state }}"

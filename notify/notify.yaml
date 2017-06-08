@@ -29,3 +29,12 @@
     facility: syslog
     option: pid
     priority: 4
+
+################################################
+## Notification group setup to notify all iphones at once
+################################################
+  - platform: group
+    name: all_iphones
+    services:
+      - service: ios_iphone_van_arno
+      - service: ios_iphone_van_heddy

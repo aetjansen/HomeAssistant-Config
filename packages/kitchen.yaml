@@ -98,12 +98,10 @@ automation:
           minutes: 2
           seconds: 0
     action:
-      service: notify.pushover
+      service: notify.all_iphones
       data_template:
         title: "Vaatwasser klaar"
         message: "De afwas is klaar :-)"
-
-
 
 ################################################
 ## Sensor
