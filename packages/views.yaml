@@ -1,0 +1,81 @@
+################################################################
+## Packages / Views
+################################################################
+
+################################################
+## Customize
+################################################
+
+homeassistant:
+  customize:
+    packages.views: &customize
+      package: 'views'
+
+    group.automation:
+      <<: *customize
+      friendly_name: "Automation"
+      icon: mdi:settings
+
+    group.home:
+      <<: *customize
+      friendly_name: "Thuis"
+      icon: mdi:home
+
+    group.household:
+      <<: *customize
+      friendly_name: "Gezin"
+      icon: mdi:human-greeting
+
+    group.system:
+      <<: *customize
+      friendly_name: "System"
+      icon: mdi:switch
+
+    group.energy:
+      <<: *customize
+      friendly_name: "Energie"
+      icon: mdi:gauge
+
+    group.weather:
+      <<: *customize
+      friendly_name: "Weer"
+      icon: mdi:weather-partlycloudy
+
+################################################
+## Group
+################################################
+
+group:
+  home:
+    view: yes
+    entities:
+      - group.hallway
+      - group.livingroom
+      - group.scullery
+
+
+  household:
+    view: yes
+    entities:
+      - group.family
+      #- group.guests
+
+  weather:
+    view: yes
+    entities:
+      - group.dialy_forecast
+      - group.weather_combined
+
+  energy:
+    view: yes
+    entities:
+      - group.current_power_consumption
+      - group.total_energy_consumption
+
+  system:
+    view: yes
+    entities:
+      - group.homeassistant_install
+      - group.server
+      - group.internet_connection
+      - group.network
