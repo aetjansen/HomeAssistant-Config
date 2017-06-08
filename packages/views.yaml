@@ -53,6 +53,7 @@ group:
       - group.kitchen
       - group.hallway
       - group.scullery
+      - group.landing
 
 
   household:

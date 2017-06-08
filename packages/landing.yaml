@@ -1,0 +1,31 @@
+################################################
+## Packages / Landing
+################################################
+
+################################################
+## Customize
+################################################
+
+homeassistant:
+  customize:
+    packages.landing: &customize
+      package: 'kitchen'
+
+    packages.landing_exposed: &customize_exposed
+      <<: *customize
+
+    packages.landing_contained: &customize_contained
+      <<: *customize
+
+    group.landing:
+      <<: *customize_contained
+      friendly_name: "Overloop"
+
+################################################
+## Group
+################################################
+group:
+  landing:
+    control: hidden
+    entities:
+      - light.overloop
