@@ -175,6 +175,8 @@ homeassistant:
     device_tracker.homeassistant_heddysiphone5s:
       hidden: true
 
+    device_tracker.odroidjessie64:
+      hidden: true
 ################################################
 ## Group
 ################################################
