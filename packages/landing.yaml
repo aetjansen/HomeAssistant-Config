@@ -9,7 +9,7 @@
 homeassistant:
   customize:
     packages.landing: &customize
-      package: 'kitchen'
+      package: 'landing'
 
     packages.landing_exposed: &customize_exposed
       <<: *customize
