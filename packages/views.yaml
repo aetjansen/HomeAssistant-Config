@@ -49,8 +49,9 @@ group:
   home:
     view: yes
     entities:
-      - group.hallway
       - group.livingroom
+      - group.kitchen
+      - group.hallway
       - group.scullery
 
 

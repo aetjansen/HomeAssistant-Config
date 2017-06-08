@@ -17,6 +17,10 @@ homeassistant:
     packages.kitchen_contained: &customize_contained
       <<: *customize
 
+    group.kitchen:
+      <<: *customize_contained
+      friendly_name: "Keuken"
+
     automation.notify_when_dishwasher_is_done:
       <<: *customize
       friendly_name: "Vaatwasser klaar notificatie"
@@ -111,3 +115,14 @@ binary_sensor:
       vaatwasser_power_usage_templated:
         value_template: "{{ states('sensor.vaatwasser_power_6_8') | int < 5 }}"
         entity_id: sensor.vaatwasser_power_6_8
+
+################################################
+## Group
+################################################
+
+group:
+  kitchen:
+    control: hidden
+    entities:
+      - switch.vaatwasser_switch_6_0
+      - sensor.vaatwasser_power_usage_templated
