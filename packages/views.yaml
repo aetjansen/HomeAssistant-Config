@@ -51,11 +51,11 @@ group:
     entities:
       - group.livingroom
       - group.kitchen
+      - group.masterbedroom
+      - group.landing
       - group.hallway
       - group.scullery
-      - group.landing
-
-
+      
   household:
     view: yes
     entities:

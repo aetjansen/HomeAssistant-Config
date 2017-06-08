@@ -1,0 +1,31 @@
+################################################
+## Packages / Master Bedroom
+################################################
+
+################################################
+## Customize
+################################################
+
+homeassistant:
+  customize:
+    packages.masterbedroom: &customize
+      package: 'masterbedroom'
+
+    packages.masterbedroom_exposed: &customize_exposed
+      <<: *customize
+
+    packages.masterbedroom_contained: &customize_contained
+      <<: *customize
+
+    group.landing:
+      <<: *customize_contained
+      friendly_name: "Ouderslaapkamer"
+
+################################################
+## Group
+################################################
+group:
+  landing:
+    control: hidden
+    entities:
+      - light.plafondlamp_slaapkamer
