@@ -23,7 +23,18 @@ homeassistant:
       friendly_name: "Familie"
       icon: mdi:account-multiple
 
+    sensor.iphone_van_arno_battery_level:
+      hidden: true
 
+    sensor.iphone_van_arno_battery_state:
+      hidden: true
+
+    sensor.iphone_van_heddy_battery_level:
+      hidden: true
+
+    sensor.iphone_van_heddy_battery_state:
+      hidden: true
+      
 ################################################
 ## Group
 ################################################
@@ -32,11 +43,13 @@ group:
     control: hidden
     entities:
       - device_tracker.iphone_van_arno
+      - iphone_battery_arno
       #- sensor.iphone_van_arno_battery_level
       #- sensor.iphone_van_arno_battery_state
       - device_tracker.iphone_van_heddy
-      - sensor.iphone_van_heddy_battery_level
-      - sensor.iphone_van_heddy_battery_state
+      - iphone_battery_heddy
+      #- sensor.iphone_van_heddy_battery_level
+      #- sensor.iphone_van_heddy_battery_state
 
 ################################################
 ## Sensor
