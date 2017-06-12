@@ -66,8 +66,10 @@ echo "zone5_lon: 00.00" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zone6_name: dummy6" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zone6_lat: 00.00" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zone6_lon: 00.00" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "wife_phone: dummywifephone" >> $TRAVIS_BUILD_DIR/secrets.yaml
-echo "husband_phone: dummyhusbandphone" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "wife_phone_battery_sensor_name: dummywifephone" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "husband_phone_battery_sensor_name: dummyhusbandphone" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "wife_phone_battery_sensor_icon: mdi:help" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "husband_phone_battery_sensor_icon: mdi:help" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "spotify_client_id: spotifyclientid" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "spotify_client_secret: spotifyclientsecret" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "guestdevice1_name: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
