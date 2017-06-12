@@ -23,6 +23,11 @@ homeassistant:
       friendly_name: "Familie"
       icon: mdi:account-multiple
 
+    group.guests:
+      <<: *customize_contained
+      friendly_name: "Gasten"
+      icon: mdi:account-multiple
+
     sensor.iphone_van_arno_battery_level:
       hidden: true
 
@@ -34,6 +39,42 @@ homeassistant:
 
     sensor.iphone_van_heddy_battery_state:
       hidden: true
+
+    device_tracker.airvanannet:
+      friendly_name: "Macbook Air van Annet"
+      icon: mdi:laptop-mac
+
+    device_tracker.airvanmarloes:
+      friendly_name: "Macbook Air van Marloes"
+      icon: mdi:laptop-mac
+
+    device_tracker.anne:
+      friendly_name: "Mobiel van Anne"
+      icon: mdi:cellphone-iphone
+
+    device_tracker.ipadvanhenk:
+      friendly_name: "iPad van Henk"
+      icon: mdi:tablet-ipad
+
+    device_tracker.iphone:
+      friendly_name: "iPhone (maar van wie)"
+      icon: mdi:cellphone-iphone
+
+    device_tracker.iphonevnmarloes:
+      friendly_name: "iPhone van Marloes"
+      icon: mdi:cellphone-iphone
+
+    device_tracker.iphonevnnetwind:
+      friendly_name: "iPhone van Annet"
+      icon: mdi:cellphone-iphone
+
+    device_tracker.pc_van_bert:
+      friendly_name: "Laptop van Bert"
+      icon: mdi:laptop
+      
+    device_tracker.phonethedude:
+      friendly_name: "Mobiel van Coen"
+      icon: mdi:cellphone-iphone
 
 ################################################
 ## Group
@@ -50,6 +91,20 @@ group:
       - sensor.iphone_battery_heddy
       #- sensor.iphone_van_heddy_battery_level
       #- sensor.iphone_van_heddy_battery_state
+
+group:
+  guests:
+    control: hidden
+    entities:
+      - device_tracker.airvanannet
+      - device_tracker.airvanmarloes
+      - device_tracker.anne
+      - device_tracker.ipadvanhenk
+      - device_tracker.iphone
+      - device_tracker.iphonevnmarloes
+      - device_tracker.iphonevnnetwind
+      - device_tracker.pc_van_bert
+      - device_tracker.phonethedude
 
 ################################################
 ## Sensor
