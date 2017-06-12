@@ -28,53 +28,88 @@ homeassistant:
       friendly_name: "Gasten"
       icon: mdi:account-multiple
 
-    sensor.iphone_van_arno_battery_level:
+    sensor.husband_phone_device_battery_level:
       hidden: true
 
-    sensor.iphone_van_arno_battery_state:
+    sensor.husband_phone_device_battery_state:
       hidden: true
 
-    sensor.iphone_van_heddy_battery_level:
+    sensor.wife_phone_device_battery_level:
       hidden: true
 
-    sensor.iphone_van_heddy_battery_state:
+    sensor.wife_phone_device_battery_state:
       hidden: true
 
-    device_tracker.airvanannet:
-      friendly_name: "Macbook Air van Annet"
-      icon: mdi:laptop-mac
+    husband_phone_battery_sensor:
+      friendly_name: !secret husband_phone_battery_sensor_name
+      icon: husband_phone_battery_sensor_icon
 
-    device_tracker.airvanmarloes:
-      friendly_name: "Macbook Air van Marloes"
-      icon: mdi:laptop-mac
+    wife_phone_battery_sensor:
+      friendly_name: !secret wife_phone_battery_sensor_name
+      icon: wife_phone_battery_sensor_icon
 
-    device_tracker.anne:
-      friendly_name: "Mobiel van Anne"
+    device_tracker.guestdevice1:
+      hidden: true
+
+    device_tracker.guestdevice2:
+      hidden: true
+
+    device_tracker.guestdevice3:
+      hidden: true
+
+    device_tracker.guestdevice4:
+      hidden: true
+
+    device_tracker.guestdevice5:
+      hidden: true
+
+    device_tracker.guestdevice6:
+      hidden: true
+
+    device_tracker.guestdevice7:
+      hidden: true
+
+    device_tracker.guestdevice8:
+      hidden: true
+
+    device_tracker.guestdevice9:
+      hidden: true
+
+    sensor.guestdevice1_presence:
+      friendly_name: !secret guestdevice1_name
+      icon: !secret guestdevice1_icon
+
+    sensor.guestdevice2_presence:
+      friendly_name: !secret guestdevice2_name
+      icon: !secret guestdevice2_icon
+
+    sensor.guestdevice3_presence:
+      friendly_name: !secret guestdevice3_name
       icon: mdi:cellphone-iphone
 
-    device_tracker.ipadvanhenk:
-      friendly_name: "iPad van Henk"
-      icon: mdi:tablet-ipad
+    sensor.guestdevice4_presence:
+      friendly_name: !secret guestdevice4_name
+      icon: !secret guestdevice4_icon
 
-    device_tracker.iphone:
-      friendly_name: "iPhone (maar van wie)"
-      icon: mdi:cellphone-iphone
+    sensor.guestdevice5_presence:
+      friendly_name: !secret guestdevice5_name
+      icon: !secret guestdevice5_icon
 
-    device_tracker.iphonevnmarloes:
-      friendly_name: "iPhone van Marloes"
-      icon: mdi:cellphone-iphone
+    sensor.guestdevice6_presence:
+      friendly_name: !secret guestdevice6_name
+      icon: !secret guestdevice6_icon
 
-    device_tracker.iphonevnnetwind:
-      friendly_name: "iPhone van Annet"
-      icon: mdi:cellphone-iphone
+    sensor.guestdevice7_presence:
+      friendly_name: !secret guestdevice7_name
+      icon: !secret guestdevice7_icon
 
-    device_tracker.pc_van_bert:
-      friendly_name: "Laptop van Bert"
-      icon: mdi:laptop
-      
-    device_tracker.phonethedude:
-      friendly_name: "Mobiel van Coen"
-      icon: mdi:cellphone-iphone
+    sensor.guestdevice8_presence:
+      friendly_name: !secret guestdevice8_name
+      icon: !secret guestdevice8_icon
+
+    sensor.guestdevice9_presence:
+      friendly_name: !secret guestdevice9_name
+      icon: !secret guestdevice9_icon
 
 ################################################
 ## Group
@@ -83,28 +118,23 @@ group:
   family:
     control: hidden
     entities:
-      - device_tracker.iphone_van_arno
-      - sensor.iphone_battery_arno
-      #- sensor.iphone_van_arno_battery_level
-      #- sensor.iphone_van_arno_battery_state
-      - device_tracker.iphone_van_heddy
-      - sensor.iphone_battery_heddy
-      #- sensor.iphone_van_heddy_battery_level
-      #- sensor.iphone_van_heddy_battery_state
+      - device_tracker.husband_phone_device
+      - sensor.husband_phone_battery_sensor
+      - device_tracker.wife_phone_device
+      - sensor.wife_phone_battery_sensor
 
-group:
   guests:
     control: hidden
     entities:
-      - device_tracker.airvanannet
-      - device_tracker.airvanmarloes
-      - device_tracker.anne
-      - device_tracker.ipadvanhenk
-      - device_tracker.iphone
-      - device_tracker.iphonevnmarloes
-      - device_tracker.iphonevnnetwind
-      - device_tracker.pc_van_bert
-      - device_tracker.phonethedude
+      - sensor.guestdevice1_presence
+      - sensor.guestdevice2_presence
+      - sensor.guestdevice3_presence
+      - sensor.guestdevice4_presence
+      - sensor.guestdevice5_presence
+      - sensor.guestdevice6_presence
+      - sensor.guestdevice7_presence
+      - sensor.guestdevice8_presence
+      - sensor.guestdevice9_presence
 
 ################################################
 ## Sensor
@@ -112,13 +142,13 @@ group:
 sensor:
   - platform: template
     sensors:
-      iphone_battery_arno:
-        entity_id: device_tracker.iphone_van_arno
-        value_template: "{{ (states.device_tracker.iphone_van_arno.attributes|default).battery|default|int('unknown') }}"
+      husband_phone_battery_sensor:
+        entity_id: device_tracker.husband_phone_device
+        value_template: "{{ (states.device_tracker.husband_phone_device.attributes|default).battery|default|int('unknown') }}"
         unit_of_measurement: '%'
         icon_template: >-
-          {% set battery_state = states('sensor.iphone_van_arno_battery_state')|lower %}
-          {% set battery_level = states('sensor.iphone_van_arno_battery_level')|int('unknown') %}
+          {% set battery_state = states('sensor.husband_phone_device_battery_state')|lower %}
+          {% set battery_level = states('sensor.husband_phone_device_battery_level')|int('unknown') %}
           {% set battery_round = (battery_level|int / 10)|int * 10 %}
           {% if battery_level == 'unknown' %}
             mdi:battery-unknown
@@ -140,13 +170,14 @@ sensor:
               mdi:battery-alert
             {% endif %}
           {% endif %}
-      iphone_battery_heddy:
-        entity_id: device_tracker.iphone_van_heddy
-        value_template: "{{ (states.device_tracker.iphone_van_heddy.attributes|default).battery|default|int('unknown') }}"
+
+      wife_phone_battery_sensor:
+        entity_id: device_tracker.wife_phone_device
+        value_template: "{{ (states.device_tracker.wife_phone_device.attributes|default).battery|default|int('unknown') }}"
         unit_of_measurement: '%'
         icon_template: >-
-          {% set battery_state = states('sensor.iphone_van_heddy_battery_state')|lower %}
-          {% set battery_level = states('sensor.iphone_van_heddy_battery_level')|int('unknown') %}
+          {% set battery_state = states('sensor.wife_phone_device_battery_state')|lower %}
+          {% set battery_level = states('sensor.wife_phone_device_battery_level')|int('unknown') %}
           {% set battery_round = (battery_level|int / 10)|int * 10 %}
           {% if battery_level == 'unknown' %}
             mdi:battery-unknown
@@ -168,3 +199,30 @@ sensor:
               mdi:battery-alert
             {% endif %}
           {% endif %}
+
+      guestdevice1_presence:
+        value_template: "{{ 'Aanwezig' if is_state('device_tracker.guestdevice1', 'home') else 'Afwezig' }}"
+
+      guestdevice2_presence:
+        value_template: "{{ 'Aanwezig' if is_state('device_tracker.guestdevice2', 'home') else 'Afwezig' }}"
+
+      guestdevice3_presence:
+        value_template: "{{ 'Aanwezig' if is_state('device_tracker.guestdevice3', 'home') else 'Afwezig' }}"
+
+      guestdevice4_presence:
+        value_template: "{{ 'Aanwezig' if is_state('device_tracker.guestdevice4', 'home') else 'Afwezig' }}"
+
+      guestdevice5_presence:
+        value_template: "{{ 'Aanwezig' if is_state('device_tracker.guestdevice5', 'home') else 'Afwezig' }}"
+
+      guestdevice6_presence:
+        value_template: "{{ 'Aanwezig' if is_state('device_tracker.guestdevice6', 'home') else 'Afwezig' }}"
+
+      guestdevice7_presence:
+        value_template: "{{ 'Aanwezig' if is_state('device_tracker.guestdevice7', 'home') else 'Afwezig' }}"
+
+      guestdevice8_presence:
+        value_template: "{{ 'Aanwezig' if is_state('device_tracker.guestdevice8', 'home') else 'Afwezig' }}"
+
+      guestdevice9_presence:
+        value_template: "{{ 'Aanwezig' if is_state('device_tracker.guestdevice9', 'home') else 'Afwezig' }}"
