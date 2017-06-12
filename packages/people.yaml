@@ -26,16 +26,16 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Gasten"
 
-    sensor.husband_phone_device_battery_level:
+    sensor.iphone_van_arno_battery_level:
       hidden: true
 
-    sensor.husband_phone_device_battery_state:
+    sensor.iphone_van_arno_battery_state:
       hidden: true
 
-    sensor.wife_phone_device_battery_level:
+    sensor.iphone_van_heddy_battery_level:
       hidden: true
 
-    sensor.wife_phone_device_battery_state:
+    sensor.iphone_van_heddy_battery_state:
       hidden: true
 
     husband_phone_battery_sensor:
@@ -141,12 +141,12 @@ sensor:
   - platform: template
     sensors:
       husband_phone_battery_sensor:
-        entity_id: device_tracker.husband_phone_device
-        value_template: "{{ (states.device_tracker.husband_phone_device.attributes|default).battery|default|int('unknown') }}"
+        entity_id: device_tracker.iphone_van_arno
+        value_template: "{{ (states.device_tracker.iphone_van_arno.attributes|default).battery|default|int('unknown') }}"
         unit_of_measurement: '%'
         icon_template: >-
-          {% set battery_state = states('sensor.husband_phone_device_battery_state')|lower %}
-          {% set battery_level = states('sensor.husband_phone_device_battery_level')|int('unknown') %}
+          {% set battery_state = states('sensor.iphone_van_arno_battery_state')|lower %}
+          {% set battery_level = states('sensor.iphone_van_arno_battery_level')|int('unknown') %}
           {% set battery_round = (battery_level|int / 10)|int * 10 %}
           {% if battery_level == 'unknown' %}
             mdi:battery-unknown
@@ -170,12 +170,12 @@ sensor:
           {% endif %}
 
       wife_phone_battery_sensor:
-        entity_id: device_tracker.wife_phone_device
-        value_template: "{{ (states.device_tracker.wife_phone_device.attributes|default).battery|default|int('unknown') }}"
+        entity_id: device_tracker.iphone_van_heddy
+        value_template: "{{ (states.device_tracker.iphone_van_heddy.attributes|default).battery|default|int('unknown') }}"
         unit_of_measurement: '%'
         icon_template: >-
-          {% set battery_state = states('sensor.wife_phone_device_battery_state')|lower %}
-          {% set battery_level = states('sensor.wife_phone_device_battery_level')|int('unknown') %}
+          {% set battery_state = states('sensor.iphone_van_heddy_battery_state')|lower %}
+          {% set battery_level = states('sensor.iphone_van_heddy_battery_level')|int('unknown') %}
           {% set battery_round = (battery_level|int / 10)|int * 10 %}
           {% if battery_level == 'unknown' %}
             mdi:battery-unknown
