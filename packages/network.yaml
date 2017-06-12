@@ -75,6 +75,10 @@ homeassistant:
       <<: *customize_contained
       icon: mdi:volume-high
 
+    sensor.homerouter:
+      <<: *customize_contained
+      icon: mdi:router-wireless
+
     sensor.wife_phone:
       <<: *customize_contained
       icon: mdi:cellphone-iphone
@@ -177,6 +181,9 @@ homeassistant:
 
     device_tracker.odroidjessie64:
       hidden: true
+
+    device_tracker.asus_router:
+      hidden.true
 ################################################
 ## Group
 ################################################
@@ -185,6 +192,7 @@ group:
     control: hidden
     entities:
       - sensor.homeassistant
+      - sensor.homerouter
       - sensor.huehub
       - sensor.harmonyhub
       - sensor.onkyoreceiver
@@ -264,3 +272,7 @@ sensor:
       livingroomtv:
         friendly_name: 'Woonkamer tv'
         value_template: "{{ 'Online' if is_state('device_tracker.woonkamertv', 'home') else 'Offline' }}"
+
+      homerouter:
+        friendly_name: 'Router'
+        value_template: "{{ 'Online' if is_state('device_tracker.home_router', 'home') else 'Offline' }}"
