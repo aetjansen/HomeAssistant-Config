@@ -85,7 +85,7 @@ homeassistant:
 
     sensor.guestdevice3_presence:
       friendly_name: !secret guestdevice3_name
-      icon: mdi:cellphone-iphone
+      icon: !secret guestdevice3_icon
 
     sensor.guestdevice4_presence:
       friendly_name: !secret guestdevice4_name
