@@ -38,6 +38,14 @@ homeassistant:
     sensor.iphone_van_heddy_battery_state:
       hidden: true
 
+    husband_phone_battery_sensor:
+      friendly_name: !secret husband_phone_battery_sensor_name
+      icon: !secret husband_phone_battery_sensor_icon
+
+    wife_phone_battery_sensor:
+      friendly_name: !secret wife_phone_battery_sensor_name
+      icon: !secret wife_phone_battery_sensor_icon
+
 ################################################
 ## Group
 ################################################
