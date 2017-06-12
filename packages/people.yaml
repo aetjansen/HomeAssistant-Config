@@ -21,12 +21,10 @@ homeassistant:
     group.family:
       <<: *customize_contained
       friendly_name: "Familie"
-      icon: mdi:account-multiple
 
     group.guests:
       <<: *customize_contained
       friendly_name: "Gasten"
-      icon: mdi:account-multiple
 
     sensor.husband_phone_device_battery_level:
       hidden: true
@@ -42,11 +40,11 @@ homeassistant:
 
     husband_phone_battery_sensor:
       friendly_name: !secret husband_phone_battery_sensor_name
-      icon: husband_phone_battery_sensor_icon
+      icon: !secret husband_phone_battery_sensor_icon
 
     wife_phone_battery_sensor:
       friendly_name: !secret wife_phone_battery_sensor_name
-      icon: wife_phone_battery_sensor_icon
+      icon: !secret wife_phone_battery_sensor_icon
 
     device_tracker.guestdevice1:
       hidden: true
