@@ -182,8 +182,9 @@ homeassistant:
     device_tracker.odroidjessie64:
       hidden: true
 
-    device_tracker.asus_router:
-      hidden.true
+    device_tracker.home_router:
+      hidden: true
+
 ################################################
 ## Group
 ################################################
