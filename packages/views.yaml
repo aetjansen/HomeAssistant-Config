@@ -55,12 +55,12 @@ group:
       - group.landing
       - group.hallway
       - group.scullery
-      
+
   household:
     view: yes
     entities:
       - group.family
-      #- group.guests
+      - group.guests
 
   weather:
     view: yes
