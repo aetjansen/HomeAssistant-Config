@@ -26,7 +26,17 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Gasten"
 
-    
+    sensor.iphone_van_arno_battery_level:
+      hidden: true
+
+    sensor.iphone_van_arno_battery_state:
+      hidden: true
+
+    sensor.iphone_van_heddy_battery_level:
+      hidden: true
+
+    sensor.iphone_van_heddy_battery_state:
+      hidden: true
 
 ################################################
 ## Group
