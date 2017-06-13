@@ -61,6 +61,7 @@ group:
     entities:
       - group.family
       - group.guests
+      - group.unknown_devices
 
   weather:
     view: yes
