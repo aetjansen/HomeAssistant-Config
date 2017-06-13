@@ -90,3 +90,4 @@ echo "guestdevice8_name: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "guestdevice8_icon: mdi:help" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "guestdevice9_name: dummy" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "guestdevice9_icon: mdi:help" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "influxDB_host: 192.168.0.1" >> $TRAVIS_BUILD_DIR/secrets.yaml
