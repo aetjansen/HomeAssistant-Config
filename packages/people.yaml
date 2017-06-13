@@ -108,7 +108,7 @@ homeassistant:
     sensor.guestdevice9_presence:
       friendly_name: !secret guestdevice9_name
       icon: !secret guestdevice9_icon
-      
+
 ################################################
 ## Group
 ################################################
@@ -116,9 +116,9 @@ group:
   family:
     control: hidden
     entities:
-      - device_tracker.husband_phone_device
+      - device_tracker.iphone_van_arno
       - sensor.husband_phone_battery_sensor
-      - device_tracker.wife_phone_device
+      - device_tracker.iphone_van_heddy
       - sensor.wife_phone_battery_sensor
 
   guests:
