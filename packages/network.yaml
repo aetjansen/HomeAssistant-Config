@@ -185,6 +185,9 @@ homeassistant:
     device_tracker.home_router:
       hidden: true
 
+    device_tracker.sonos_kitchen:
+      hidden: true
+
 ################################################
 ## Group
 ################################################
@@ -202,12 +205,11 @@ group:
       - sensor.bedroomtv
       - sensor.chromecast_bedroom
       - sensor.chromecast_kitchen
+      - sensor.sonoskitchen
       - sensor.retropie
       - sensor.steamlink
       - sensor.printer
       - sensor.bankhanger
-      - sensor.wife_phone
-      - sensor.husband_phone
       - sensor.samsunggalaxytaba
 
 
