@@ -277,3 +277,7 @@ sensor:
       homerouter:
         friendly_name: 'Router'
         value_template: "{{ 'Online' if is_state('device_tracker.home_router', 'home') else 'Offline' }}"
+
+      sonoskitchen:
+        friendly_name: 'Sonos Keuken'
+        value_template: "{{ 'Online' if is_state('device_tracker.sonos_kitchen', 'home') else 'Offline' }}"
