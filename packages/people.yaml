@@ -26,6 +26,10 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Gasten"
 
+    group.unknown_devices:
+      <<: *customize_contained
+      friendly_name: "Onbekende apparaten/gasten"
+
     sensor.iphone_van_arno_battery_level:
       hidden: true
 
@@ -133,6 +137,20 @@ group:
       - sensor.guestdevice7_presence
       - sensor.guestdevice8_presence
       - sensor.guestdevice9_presence
+
+  unknown_devices:
+    control: hidden
+    entities:
+      - device_tracer.unknown1
+      - device_tracer.unknown2
+      - device_tracer.unknown3
+      - device_tracer.unknown4
+      - device_tracer.unknown5
+      - device_tracer.unknown6
+      - device_tracer.unknown7
+      - device_tracer.unknown8
+      - device_tracer.unknown9
+      - device_tracer.unknown10
 
 ################################################
 ## Sensor
