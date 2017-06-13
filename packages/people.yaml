@@ -141,16 +141,16 @@ group:
   unknown_devices:
     control: hidden
     entities:
-      - device_tracer.unknown1
-      - device_tracer.unknown2
-      - device_tracer.unknown3
-      - device_tracer.unknown4
-      - device_tracer.unknown5
-      - device_tracer.unknown6
-      - device_tracer.unknown7
-      - device_tracer.unknown8
-      - device_tracer.unknown9
-      - device_tracer.unknown10
+      - device_tracker.unknown1
+      - device_tracker.unknown2
+      - device_tracker.unknown3
+      - device_tracker.unknown4
+      - device_tracker.unknown5
+      - device_tracker.unknown6
+      - device_tracker.unknown7
+      - device_tracker.unknown8
+      - device_tracker.unknown9
+      - device_tracker.unknown10
 
 ################################################
 ## Sensor
