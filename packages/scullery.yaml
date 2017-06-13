@@ -82,6 +82,17 @@ homeassistant:
     sensor.achterdeur_schakelaars_sourcenodeid_4_2:
       hidden: true
 
+    sensor.achterdeur_schakelaars_interval_4_10:
+      hidden: true
+
+    sensor.achterdeur_schakelaars_interval_4_2:
+      hidden: true
+
+    sensor.achterdeur_schakelaars_previous_reading_4_1:
+      hidden: true
+
+    sensor.achterdeur_schakelaars_previous_reading_4_9:
+      hidden: true
 ################################################
 ## Group
 ################################################
