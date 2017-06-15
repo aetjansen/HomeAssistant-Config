@@ -38,4 +38,8 @@ group:
 
 sensor:
   - platform: coinmarketcap
-    currency: bitcoin, litecoin, ethereum
+    currency: bitcoin
+  - platform: coinmarketcap
+    currency: ethereum
+  - platform: coinmarketcap
+    currency: litecoin
