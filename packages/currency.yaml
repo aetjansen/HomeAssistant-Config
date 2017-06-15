@@ -1,0 +1,41 @@
+################################################################
+## Packages / Currency
+################################################################
+
+
+################################################
+## Customize
+################################################
+
+homeassistant:
+  customize:
+    packages.currency: &customize
+      package: 'currency'
+
+    packages.energy_exposed: &customize_exposed
+      <<: *customize
+
+    packages.energy_contained: &customize_contained
+      <<: *customize
+
+    group.total_energy_consumption:
+      <<: *customize_contained
+      friendly_name: "Wisselkoersen"
+      icon: mdi:currency-eur
+
+################################################
+## Group
+################################################
+group:
+  exchangerates:
+    control: hidden
+    entities:
+      - sensor.coinmarketcap
+
+################################################
+## Sensor
+################################################
+
+sensor:
+  - platform: coinmarketcap
+    currency: bitcoin, litecoin, ethereum
