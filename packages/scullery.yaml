@@ -27,41 +27,41 @@ homeassistant:
       friendly_name: "Beweging"
       icon: mdi:walk
 
-    sensor.bijkeuken_sensor_burglar_2_10:
+    sensor.bijkeuken_sensor_burglar:
       <<: *customize_contained
       friendly_name: "Beweging"
       device_class: motion
       icon: mdi:walk
       hidden: true
 
-    sensor.bijkeuken_sensor_temperature_2_1:
+    sensor.bijkeuken_sensor_temperature:
       <<: *customize_contained
       friendly_name: "Temperatuur"
       icon: mdi:thermometer
 
-    sensor.bijkeuken_sensor_relative_humidity_2_5:
+    sensor.bijkeuken_sensor_relative_humidity:
       <<: *customize_contained
       friendly_name: "Luchtvochtigheid"
       device_class: moisture
       icon: mdi:water-percent
 
-    sensor.bijkeuken_sensor_luminance_2_3:
+    sensor.bijkeuken_sensor_luminance:
       <<: *customize_contained
       friendly_name: "Lichtniveau"
       icon: mdi:theme-light-dark
 
-    switch.achterdeur_schakelaars_switch_4_0:
+    switch.achterdeur_schakelaars_switch:
       <<: *customize_contained
       friendly_name: "Bijkeuken lamp"
       persistent: true
       icon: mdi:lightbulb
 
-    switch.achterdeur_schakelaars_switch_4_0_2:
+    switch.achterdeur_schakelaars_switch:
       <<: *customize_contained
       friendly_name: "Buitenlamp achterdeur"
       icon: mdi:lightbulb
 
-    sensor.achterdeur_schakelaars_alarm_level_4_1:
+    sensor.achterdeur_schakelaars_alarm_level:
       hidden: true
 
     sensor.achterdeur_schakelaars_alarm_level:
