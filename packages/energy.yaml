@@ -63,12 +63,12 @@ homeassistant:
       friendly_name: "Zithoek dimmer"
       icon: mdi:lightbulb
 
-    sensor.achterdeur_schakelaars_energy_4_0:
+    sensor.achterdeur_schakelaars_energy:
       <<: *customize_contained
       friendly_name: "Bijkeuken lamp"
       icon: mdi:lightbulb
 
-    sensor.achterdeur_schakelaars_energy_4_0_2:
+    sensor.achterdeur_schakelaars_energy_2:
       <<: *customize_contained
       friendly_name: "Buitenlamp achterdeur"
       icon: mdi:lightbulb
@@ -95,12 +95,12 @@ homeassistant:
     sensor.woonkamer_dimmer_power_5_4:
       hidden: true
 
-    sensor.achterdeur_schakelaars_power_4_8:
+    sensor.achterdeur_schakelaars_power:
       <<: *customize_contained
       friendly_name: "Bijkeuken lamp"
       icon: mdi:lightbulb
 
-    sensor.achterdeur_schakelaars_power_4_8_2:
+    sensor.achterdeur_schakelaars_power_2:
       <<: *customize_contained
       friendly_name: "Buitenlamp achterdeur"
       icon: mdi:lightbulb
@@ -165,8 +165,8 @@ group:
       - sensor.energytariff_nl
       - sensor.vaatwasser_energy_6_0   # Dishwasher kWh
       - sensor.woonkamer_dimmer_energy_5_0
-      - sensor.achterdeur_schakelaars_energy_4_0       # Scullery light
-      - sensor.achterdeur_schakelaars_energy_4_0_2     # Backdoor outside light
+      - sensor.achterdeur_schakelaars_energy       # Scullery light
+      - sensor.achterdeur_schakelaars_energy_2     # Backdoor outside light
 
   current_power_consumption:
     control: hidden
@@ -177,8 +177,8 @@ group:
       - sensor.vaatwasser_current_6_20 # Dishwasher: Amps
       - sensor.vaatwasser_voltage_6_16 # Dishwasher: Volts
       - sensor.woonkamer_dimmer_power_5_8
-      - sensor.achterdeur_schakelaars_power_4_8        # Scullery light
-      - sensor.achterdeur_schakelaars_power_4_8_2      # Backdoor outside light
+      - sensor.achterdeur_schakelaars_power        # Scullery light
+      - sensor.achterdeur_schakelaars_power_2      # Backdoor outside light
 
 ################################################
 ## Sensor
