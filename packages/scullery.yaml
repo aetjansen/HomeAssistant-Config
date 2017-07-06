@@ -50,13 +50,13 @@ homeassistant:
       friendly_name: "Lichtniveau"
       icon: mdi:theme-light-dark
 
-    switch.achterdeur_schakelaars_switch_4_0:
+    switch.achterdeur_schakelaars_switch:
       <<: *customize_contained
       friendly_name: "Bijkeuken lamp"
       persistent: true
       icon: mdi:lightbulb
 
-    switch.achterdeur_schakelaars_switch_4_0_2:
+    switch.achterdeur_schakelaars_switch_2:
       <<: *customize_contained
       friendly_name: "Buitenlamp achterdeur"
       icon: mdi:lightbulb
@@ -70,10 +70,10 @@ homeassistant:
     sensor.achterdeur_schakelaars_alarm_type_4_0:
       hidden: true
 
-    sensor.achterdeur_schakelaars_exporting_4_32:
+    sensor.achterdeur_schakelaars_exporting:
       hidden: true
 
-    sensor.achterdeur_schakelaars_exporting_4_32_2:
+    sensor.achterdeur_schakelaars_exporting_2:
       hidden: true
 
     sensor.achterdeur_schakelaars_heat_4_7:
@@ -107,8 +107,8 @@ group:
       - sensor.bijkeuken_sensor_temperature_2_1
       - sensor.bijkeuken_sensor_relative_humidity_2_5
       - sensor.bijkeuken_sensor_luminance_2_3
-      - switch.achterdeur_schakelaars_switch_4_0
-      - switch.achterdeur_schakelaars_switch_4_0_2
+      - switch.achterdeur_schakelaars_switch
+      - switch.achterdeur_schakelaars_switch_2
 
 
 ################################################
