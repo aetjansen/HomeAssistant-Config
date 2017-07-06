@@ -101,9 +101,9 @@ group:
     control: hidden
     entities:
       - sensor.scullery_motion_detector
-      - sensor.bijkeuken_sensor_temperature_2_1
-      - sensor.bijkeuken_sensor_relative_humidity_2_5
-      - sensor.bijkeuken_sensor_luminance_2_3
+      - sensor.bijkeuken_sensor_temperature
+      - sensor.bijkeuken_sensor_relative_humidity
+      - sensor.bijkeuken_sensor_luminance
       - switch.achterdeur_schakelaars_switch
       - switch.achterdeur_schakelaars_switch_2
 
@@ -117,8 +117,8 @@ sensor:
     sensors:
       scullery_motion_detector:
         value_template: >-
-            {%- if is_state("sensor.bijkeuken_sensor_burglar_2_10", "8") %}
+            {%- if is_state("sensor.bijkeuken_sensor_burglar", "8") %}
                 Beweging
-            {% elif is_state("sensor.bijkeuken_sensor_burglar_2_10", "0") %}
+            {% elif is_state("sensor.bijkeuken_sensor_burglar", "0") %}
                 Geen beweging
             {%- endif %}
