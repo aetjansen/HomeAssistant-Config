@@ -34,28 +34,28 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Zithoek"
 
-    sensor.woonkamer_dimmer_alarm_level_5_1:
+    sensor.woonkamer_dimmer_alarm_level:
       hidden: true
 
-    sensor.woonkamer_dimmer_alarm_level_5_1_2:
+    sensor.woonkamer_dimmer_alarm_level_2:
       hidden: true
 
-    sensor.woonkamer_dimmer_alarm_type_5_0:
+    sensor.woonkamer_dimmer_alarm_type:
       hidden: true
 
-    sensor.woonkamer_dimmer_alarm_type_5_0_2:
+    sensor.woonkamer_dimmer_alarm_type_2:
       hidden: true
 
-    sensor.woonkamer_dimmer_exporting_5_32:
+    sensor.woonkamer_dimmer_exporting:
       hidden: true
 
-    sensor.woonkamer_dimmer_heat_5_7:
+    sensor.woonkamer_dimmer_heat:
       hidden: true
 
-    sensor.woonkamer_dimmer_power_management_5_11:
+    sensor.woonkamer_dimmer_power_management:
       hidden: true
 
-    sensor.woonkamer_dimmer_sourcenodeid_5_2:
+    sensor.woonkamer_dimmer_sourcenodeid:
       hidden: true
 
     sensor.woonkamer_dimmer_system_5_12:

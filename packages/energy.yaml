@@ -58,7 +58,7 @@ homeassistant:
     sensor.power_tariff:
       hidden: true
 
-    sensor.woonkamer_dimmer_energy_5_0:
+    sensor.woonkamer_dimmer_energy:
       <<: *customize_contained
       friendly_name: "Zithoek dimmer"
       icon: mdi:lightbulb
@@ -164,7 +164,7 @@ group:
       - sensor.stats_mean
       - sensor.energytariff_nl
       - sensor.vaatwasser_energy   # Dishwasher kWh
-      - sensor.woonkamer_dimmer_energy_5_0
+      - sensor.woonkamer_dimmer_energy
       - sensor.achterdeur_schakelaars_energy       # Scullery light
       - sensor.achterdeur_schakelaars_energy_2     # Backdoor outside light
 
