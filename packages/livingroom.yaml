@@ -58,7 +58,7 @@ homeassistant:
     sensor.woonkamer_dimmer_sourcenodeid:
       hidden: true
 
-    sensor.woonkamer_dimmer_system_5_12:
+    sensor.woonkamer_dimmer_system:
       hidden: true
 
     sensor.woonkamer_dimmer_unknown_5_0_2:

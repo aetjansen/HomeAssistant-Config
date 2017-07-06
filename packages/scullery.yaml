@@ -73,10 +73,10 @@ homeassistant:
     sensor.achterdeur_schakelaars_exporting_2:
       hidden: true
 
-    sensor.achterdeur_schakelaars_heat_4_7:
+    sensor.achterdeur_schakelaars_heat:
       hidden: true
 
-    sensor.achterdeur_schakelaars_power_management_4_11:
+    sensor.achterdeur_schakelaars_power_management:
       hidden: true
 
     sensor.achterdeur_schakelaars_sourcenodeid:
