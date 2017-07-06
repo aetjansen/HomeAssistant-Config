@@ -50,18 +50,18 @@ homeassistant:
       friendly_name: "Lichtniveau"
       icon: mdi:theme-light-dark
 
-    switch.achterdeur_schakelaars_switch:
+    switch.achterdeur_schakelaars_switch_4_0:
       <<: *customize_contained
       friendly_name: "Bijkeuken lamp"
       persistent: true
       icon: mdi:lightbulb
 
-    switch.achterdeur_schakelaars_switch:
+    switch.achterdeur_schakelaars_switch_4_0_2:
       <<: *customize_contained
       friendly_name: "Buitenlamp achterdeur"
       icon: mdi:lightbulb
 
-    sensor.achterdeur_schakelaars_alarm_level:
+    sensor.achterdeur_schakelaars_alarm_level_4_1:
       hidden: true
 
     sensor.achterdeur_schakelaars_alarm_level:
