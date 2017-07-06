@@ -64,6 +64,9 @@ homeassistant:
     sensor.achterdeur_schakelaars_alarm_level_4_1:
       hidden: true
 
+    sensor.achterdeur_schakelaars_alarm_level:
+      hidden: true
+
     sensor.achterdeur_schakelaars_alarm_type_4_0:
       hidden: true
 
