@@ -105,22 +105,22 @@ homeassistant:
       friendly_name: "Buitenlamp achterdeur"
       icon: mdi:lightbulb
 
-    sensor.vaatwasser_power_6_8:    # Dishwasher: Watts
+    sensor.vaatwasser_power:    # Dishwasher: Watts
       <<: *customize_contained
       friendly_name: "Vaatwasser"
       icon: mdi:power-plug
 
-    sensor.vaatwasser_voltage_6_16: # Dishwasher: Volts
+    sensor.vaatwasser_voltage: # Dishwasher: Volts
       <<: *customize_contained
       friendly_name: "Vaatwasser spanning"
       icon: mdi:power-plug
 
-    sensor.vaatwasser_current_6_20: # Dishwasher: Amps
+    sensor.vaatwasser_current: # Dishwasher: Amps
       <<: *customize_contained
       friendly_name: "Vaatwasser stroom"
       icon: mdi:power-plug
 
-    sensor.vaatwasser_energy_6_0: # Dishwasher: Current power usage
+    sensor.vaatwasser_energy: # Dishwasher: Current power usage
       <<: *customize_contained
       friendly_name: "Vaatwasser"
       icon: mdi:power-plug
@@ -163,7 +163,7 @@ group:
       - sensor.power_consumption_normal
       - sensor.stats_mean
       - sensor.energytariff_nl
-      - sensor.vaatwasser_energy_6_0   # Dishwasher kWh
+      - sensor.vaatwasser_energy   # Dishwasher kWh
       - sensor.woonkamer_dimmer_energy_5_0
       - sensor.achterdeur_schakelaars_energy       # Scullery light
       - sensor.achterdeur_schakelaars_energy_2     # Backdoor outside light
@@ -173,9 +173,9 @@ group:
     entities:
       - sensor.hourly_gas_consumption
       - sensor.power_consumption
-      - sensor.vaatwasser_power_6_8    # Dishwasher: Watts
-      - sensor.vaatwasser_current_6_20 # Dishwasher: Amps
-      - sensor.vaatwasser_voltage_6_16 # Dishwasher: Volts
+      - sensor.vaatwasser_power    # Dishwasher: Watts
+      - sensor.vaatwasser_current # Dishwasher: Amps
+      - sensor.vaatwasser_voltage # Dishwasher: Volts
       - sensor.woonkamer_dimmer_power_2
       - sensor.achterdeur_schakelaars_power        # Scullery light
       - sensor.achterdeur_schakelaars_power_2      # Backdoor outside light
