@@ -61,13 +61,10 @@ homeassistant:
       friendly_name: "Buitenlamp achterdeur"
       icon: mdi:lightbulb
 
-    sensor.achterdeur_schakelaars_alarm_level_4_1:
-      hidden: true
-
     sensor.achterdeur_schakelaars_alarm_level:
       hidden: true
 
-    sensor.achterdeur_schakelaars_alarm_type_4_0:
+    sensor.achterdeur_schakelaars_alarm_type:
       hidden: true
 
     sensor.achterdeur_schakelaars_exporting:
@@ -82,7 +79,7 @@ homeassistant:
     sensor.achterdeur_schakelaars_power_management_4_11:
       hidden: true
 
-    sensor.achterdeur_schakelaars_sourcenodeid_4_2:
+    sensor.achterdeur_schakelaars_sourcenodeid:
       hidden: true
 
     sensor.achterdeur_schakelaars_interval_4_10:
