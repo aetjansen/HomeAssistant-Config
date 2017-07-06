@@ -26,50 +26,50 @@ homeassistant:
       friendly_name: "Vaatwasser klaar notificatie"
       icon: mdi:comment-alert-outline
 
-    switch.vaatwasser_switch_6_0:
+    switch.vaatwasser_switch:
       <<: *customize_contained
       friendly_name: "Vaatwassser"
       icon: mdi:powerplug
       persistent: true
 
 
-    sensor.vaatwasser_previous_reading_6_21:
+    sensor.vaatwasser_previous_reading_4:
       hidden: true
 
-    sensor.vaatwasser_exporting_6_32:
+    sensor.vaatwasser_exporting:
       hidden: true
 
-    sensor.vaatwasser_interval_6_10:
+    sensor.vaatwasser_interval_2:
       hidden: true
 
-    sensor.vaatwasser_interval_6_18:
+    sensor.vaatwasser_interval_3:
       hidden: true
 
-    sensor.vaatwasser_interval_6_2:
+    sensor.vaatwasser_interval:
       hidden: true
 
-    sensor.vaatwasser_interval_6_22:
+    sensor.vaatwasser_interval_4:
       hidden: true
 
-    sensor.vaatwasser_previous_reading_6_9:
+    sensor.vaatwasser_previous_reading_2:
       hidden: true
 
-    sensor.vaatwasser_power_management_6_11:
+    sensor.vaatwasser_power_management:
       hidden: true
 
-    sensor.vaatwasser_previous_reading_6_1:
+    sensor.vaatwasser_previous_reading:
       hidden: true
 
-    sensor.vaatwasser_previous_reading_6_17:
+    sensor.vaatwasser_previous_reading_3:
       hidden: true
 
-    sensor.vaatwasser_sourcenodeid_6_2:
+    sensor.vaatwasser_sourcenodeid:
       hidden: true
 
-    sensor.vaatwasser_alarm_level_6_1:
+    sensor.vaatwasser_alarm_level:
       hidden: true
 
-    sensor.vaatwasser_alarm_type_6_0:
+    sensor.vaatwasser_alarm_type:
       hidden: true
 
     binary_sensor.vaatwasser_power_usage_templated:
@@ -122,5 +122,5 @@ group:
   kitchen:
     control: hidden
     entities:
-      - switch.vaatwasser_switch_6_0
+      - switch.vaatwasser_switch
       - sensor.vaatwasser_power_usage_templated
