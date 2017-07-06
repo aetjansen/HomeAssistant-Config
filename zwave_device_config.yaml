@@ -6,36 +6,36 @@
 ## Scullery multisensor
 ################################################
 
-binary_sensor.bijkeuken_sensor_sensor_2_0:
+binary_sensor.bijkeuken_sensor_sensor:
   ignored: true
 
-sensor.bijkeuken_sensor_alarm_level_2_1:
+sensor.bijkeuken_sensor_alarm_level:
   ignored: true
 
-sensor.bijkeuken_sensor_alarm_type_2_0:
+sensor.bijkeuken_sensor_alarm_type:
   ignored: true
 
-sensor.bijkeuken_sensor_sourcenodeid_2_2:
+sensor.bijkeuken_sensor_sourcenodeid:
   ignored: true
 
-sensor.bijkeuken_sensor_ultraviolet_2_27:
+sensor.bijkeuken_sensor_ultraviolet:
   ignored: true
 
 ################################################
 ## Hallway multisensor
 ################################################
 
-binary_sensor.hal_sensor_sensor_3_0:
+binary_sensor.hal_sensor_sensor:
   ignored: true
 
-sensor.hal_sensor_alarm_level_3_1:
+sensor.hal_sensor_alarm_level:
   ignored: true
 
-sensor.hal_sensor_alarm_type_3_0:
+sensor.hal_sensor_alarm_type:
   ignored: true
 
-sensor.hal_sensor_sourcenodeid_3_2:
+sensor.hal_sensor_sourcenodeid:
   ignored: true
 
-sensor.hal_sensor_ultraviolet_3_27:
+sensor.hal_sensor_ultraviolet:
   ignored: true
