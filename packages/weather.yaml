@@ -104,7 +104,7 @@ automation:
     initial_state: 'on'
     trigger:
       - platform: time
-        after: '06:00:00'
+        at: '06:00:00'
     action:
       service: notify.all_iphones
       data_template:
@@ -115,7 +115,7 @@ automation:
     initial_state: 'on'
     trigger:
       - platform: time
-        after: '18:00:00'
+        at: '18:00:00'
     action:
       service: notify.all_iphones
       data_template:
