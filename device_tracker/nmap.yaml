@@ -10,4 +10,4 @@
    - 10.0.1.2
   interval_seconds: 10
   consider_home: 180
-  track_new_devices: true
+  track_new_devices: false

@@ -9,4 +9,4 @@
   #ssh_key: !secret asus_router_key_path
   interval_seconds: 10
   consider_home: 180
-  track_new_devices: true
+  track_new_devices: false
