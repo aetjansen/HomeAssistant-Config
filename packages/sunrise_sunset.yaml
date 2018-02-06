@@ -1,0 +1,103 @@
+################################################################
+## Packages / Sunrise/Sunset.
+################################################################
+## Automations that happen around/on sunrise or sunset events
+## Mostly lighting stuff
+################################################################
+
+################################################
+## Customize
+################################################
+homeassistant:
+  customize:
+    packages.sunrise_sunset: &customize
+      package: 'scullery'
+
+    packages.sunrise_sunset_exposed: &customize_exposed
+      <<: *customize
+
+    packages.sunrise_sunset_contained: &customize_contained
+      <<: *customize
+
+    group.sunrise_sunset:
+      <<: *customize_contained
+      friendly_name: "Sunrise Sunset"
+
+################################################
+## Group
+################################################
+
+################################################
+## Sensor
+################################################
+
+################################################
+## Automation
+################################################
+automation:
+
+  ################################################
+  ## Half hour before sunset switch on outside lights
+  ################################################
+  - alias: lights_on_when_sun_sets
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: sun
+        event: sunset
+        offset: "-0:30:00"
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'off'
+        - condition: state
+          entity_id: 'group.family'
+          state: 'home'
+    action:
+      - service: homeassistant.turn_on
+        entity_id: switch.achterdeur_schakelaars_switch_2
+      - service: homeassistant.turn_on
+        entity_id: switch.tuinverlichting
+      - service: homeassistant.turn_on
+        entity_id: light.hal
+        state: on
+        transition: 2
+        brightness: 50
+      - service: homeassistant.turn_on
+        entity_id: light.overloop
+        state: on
+        transition: 2
+        brightness: 50
+
+################################################
+## Switch off lights in scullery when motion detected
+################################################
+## Note: This is currently triggered by the "On Time" setting
+##       of the zwave sensor used. In future updates, this should be handled
+##       by a timer in this configuration. Triggered by the motion sensor,
+##       start a (configurable) timer, when that time has passed, switch light off.
+##       If timer expires and motion is still (or again) detected by sensor, reset
+##       timer and count again.
+################################################
+  - alias: scullery_light_off_when_motion_detected
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.bijkeuken_sensor_burglar
+        from: '8'
+        to: '0'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'off'
+    action:
+      - service: homeassistant.turn_off
+        entity_id: switch.achterdeur_schakelaars_switch
