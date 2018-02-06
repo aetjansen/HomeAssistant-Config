@@ -1,0 +1,46 @@
+################################################
+## Packages / Modes
+################################################
+## Various input booleans to indicate different
+## modes that can be active in the house
+################################################
+
+################################################
+## Customize
+################################################
+homeassistant:
+  customize:
+    packages.modes: &customize
+      package: 'modes'
+
+    packages.modes_exposed: &customize_exposed
+      <<: *customize
+
+    packages.modes_contained: &customize_contained
+      <<: *customize
+
+input_boolean:
+  night_mode:
+    name: Nacht mode
+    initial: off
+    icon: mdi:weather-night
+    persistent: true
+
+  away_mode:
+    name: Iedereen van Huis
+    initial: off
+    icon: mdi:security
+    persistent: true
+
+  to_bed_mode:
+    name: Naar bed
+    initial: off
+    icon: mdi:hotel
+    persistent: true
+
+  guest_mode:
+    name: Gast mode
+    initial: off
+    icon: mdi:account-multiple
+    persistent: true
+    
