@@ -87,7 +87,7 @@ input_boolean:
     initial: off
 
   night_mode:
-    persistent: true
+    initial: off
 
 ################################################
 ## Sensor
