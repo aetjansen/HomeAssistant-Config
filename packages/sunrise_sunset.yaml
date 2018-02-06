@@ -57,12 +57,8 @@ automation:
       - service: homeassistant.turn_on
         entity_id: switch.tuinverlichting
       - service: light.turn_on
-          data:
-            entity_id: light.hal
-            transition: 2
-            brightness: 50
+        entity_id: light.hal
+        brightness: 50
       - service: light.turn_on
-          data:
-            entity_id: light.overloop
-            transition: 2
-            brightness: 50
+        entity_id: light.overloop
+        brightness: 50
