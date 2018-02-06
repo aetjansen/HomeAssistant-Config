@@ -19,28 +19,26 @@ homeassistant:
     packages.modes_contained: &customize_contained
       <<: *customize
 
-input_boolean:
-  night_mode:
-    name: Nacht mode
-    initial: off
-    icon: mdi:weather-night
-    persistent: true
+    input_boolean.night_mode:
+      <<: *customize
+      name: Nacht mode
+      icon: mdi:weather-night
+      persistent: true
 
-  away_mode:
-    name: Iedereen van Huis
-    initial: off
-    icon: mdi:security
-    persistent: true
+    input_boolean.away_mode:
+      <<: *customize
+      name: Iedereen van Huis
+      icon: mdi:security
+      persistent: true
 
-  to_bed_mode:
-    name: Naar bed
-    initial: off
-    icon: mdi:hotel
-    persistent: true
+    input_boolean.to_bed_mode:
+      <<: *customize
+      name: Naar bed
+      icon: mdi:hotel
+      persistent: true
 
-  guest_mode:
-    name: Gast mode
-    initial: off
-    icon: mdi:account-multiple
-    persistent: true
-    
+    input_boolean.guest_mode:
+      <<: *customize
+      name: Gast mode
+      icon: mdi:account-multiple
+      persistent: true
