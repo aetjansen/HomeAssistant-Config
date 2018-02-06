@@ -16,6 +16,7 @@ echo "mqtt_username: dummyuser" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "mqtt_password: dummypassword" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zwave_usb_path: /dummy/zwave" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zwave_config_path: /dummy/zwaveconfig" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "rfxcom_config_path: /dummy/rfxcomconfig" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "sensor_dishwasher_current: sensor.dummysensor_dishwasher_current" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "sensor_dishwasher_current_previous_reading: sensor.dummysensor_dishwasher_current_previous_reading" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "sensor_dishwasher_exporting: sensor.dummysensor_dishwasher_exporting" >> $TRAVIS_BUILD_DIR/secrets.yaml
