@@ -1,0 +1,9 @@
+################################################################
+## Switch
+################################################################
+- platform: rfxtrx
+  automatic_add: False
+  signal_repetitions: 3
+  devices:
+    0b110001003baeb601010f60:
+      name: Tuinverlichting

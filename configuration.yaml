@@ -50,7 +50,15 @@ mqtt:
 
 #influxdb:
 #  host: !secret influxDB_host
+
 #tts:
+
+rfxtrx:
+  device: !secret rfxcom_config_path
+
+hue:
+  bridges:
+    - host: !secret hue_bridge_ip 
 
 ################################################
 ## Component Includes (Single File)
@@ -75,6 +83,7 @@ light: !include_dir_merge_list light
 media_player: !include_dir_merge_list media_player
 notify: !include_dir_merge_list notify
 zone: !include_dir_merge_list zone
+switch: !include_dir_merge_list switch
 
 ################################################
 ## Component Includes (Merge Named)

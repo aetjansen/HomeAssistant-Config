@@ -29,13 +29,17 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Internetverbinding"
 
-    sensor.cpu_use:
+    sensor.cpu_used:
       <<: *customize
       friendly_name: "CPU gebruik"
 
-    sensor.disk_use_home:
+    sensor.ram_available:
       <<: *customize
-      friendly_name: "Disk Gebruik"
+      friendly_name: "Geheugen beschikbar"
+
+    sensor.disk_used_home:
+      <<: *customize
+      friendly_name: "Disk gebruik home-dir"
 
     sensor.ipv4_address_eth0:
       <<: *customize
@@ -52,6 +56,18 @@ homeassistant:
     sensor.pihole_ads_blocked_today:
       <<: *customize
       friendly_name: "Aantal ads geblokkeerd"
+
+    sensor.pihole_dns_queries_cached:
+      <<: *customize
+      friendly_name: "Aantal DNS queries gecached"
+
+    sensor.pihole_dns_queries_forwarded:
+      <<: *customize
+      friendly_name: "Aantal DNS queries forwarded"
+    
+    sensor.pihole_dns_unique_domains:
+      <<: *customize
+      friendly_name: "PiHole Aantal unieke domeinen"
 
     sensor.pihole_ads_percentage_blocked_today:
       <<: *customize
@@ -122,10 +138,11 @@ group:
   server:
     control: hidden
     entities:
-      - sensor.cpu_use
+      - sensor.cpu_used
+      - sensor.ram_available
       - sensor.stats_mean_2
       - sensor.cpu_temperature
-      - sensor.disk_use_home
+      - sensor.disk_used_home
       - sensor.ram_free
       - sensor.ipv4_address_eth0
       - sensor.ipv6_address_eth0
@@ -146,6 +163,9 @@ group:
       - sensor.pihole_ads_blocked_today
       - sensor.pihole_ads_percentage_blocked_today
       - sensor.pihole_dns_queries_today
+      - sensor.pihole_dns_queries_cached
+      - sensor.pihole_dns_queries_forwarded
+      - sensor.pihole_dns_unique_domains
       - sensor.speedtest_ping
       - sensor.speedtest_download
       - sensor.speedtest_upload
