@@ -1,44 +1,137 @@
-################################################
-## Packages / Modes
-################################################
-## Various input booleans to indicate different
-## modes that can be active in the house
-################################################
+################################################################
+## Packages / House Mode
+################################################################
 
 ################################################
 ## Customize
 ################################################
+
 homeassistant:
   customize:
-    packages.modes: &customize
-      package: 'modes'
+    ################################################
+    ## Node Anchors
+    ################################################
 
-    packages.modes_exposed: &customize_exposed
-      <<: *customize
+    package.node_anchors:
+      customize: &customize
+        package: 'house_mode'
 
-    packages.modes_contained: &customize_contained
-      <<: *customize
+      expose: &expose
+        <<: *customize
+        haaska_hidden: false
+        homebridge_hidden: false
 
-    input_boolean.night_mode:
-      <<: *customize
-      name: Nacht mode
-      icon: mdi:weather-night
-      persistent: true
+    ################################################
+    ## Group
+    ################################################
 
-    input_boolean.away_mode:
+    group.house_mode:
       <<: *customize
-      name: Iedereen van Huis
-      icon: mdi:security
-      persistent: true
+      friendly_name: "House Mode"
+      icon: mdi:home-variant
 
-    input_boolean.to_bed_mode:
-      <<: *customize
-      name: Naar bed
-      icon: mdi:hotel
-      persistent: true
+    ################################################
+    ## Input Boolean
+    ################################################
 
     input_boolean.guest_mode:
       <<: *customize
-      name: Gast mode
-      icon: mdi:account-multiple
-      persistent: true
+      friendly_name: "Guest Mode"
+      icon: mdi:account
+
+    input_boolean.vacation_mode:
+      <<: *customize
+      friendly_name: "Vacation Mode"
+      icon: mdi:beach
+
+    input_boolean.night_mode:
+      <<: *customize
+      friendly_name: "Night Mode"
+      icon: mdi:hotel
+
+    ################################################
+    ## Sensor
+    ################################################
+
+    sensor.household:
+      <<: *customize
+      friendly_name: "Household"
+
+    sensor.house_mode:
+      <<: *customize
+      friendly_name: "House Mode"
+
+################################################
+## Group
+################################################
+
+group:
+  house_mode:
+    control: hidden
+    entities:
+      - sensor.house_mode
+      - input_boolean.guest_mode
+      - input_boolean.vacation_mode
+      - input_boolean.night_mode
+      - sensor.household
+
+################################################
+## Input Boolean
+################################################
+
+input_boolean:
+  guest_mode:
+    initial: off
+
+  vacation_mode:
+    initial: off
+
+  night_mode:
+    persistent: true
+
+################################################
+## Sensor
+################################################
+
+sensor:
+  - platform: template
+    sensors:
+      household:
+        entity_id: group.household
+        value_template: >-
+          {% if is_state('group.household', 'home') %}
+            home
+          {% else %}
+            away
+          {% endif %}
+        icon_template: >-
+          {% if is_state('group.household', 'home') %}
+            mdi:home
+          {% else %}
+            mdi:home-outline
+          {% endif %}
+      house_mode:
+        entity_id:
+          - input_boolean.guest_mode
+          - input_boolean.vacation_mode
+          - sensor.household
+        value_template: >-
+          {% if is_state('input_boolean.guest_mode', 'on') %}
+            guest
+          {% elif is_state('sensor.household', 'home') %}
+            home
+          {% elif is_state('input_boolean.vacation_mode', 'on') %}
+            vacation
+          {% else %}
+            away
+          {% endif %}
+        icon_template: >-
+          {% if is_state('input_boolean.guest_mode', 'on') %}
+            mdi:account
+          {% elif is_state('sensor.household', 'home') %}
+            mdi:home
+          {% elif is_state('input_boolean.vacation_mode', 'on') %}
+            mdi:beach
+          {% else %}
+            mdi:home-outline
+          {% endif %}
