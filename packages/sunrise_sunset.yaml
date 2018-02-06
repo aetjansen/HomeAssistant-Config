@@ -19,10 +19,6 @@ homeassistant:
     packages.sunrise_sunset_contained: &customize_contained
       <<: *customize
 
-    group.sunrise_sunset:
-      <<: *customize_contained
-      friendly_name: "Sunrise Sunset"
-
 ################################################
 ## Group
 ################################################
