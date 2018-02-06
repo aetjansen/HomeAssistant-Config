@@ -53,12 +53,12 @@ mqtt:
 
 #tts:
 
-rfxtrx:
-  device: !secret rfxcom_config_path
+#rfxtrx:
+#  device: !secret rfxcom_config_path
 
 hue:
   bridges:
-    - host: !secret hue_bridge_ip 
+    - host: !secret hue_bridge_ip
 
 ################################################
 ## Component Includes (Single File)
