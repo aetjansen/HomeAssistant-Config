@@ -93,6 +93,7 @@ homeassistant:
 
     sensor.achterdeur_schakelaars_previous_reading_4_9:
       hidden: true
+
 ################################################
 ## Group
 ################################################
@@ -107,11 +108,9 @@ group:
       - switch.achterdeur_schakelaars_switch
       - switch.achterdeur_schakelaars_switch_2
 
-
 ################################################
 ## Sensor
 ################################################
-
 sensor:
   - platform: template
     sensors:
@@ -122,3 +121,63 @@ sensor:
             {% elif is_state("sensor.bijkeuken_sensor_burglar", "0") %}
                 Geen beweging
             {%- endif %}
+
+################################################
+## Automation
+################################################
+automation:
+
+  ################################################
+  ## Switch on lights in scullery when motion detected
+  ################################################
+  - alias: scullery_light_on_when_motion_detected
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.bijkeuken_sensor_burglar
+        from: '0'
+        to: '8'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'off'
+    action:
+      - service: homeassistant.turn_on
+        entity_id: switch.achterdeur_schakelaars_switch
+
+################################################
+## Switch off lights in scullery when motion detected
+################################################
+## Note: This is currently triggered by the "On Time" setting
+##       of the zwave sensor used. In future updates, this should be handled
+##       by a timer in this configuration. Triggered by the motion sensor,
+##       start a (configurable) timer, when that time has passed, switch light off.
+##       If timer expires and motion is still (or again) detected by sensor, reset
+##       timer and count again.
+################################################
+  - alias: scullery_light_off_when_motion_detected
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.bijkeuken_sensor_burglar
+        from: '8'
+        to: '0'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'off'
+    action:
+      - service: homeassistant.turn_off
+        entity_id: switch.achterdeur_schakelaars_switch
