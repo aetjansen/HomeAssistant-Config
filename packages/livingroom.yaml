@@ -258,7 +258,7 @@ automation:
           scene_id: 14
           object_id: woonkamer_dimmer_5
     action:
-      service: notify.ios_iphone_van_arno
-      data_template:
-        title: "Double Click detected!"
-        message: "Als dit werkt betekent het dat je kunt automatiseren als reactie op een dubbel klik van de fibaro dimmer 2!"
+      - service: light.toggle
+        data_template:
+          entity_id: light.multisensor1led
+          transition: 2
