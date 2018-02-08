@@ -200,8 +200,9 @@ sensor:
     value_template: '{{ value_json.heatIndex | round(1) }}'
 
   - platform: template
-    name: "livingroom_motion_detector"
-    value_template: >-
+    sensors:
+      livingroom_motion_detector:
+        value_template: >-
             {%- if is_state("livingroom_motion", "motion detected") %}
                 Beweging
             {% elif is_state("livingroom_motion", "standby") %}
