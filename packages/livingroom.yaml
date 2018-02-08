@@ -32,6 +32,10 @@ homeassistant:
 
     light.woonkamer_dimmer_level_5_0:
       <<: *customize_contained
+      hidden: true
+
+    light.woonkamer_dimmer_level:
+      <<: *customize_contained
       friendly_name: "Zithoek"
 
     sensor.woonkamer_dimmer_alarm_level:
@@ -124,30 +128,6 @@ homeassistant:
       icon: mdi:thermometer
       hidden: true
 
-
-################################################
-## Automation
-################################################
-
-automation:
-
-  ################################################
-  ## Notification at midnight with readings from the smart meter
-  ################################################
-  - alias: Notify_double_click_fibaro_dimmer
-    trigger:
-      - platform: event
-        event_type: zwave.scene_activated
-        event_data:
-          scene_id: 14
-          object_id: woonkamer_dimmer_5
-    action:
-      service: notify.ios_iphone_van_arno
-      data_template:
-        title: "Double Click detected!"
-        message: "Als dit werkt betekent het dat je kunt automatiseren als reactie op een dubbel klik van de fibaro dimmer 2!"
-
-
 ################################################
 ## Group
 ################################################
@@ -160,7 +140,7 @@ group:
       - sensor.livingroom_humidity
       - sensor.livingroom_lightlevel
       - light.multisensor1led
-      - light.woonkamer_dimmer_level_5_0
+      - light.woonkamer_dimmer_level
       - light.plafondlamp_speelkamer
       - light.iris
       - light.leeslamp
@@ -208,3 +188,77 @@ sensor:
             {% elif is_state("sensor.livingroom_motion", "standby") %}
                 Geen beweging
             {%- endif %}
+
+################################################
+## Automation
+################################################
+automation:
+  ################################################
+  ## Light dimmed on in hallway when motion detected and in night mode
+  ################################################
+  - alias: hallway_light_on_when_motion_detected
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.livingroom_motion
+        from: 'standby'
+        to: 'motion detected'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'off'
+    action:
+      - service: light.turn_on
+        data_template:
+          entity_id: light.woonkamer_dimmer_level
+          transition: 1
+          brightness: 25
+
+  ################################################
+  ## Hhallway light off when motion no longer detected and in night mode
+  ################################################
+  - alias: hallway_light_off_when_no_motion_detected
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.livingroom_motion
+        from: 'motion detected'
+        to: 'standby'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'on'
+    action:
+      - service: light.turn_on
+        data_template:
+          entity_id: light.woonkamer_dimmer_level
+          transition: 1
+          brightness: 0
+
+  ################################################
+  ## Notification at midnight with readings from the smart meter
+  ################################################
+  - alias: Notify_double_click_fibaro_dimmer
+    trigger:
+      - platform: event
+        event_type: zwave.scene_activated
+        event_data:
+          scene_id: 14
+          object_id: woonkamer_dimmer_5
+    action:
+      service: notify.ios_iphone_van_arno
+      data_template:
+        title: "Double Click detected!"
+        message: "Als dit werkt betekent het dat je kunt automatiseren als reactie op een dubbel klik van de fibaro dimmer 2!"
