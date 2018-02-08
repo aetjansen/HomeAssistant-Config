@@ -203,8 +203,8 @@ sensor:
     sensors:
       livingroom_motion_detector:
         value_template: >-
-            {%- if is_state("livingroom_motion", "motion detected") %}
+            {%- if is_state("sensor.livingroom_motion", "motion detected") %}
                 Beweging
-            {% elif is_state("livingroom_motion", "standby") %}
+            {% elif is_state("sensor.livingroom_motion", "standby") %}
                 Geen beweging
             {%- endif %}
