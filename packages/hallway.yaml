@@ -67,7 +67,6 @@ group:
 ################################################
 ## Sensor
 ################################################
-
 sensor:
   - platform: template
     sensors:
@@ -78,3 +77,115 @@ sensor:
             {% elif is_state("sensor.hal_sensor_burglar", "0") %}
                 Geen beweging
             {%- endif %}
+
+################################################
+## Automation
+################################################
+automation:
+  ################################################
+  ## Increase brightness in hallway when motion detected and not in night mode
+  ################################################
+  - alias: hallway_light_on_when_motion_detected
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.hal_sensor_burglar
+        from: '0'
+        to: '8'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'off'
+    action:
+      - service: light.turn_on
+        data_template:
+          entity_id: light.hal
+          transition: 1
+          brightness: 255
+
+  ################################################
+  ## Decrease brightness in hallway when motion no longer detected and not in night mode
+  ################################################
+  - alias: hallway_light_off_when_no_motion_detected
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.hal_sensor_burglar
+        from: '8'
+        to: '0'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'off'
+    action:
+      - service: light.turn_on
+        data_template:
+          entity_id: light.hal
+          transition: 1
+          brightness: 50
+
+  ################################################
+  ## Light dimmed on in hallway when motion detected and in night mode
+  ################################################
+  - alias: hallway_light_on_when_motion_detected
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.hal_sensor_burglar
+        from: '0'
+        to: '8'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'off'
+    action:
+      - service: light.turn_on
+        data_template:
+          entity_id: light.hal
+          transition: 1
+          brightness: 25
+
+  ################################################
+  ## Hhallway light off when motion no longer detected and in night mode
+  ################################################
+  - alias: hallway_light_off_when_no_motion_detected
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.hal_sensor_burglar
+        from: '8'
+        to: '0'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'on'
+    action:
+      - service: light.turn_on
+        data_template:
+          entity_id: light.hal
+          transition: 1
+          brightness: 0
