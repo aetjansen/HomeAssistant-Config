@@ -88,6 +88,43 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Leeslamp"
 
+    ### LIvingroom Multisensor
+    sensor.livingroom_motion_detector:
+      <<: *customize_contained
+      friendly_name: "Beweging"
+      device_class: motion
+      icon: mdi:walk
+
+    sensor.livingroom_motion:
+      <<: *customize_contained
+      friendly_name: "Beweging"
+      device_class: motion
+      icon: mdi:walk
+      hidden: true
+
+    sensor.livingroom_temperature:
+      <<: *customize_contained
+      friendly_name: "Temperatuur"
+      icon: mdi:thermometer
+
+    sensor.livingroom_humidity:
+      <<: *customize_contained
+      friendly_name: "Luchtvochtigheid"
+      device_class: moisture
+      icon: mdi:water-percent
+
+    sensor.livingroom_lightlevel:
+      <<: *customize_contained
+      friendly_name: "Lichtniveau"
+      icon: mdi:theme-light-dark
+
+    sensor.livingroom_heatindex:
+      <<: *customize_contained
+      friendly_name: "Lichtniveau"
+      icon: mdi:thermometer
+      hidden: true
+
+
 ################################################
 ## Automation
 ################################################
@@ -118,11 +155,11 @@ group:
   livingroom:
     control: hidden
     entities:
-      - sensor.sn1_luchtvochtigheid
-      - sensor.sn1_lichtniveau
-      - sensor.sn1_beweging
-      - sensor.sn1_temperatuur
-      - sensor.sn1_gevoelstemperatuur
+      - sensor.livingroom_motion_detector
+      - sensor.livingroom_temperature
+      - sensor.livingroom_humidity
+      - sensor.livingroom_lightlevel
+      - light.multisensor1led
       - light.woonkamer_dimmer_level_5_0
       - light.plafondlamp_speelkamer
       - light.iris
@@ -134,30 +171,39 @@ group:
 sensor:
   - platform: mqtt
     state_topic: "ahpaleis/multisensor1"
-    name: "SN1 Luchtvochtigheid"
+    name: "livingroom_humidity"
     unit_of_measurement: "%"
     value_template: '{{ value_json.humidity | round(1) }}'
 
   - platform: mqtt
     state_topic: "ahpaleis/multisensor1"
-    name: "SN1 Lichtniveau"
+    name: "livingroom_lightlevel"
     ##This sensor is not calibrated to actual LUX. Rather, this a map of the input voltage ranging from 0 - 1023.
-    unit_of_measurement: "LUX"
+    unit_of_measurement: "Lux"
     value_template: '{{ value_json.ldr }}'
 
   - platform: mqtt
     state_topic: "ahpaleis/multisensor1"
-    name: "SN1 Beweging"
+    name: "livingroom_motion"
     value_template: '{{ value_json.motion }}'
 
   - platform: mqtt
     state_topic: "ahpaleis/multisensor1"
-    name: "SN1 Temperatuur"
+    name: "livingroom_temperature"
     unit_of_measurement: "°C"
     value_template: '{{ value_json.temperature | round(1) }}'
 
   - platform: mqtt
     state_topic: "ahpaleis/multisensor1"
-    name: "SN1 Gevoelstemperatuur"
+    name: "livingroom_heatindex"
     unit_of_measurement: "°C"
     value_template: '{{ value_json.heatIndex | round(1) }}'
+
+  - platform: template
+    name: "livingroom_motion_detector"
+    value_template: >-
+            {%- if is_state("livingroom_motion", "motion detected") %}
+                Beweging
+            {% elif is_state("livingroom_motion", "standby") %}
+                Geen beweging
+            {%- endif %}
