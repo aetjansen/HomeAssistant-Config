@@ -156,7 +156,7 @@ sensor:
     unit_of_measurement: "°C"
     value_template: '{{ value_json.temperature | round(1) }}'
 
- - platform: mqtt
+  - platform: mqtt
     state_topic: "ahpaleis/multisensor1"
     name: "SN1 Gevoelstemperatuur"
     unit_of_measurement: "°C"
