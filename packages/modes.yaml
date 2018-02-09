@@ -27,7 +27,7 @@ homeassistant:
 
     group.house_mode:
       <<: *customize
-      friendly_name: "House Mode"
+      friendly_name: "Huis Mode"
       icon: mdi:home-variant
 
     ################################################
@@ -36,17 +36,22 @@ homeassistant:
 
     input_boolean.guest_mode:
       <<: *customize
-      friendly_name: "Guest Mode"
+      friendly_name: "Gast Mode"
       icon: mdi:account
 
     input_boolean.vacation_mode:
       <<: *customize
-      friendly_name: "Vacation Mode"
+      friendly_name: "Vakantie Mode"
       icon: mdi:beach
 
     input_boolean.night_mode:
       <<: *customize
       friendly_name: "Night Mode"
+      icon: mdi:hotel
+
+    input_boolean.to_bed_mode:
+      <<: *customize
+      friendly_name: "Naar bed Mode"
       icon: mdi:hotel
 
     ################################################
@@ -89,10 +94,12 @@ input_boolean:
   night_mode:
     initial: off
 
+  to_bed_mode:
+    initial: off
+
 ################################################
 ## Sensor
 ################################################
-
 sensor:
   - platform: template
     sensors:
@@ -135,3 +142,63 @@ sensor:
           {% else %}
             mdi:home-outline
           {% endif %}
+
+################################################
+## Automation
+################################################
+automation:
+  - alias: Night Mode enabled, alles uit
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: input_boolean.night_mode
+        to: 'on'
+    action:
+      - service: homeassistant.turn_off
+        entity_id:
+          -  group.all_lights
+          -  group.all_switches
+
+  - alias: Turn on dimmed hallway and upstairs lights and turn everything off after 15 minutes
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: input_boolean.to_bed_mode
+        to: 'on'
+    action:
+      - service: homeassistant.turn_on
+        entity_id: script.timed_lamp
+      - service: remote.turn_off
+        entity_id: remote.woonkamer
+      - service: homeassistant.turn_off
+        entity_id: group.mediaplayers
+
+  - alias: If night mode is active, arm the house for the start of the day at 6 am
+    initial_state: 'on'
+    trigger:
+      - platform: time
+        after: '06:00:00'
+    action:
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.night_mode
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.first_movement_of_the_day
+
+# If first_movement_of_the_day is armed, but not triggered at 9am, unarm (switch input_boolean off)
+# This prevents the automation to be triggered in the evening when the sun goes down in case the sun was already up before 6 am (when the input_boolean was armed)
+
+  - alias: If first_movement_of_the_day is not triggered at 9am, unarm.
+    initial_state: 'on'
+    trigger:
+      platform: sun
+      event: sunrise
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: 'input_boolean.first_movement_of_the_day'
+          state: 'on'
+    action:
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.first_movement_of_the_day
