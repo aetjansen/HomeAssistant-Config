@@ -115,4 +115,4 @@ switch: !include_dir_merge_list switch
 #input_boolean: !include_dir_merge_named input_boolean
 #input_slider: !include_dir_merge_named input_slider
 #panel_iframe: !include_dir_merge_named panel_iframe
-#script: !include_dir_merge_named script
+script: !include_dir_merge_named script
