@@ -43,6 +43,6 @@
 ## Sonos
 ################################################
 - platform: sonos
-  hosts: 10.0.1.31
   name: KitchenSonos
+  friendly_name: "Sonos keuken"
   #interface_addr: 10.0.1.31
