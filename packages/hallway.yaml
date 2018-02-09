@@ -85,7 +85,7 @@ automation:
   ################################################
   ## Increase brightness in hallway when motion detected and not in night mode
   ################################################
-  - alias: hallway_light_on_when_motion_detected
+  - alias: when_motion_detected_brighten_light
     initial_state: 'on'
     hide_entity: False
     trigger:
@@ -103,16 +103,16 @@ automation:
           entity_id: 'input_boolean.night_mode'
           state: 'off'
     action:
-      - service: light.turn_on
+      - service: python_script.dimmer
         data_template:
           entity_id: light.hal
-          transition: 1
-          brightness: 255
+          action: dim_up
+          level: 150
 
   ################################################
   ## Decrease brightness in hallway when motion no longer detected and not in night mode
   ################################################
-  - alias: hallway_light_off_when_no_motion_detected
+  - alias: when_no_more_motion_dim_light
     initial_state: 'on'
     hide_entity: False
     trigger:
@@ -130,11 +130,12 @@ automation:
           entity_id: 'input_boolean.night_mode'
           state: 'off'
     action:
-      - service: light.turn_on
-        data_template:
-          entity_id: light.hal
-          transition: 1
-          brightness: 50
+      action:
+        - service: python_script.dimmer
+          data_template:
+            entity_id: light.hal
+            action: dim_down
+            level: 150
 
   ################################################
   ## Light dimmed on in hallway when motion detected and in night mode
@@ -155,13 +156,13 @@ automation:
           state: 'below_horizon'
         - condition: state
           entity_id: 'input_boolean.night_mode'
-          state: 'off'
+          state: 'on'
     action:
-      - service: light.turn_on
+      - service: python_script.dimmer
         data_template:
           entity_id: light.hal
-          transition: 1
-          brightness: 25
+          action: dim_up
+          level: 25
 
   ################################################
   ## Hhallway light off when motion no longer detected and in night mode
@@ -184,8 +185,8 @@ automation:
           entity_id: 'input_boolean.night_mode'
           state: 'on'
     action:
-      - service: light.turn_on
+      - service: python_script.dimmer
         data_template:
           entity_id: light.hal
-          transition: 1
-          brightness: 0
+          action: dim_down
+          level: 25
