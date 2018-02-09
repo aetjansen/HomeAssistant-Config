@@ -98,6 +98,7 @@ homeassistant:
       friendly_name: "Arno's mobiel accu"
       icon: mdi:battery
 
+
     sensor.iphone_van_arno_battery_state:
       <<: *customize_contained
       friendly_name: "Arno's mobiel oplader"
