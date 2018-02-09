@@ -91,7 +91,6 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.hal_sensor_burglar
-        from: '0'
         to: '8'
     condition:
       condition: and
@@ -106,6 +105,11 @@ automation:
       - service: python_script.dimmer
         data_template:
           entity_id: light.hal
+          action: dim_up
+          level: 150
+      - service: python_script.dimmer
+        data_template:
+          entity_id: light.verloop
           action: dim_up
           level: 150
 
@@ -118,8 +122,9 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.hal_sensor_burglar
-        from: '8'
         to: '0'
+        for:
+          minutes: 5
     condition:
       condition: and
       conditions:
@@ -135,6 +140,11 @@ automation:
           entity_id: light.hal
           action: dim_down
           level: 150
+      - service: python_script.dimmer
+        data_template:
+          entity_id: light.verloop
+          action: dim_down
+          level: 150
 
   ################################################
   ## Light dimmed on in hallway when motion detected and in night mode
@@ -145,7 +155,6 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.hal_sensor_burglar
-        from: '0'
         to: '8'
     condition:
       condition: and
@@ -161,7 +170,12 @@ automation:
         data_template:
           entity_id: light.hal
           action: dim_up
-          level: 25
+          level: 10
+      - service: python_script.dimmer
+        data_template:
+          entity_id: light.overloop
+          action: dim_up
+          level: 10
 
   ################################################
   ## Hhallway light off when motion no longer detected and in night mode
@@ -172,8 +186,9 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.hal_sensor_burglar
-        from: '8'
         to: '0'
+        for:
+          minutes: 5
     condition:
       condition: and
       conditions:
@@ -188,4 +203,9 @@ automation:
         data_template:
           entity_id: light.hal
           action: dim_down
-          level: 25
+          level: 10
+      - service: python_script.dimmer
+        data_template:
+          entity_id: light.overloop
+          action: dim_down
+          level: 10
