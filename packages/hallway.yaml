@@ -130,12 +130,11 @@ automation:
           entity_id: 'input_boolean.night_mode'
           state: 'off'
     action:
-      action:
-        - service: python_script.dimmer
-          data_template:
-            entity_id: light.hal
-            action: dim_down
-            level: 150
+      - service: python_script.dimmer
+        data_template:
+          entity_id: light.hal
+          action: dim_down
+          level: 150
 
   ################################################
   ## Light dimmed on in hallway when motion detected and in night mode
