@@ -23,8 +23,8 @@ discovery:
     - sonos
     - samsung_tv
     - google_cast
-ios:
-  
+#ios:
+
 ################################################
 ## Components (Non-Includes)
 ################################################
@@ -57,7 +57,9 @@ mqtt:
 #influxdb:
 #  host: !secret influxDB_host
 
-#tts:
+tts:
+  - platform: google
+    language: 'nl'
 
 hue:
   bridges:
