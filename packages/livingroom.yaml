@@ -194,9 +194,9 @@ sensor:
 ################################################
 automation:
   ################################################
-  ## Light dimmed on in hallway when motion detected and in night mode
+  ## Light dimmed on in livingroom when motion detected and in night mode
   ################################################
-  - alias: hallway_light_on_when_motion_detected
+  - alias: livingroom_light_on_when_motion_detected
     initial_state: 'on'
     hide_entity: False
     trigger:
@@ -212,7 +212,7 @@ automation:
           state: 'below_horizon'
         - condition: state
           entity_id: 'input_boolean.night_mode'
-          state: 'off'
+          state: 'on'
     action:
       - service: light.turn_on
         data_template:
@@ -221,16 +221,17 @@ automation:
           brightness: 25
 
   ################################################
-  ## Hhallway light off when motion no longer detected and in night mode
+  ## Livingroom light off when motion no longer detected and in night mode
   ################################################
-  - alias: hallway_light_off_when_no_motion_detected
+  - alias: livingroom_light_off_when_no_motion_detected
     initial_state: 'on'
     hide_entity: False
     trigger:
       - platform: state
         entity_id: sensor.livingroom_motion
-        from: 'motion detected'
         to: 'standby'
+        for:
+          minutes: 15
     condition:
       condition: and
       conditions:
