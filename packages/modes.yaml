@@ -178,7 +178,7 @@ automation:
     initial_state: 'on'
     trigger:
       - platform: time
-        after: '06:00:00'
+        at: '06:00:00'
     action:
       - service: homeassistant.turn_off
         entity_id: input_boolean.night_mode
