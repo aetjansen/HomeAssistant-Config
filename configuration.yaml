@@ -14,10 +14,15 @@ homeassistant:
 
 config:
 conversation:
-# discovery:
 frontend:
 history:
 sun:
+python_script:
+discovery:
+  ignore:
+    - sonos
+    - samsung_tv
+    - google_cast
 
 ################################################
 ## Components (Non-Includes)
