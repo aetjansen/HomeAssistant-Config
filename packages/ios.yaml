@@ -2,7 +2,7 @@
 ## iOS
 ################################################################
 
-ios:
+#ios:
 #  push:
 #    categories:
 #      - name: Weather Forecast
