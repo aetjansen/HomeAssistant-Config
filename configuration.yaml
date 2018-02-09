@@ -23,7 +23,7 @@ discovery:
     - sonos
     - samsung_tv
     - google_cast
-#ios:
+ios:
 
 ################################################
 ## Components (Non-Includes)
