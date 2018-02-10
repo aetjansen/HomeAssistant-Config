@@ -59,10 +59,20 @@ automation:
       - service: light.turn_on
         data_template:
           entity_id: light.hal
-          transition: 2
-          brightness: 50
+          transition: 600
+          brightness: 150
       - service: light.turn_on
         data_template:
           entity_id: light.overloop
-          transition: 2
-          brightness: 50
+          transition: 600
+          brightness: 150
+      - service: light.turn_on
+        data_template:
+          entity_id: light.woonkamer_dimmer_level
+          transition: 900
+          brightness: 200
+      - service: light.turn_on
+        data_template:
+          entity_id: light.leeslamp
+          transition: 900
+          brightness: 200
