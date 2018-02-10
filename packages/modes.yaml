@@ -47,7 +47,7 @@ homeassistant:
     input_boolean.night_mode:
       <<: *customize
       friendly_name: "Night Mode"
-      icon: mdi:hotel
+      icon: mdi:brightness-3
 
     input_boolean.to_bed_mode:
       <<: *customize
@@ -60,11 +60,11 @@ homeassistant:
 
     sensor.household:
       <<: *customize
-      friendly_name: "Household"
+      friendly_name: "Familie"
 
     sensor.house_mode:
       <<: *customize
-      friendly_name: "House Mode"
+      friendly_name: "Huis Mode"
 
 ################################################
 ## Group
@@ -77,6 +77,7 @@ group:
       - sensor.house_mode
       - input_boolean.guest_mode
       - input_boolean.vacation_mode
+      - input_boolean.to_bed_mode
       - input_boolean.night_mode
       - sensor.household
 
@@ -107,9 +108,9 @@ sensor:
         entity_id: group.household
         value_template: >-
           {% if is_state('group.household', 'home') %}
-            home
+            Thuis
           {% else %}
-            away
+            Weg
           {% endif %}
         icon_template: >-
           {% if is_state('group.household', 'home') %}
@@ -124,13 +125,13 @@ sensor:
           - sensor.household
         value_template: >-
           {% if is_state('input_boolean.guest_mode', 'on') %}
-            guest
+            Gasten
           {% elif is_state('sensor.household', 'home') %}
-            home
+            Thuis
           {% elif is_state('input_boolean.vacation_mode', 'on') %}
-            vacation
+            Op vakantie
           {% else %}
-            away
+            Afwezig
           {% endif %}
         icon_template: >-
           {% if is_state('input_boolean.guest_mode', 'on') %}
