@@ -278,15 +278,15 @@ automation:
       - service: input_number.set_value
         data_template:
           entity_id: input_number.24hour_power_consumption_low_tarrif
-          value: "{{ ((states.sensor.power_consumption_low.state  | float) - states('input_number.low_tariff_meter_value_at_midnight') | float )}}"
+          value: "{{ (((states.sensor.power_consumption_low.state  | float) - states('input_number.low_tariff_meter_value_at_midnight') | float ) | round(3))}}"
       - service: input_number.set_value
         data_template:
           entity_id: input_number.24hour_power_consumption_normal_tarrif
-          value: "{{ ((states.sensor.power_consumption_normal.state  | float) - states('input_number.normal_tariff_meter_value_at_midnight') | float )}}"
+          value: "{{ (((states.sensor.power_consumption_normal.state  | float) - states('input_number.normal_tariff_meter_value_at_midnight') | float ) | round(3))}}"
       - service: input_number.set_value
         data_template:
           entity_id: input_number.24hour_gas_consumption
-          value: "{{ ((states.sensor.gas_consumption.state  | float) - states('input_number.gas_meter_value_at_midnight') | float )}}"
+          value: "{{ (((states.sensor.gas_consumption.state  | float) - states('input_number.gas_meter_value_at_midnight') | float ) | round(3))}}"
       - service: input_number.set_value
         data_template:
           entity_id: input_number.normal_tariff_meter_value_at_midnight
