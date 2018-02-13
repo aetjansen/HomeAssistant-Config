@@ -162,7 +162,7 @@ group:
 ################################################
 ## Input Numbers
 ################################################
-input_select:
+input_number:
   low_tariff_meter_value_at_midnight:
     name: low_tariff_meter_value_at_midnight
     mode: box
