@@ -80,6 +80,8 @@ sensor:
 
 ################################################
 ## Automation
+## Note: turning on lights when the sun sets, is programmed in
+## a separate file: sunrise_sunset.yaml
 ################################################
 automation:
   ################################################
@@ -170,15 +172,15 @@ automation:
         data_template:
           entity_id: light.hal
           action: dim_up
-          level: 10
+          level: 1
       - service: python_script.dimmer
         data_template:
           entity_id: light.overloop
           action: dim_up
-          level: 10
+          level: 1
 
   ################################################
-  ## Hhallway light off when motion no longer detected and in night mode
+  ## Hallway light off when motion no longer detected and in night mode
   ################################################
   - alias: hallway_light_off_when_no_motion_detected
     initial_state: 'on'
@@ -199,13 +201,13 @@ automation:
           entity_id: 'input_boolean.night_mode'
           state: 'on'
     action:
-      - service: python_script.dimmer
+      - service: light.turn_on
         data_template:
           entity_id: light.hal
-          action: dim_down
-          level: 10
-      - service: python_script.dimmer
+          transition: 5
+          brightness: 0
+      - service: light.turn_on
         data_template:
           entity_id: light.overloop
-          action: dim_down
-          level: 10
+          transition: 5
+          brightness: 0
