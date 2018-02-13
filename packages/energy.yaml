@@ -131,27 +131,6 @@ homeassistant:
       icon: mdi:flash
 
 ################################################
-## Automation
-################################################
-
-automation:
-
-  ################################################
-  ## Notification at midnight with readings from the smart meter
-  ################################################
-  - alias: notify_meter_readings_at_midnight
-    initial_state: 'on'
-    trigger:
-      - platform: time
-        at: '23:59:00'
-    action:
-      service: notify.pushover
-      data_template:
-        title: "Meterstanden"
-        message: "Hoog: {{ states.sensor.power_consumption_normal.state }}, Laag: {{ states.sensor.power_consumption_low.state }}, Gas: {{ states.sensor.gas_consumption.state }}. Min-temp: {{ states.sensor.dark_sky_daily_low_temperature.state }}, Max-temp: {{ states.sensor.dark_sky_daily_high_temperature.state }}"
-
-
-################################################
 ## Group
 ################################################
 group:
@@ -181,9 +160,40 @@ group:
       - sensor.achterdeur_schakelaars_power_2      # Backdoor outside light
 
 ################################################
+## Input Numbers
+################################################
+input_select:
+  low_tariff_meter_value_at_midnight:
+    name: low_tariff_meter_value_at_midnight
+    mode: box
+    unit_of_measurement: kWh
+    icon: mdi-flash
+  normal_tariff_meter_value_at_midnight:
+    name: normal_tariff_meter_value_at_midnight
+    mode: box
+    unit_of_measurement: kWh
+    icon: mdi-flash
+  gas_meter_value_at_midnight:
+    name: gas_meter_value_at_midnight
+    mode: box
+    unit_of_measurement: m3
+  24hour_power_consumption_low_tarrif:
+    name: 24hour_power_consumption_low_tarrif
+    mode: box
+    unit_of_measurement: kWh
+    icon: mdi-flash
+  24hour_power_consumption_normal_tarrif:
+    name: 24hour_power_consumption_normal_tarrif
+    mode: box
+    unit_of_measurement: kWh
+    icon: mdi-flash
+  24hour_gas_consumption:
+    name: 24hour_gas_consumption
+    mode: box
+    unit_of_measurement: m3
+################################################
 ## Sensor
 ################################################
-
 sensor:
   - platform: dsmr
     port: /dev/slimmemeter
@@ -203,3 +213,34 @@ sensor:
           {% if now().hour == 0 and now().minute == 0 %}
             {{ states.sensor.power_consumption_low.attributes.value | float }}
           {%- endif %}
+
+################################################
+## Automation
+################################################
+automation:
+  ################################################
+  ## Notification at midnight with readings from the smart meter
+  ################################################
+  - alias: notify_meter_readings_at_midnight
+    initial_state: 'on'
+    trigger:
+      - platform: time
+        at: '23:59:00'
+    action:
+      service: notify.pushover
+      data_template:
+        title: "Meterstanden"
+        message: "Hoog: {{ states.sensor.power_consumption_normal.state }}, Laag: {{ states.sensor.power_consumption_low.state }}, Gas: {{ states.sensor.gas_consumption.state }}. Min-temp: {{ states.sensor.dark_sky_daily_low_temperature.state }}, Max-temp: {{ states.sensor.dark_sky_daily_high_temperature.state }}"
+  ################################################
+  ## Store meter readings at midnight so that power consumption per day can be caculated
+  ################################################
+  - alias: store_meter_readings_at_midnight
+    initial_state: 'on'
+    trigger:
+      - platform: time
+        at: '00:00:01'
+    action:
+      service: notify.pushover
+      data_template:
+        title: "Meterstanden"
+        message: "Hoog: {{ states.sensor.power_consumption_normal.state }}, Laag: {{ states.sensor.power_consumption_low.state }}, Gas: {{ states.sensor.gas_consumption.state }}. Min-temp: {{ states.sensor.dark_sky_daily_low_temperature.state }}, Max-temp: {{ states.sensor.dark_sky_daily_high_temperature.state }}"
