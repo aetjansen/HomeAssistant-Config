@@ -247,11 +247,6 @@ sensor:
             {% elif is_state("sensor.power_tariff", "normal") %}
                 Normaal (€ 0,1781/kWh)
             {%- endif %}
-      low_tariff_meter_value_at_midnight:
-        value_template: >
-          {% if now().hour == 0 and now().minute == 0 %}
-            {{ states.sensor.power_consumption_low.attributes.value | float }}
-          {%- endif %}
 
 ################################################
 ## Automation
@@ -270,6 +265,7 @@ automation:
       data_template:
         title: "Meterstanden"
         message: "Hoog: {{ states.sensor.power_consumption_normal.state }}, Laag: {{ states.sensor.power_consumption_low.state }}, Gas: {{ states.sensor.gas_consumption.state }}. Min-temp: {{ states.sensor.dark_sky_daily_low_temperature.state }}, Max-temp: {{ states.sensor.dark_sky_daily_high_temperature.state }}"
+
   ################################################
   ## Store meter readings at midnight so that power consumption per day can be caculated
   ################################################
@@ -277,7 +273,7 @@ automation:
     initial_state: 'on'
     trigger:
       - platform: time
-        at: '00:00:01'
+        at: '00:00:00'
     action:
       - service: input_number.set_value
         data_template:
@@ -289,9 +285,21 @@ automation:
           value: "{{ ((states.sensor.power_consumption_normal.state  | float) - states('input_number.normal_tariff_meter_value_at_midnight') | float )}}"
       - service: input_number.set_value
         data_template:
-          entity_id: input_number.low_tariff_meter_value_at_midnight
-          value: "{{ states.sensor.power_consumption_low.state }}"
+          entity_id: input_number.24hour_gas_consumption
+          value: "{{ ((states.sensor.gas_consumption.state  | float) - states('input_number.gas_meter_value_at_midnight') | float )}}"
       - service: input_number.set_value
         data_template:
           entity_id: input_number.normal_tariff_meter_value_at_midnight
           value: "{{ states.sensor.power_consumption_normal.state }}"
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.low_tariff_meter_value_at_midnight
+          value: "{{ states.sensor.power_consumption_low.state }}"
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.gas_meter_value_at_midnight
+          value: "{{ states.sensor.gas_consumption.state.state }}"
+      - service: notify.pushover
+        data_template:
+          title: "Meterstanden"
+          message: "Hoog: {{ states('input_number.24hour_power_consumption_normal_tarrif') }}, Laag: {{ states('input_number.24hour_power_consumption_low_tarrif') }}, Gas: {{ input_number.24hour_gas_consumption }}. Min-temp: {{ states.sensor.pws_temp_low_1d_c.state }}, Max-temp: {{ states.sensor.pws_temp_high_1d_c.state }}"
