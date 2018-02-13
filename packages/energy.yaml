@@ -130,6 +130,36 @@ homeassistant:
       friendly_name: "Gemiddeld stroomverbruik"
       icon: mdi:flash
 
+    input_number.low_tariff_meter_value_at_midnight:
+      <<: *customize_contained
+      persistent: true
+      icon: mdi:flash
+
+    input_number.normal_tariff_meter_value_at_midnight:
+      <<: *customize_contained
+      persistent: true
+      icon: mdi:flash
+
+    input_number.gas_meter_value_at_midnight:
+      <<: *customize_contained
+      persistent: true
+      icon: mdi:flash
+
+    input_number.24hour_power_consumption_low_tarrif:
+      <<: *customize_contained
+      persistent: true
+      icon: mdi:flash
+
+    input_number.24hour_power_consumption_normal_tarrif:
+      <<: *customize_contained
+      persistent: true
+      icon: mdi:flash
+
+    input_number.24hour_gas_consumption:
+      <<: *customize_contained
+      persistent: true
+      icon: mdi:flash
+
 ################################################
 ## Group
 ################################################
@@ -169,14 +199,12 @@ input_number:
     min: 0
     max: 10000
     unit_of_measurement: kWh
-    icon: mdi:flash
   normal_tariff_meter_value_at_midnight:
     name: normal_tariff_meter_value_at_midnight
     mode: box
     min: 0
     max: 10000
     unit_of_measurement: kWh
-    icon: mdi:flash
   gas_meter_value_at_midnight:
     name: gas_meter_value_at_midnight
     mode: box
@@ -189,14 +217,12 @@ input_number:
     min: 0
     max: 10000
     unit_of_measurement: kWh
-    icon: mdi:flash
   24hour_power_consumption_normal_tarrif:
     name: 24hour_power_consumption_normal_tarrif
     mode: box
     min: 0
     max: 10000
     unit_of_measurement: kWh
-    icon: mdi:flash
   24hour_gas_consumption:
     name: 24hour_gas_consumption
     mode: box
@@ -253,7 +279,19 @@ automation:
       - platform: time
         at: '00:00:01'
     action:
-      service: notify.pushover
-      data_template:
-        title: "Meterstanden"
-        message: "Hoog: {{ states.sensor.power_consumption_normal.state }}, Laag: {{ states.sensor.power_consumption_low.state }}, Gas: {{ states.sensor.gas_consumption.state }}. Min-temp: {{ states.sensor.dark_sky_daily_low_temperature.state }}, Max-temp: {{ states.sensor.dark_sky_daily_high_temperature.state }}"
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.24hour_power_consumption_low_tarrif
+          value: "{{ ((states.sensor.power_consumption_low.state  | float) - states('input_number.low_tariff_meter_value_at_midnight') | float )}}"
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.24hour_power_consumption_normal_tarrif
+          value: "{{ ((states.sensor.power_consumption_normal.state  | float) - states('input_number.normal_tariff_meter_value_at_midnight') | float )}}"
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.low_tariff_meter_value_at_midnight
+          value: "{{ states.sensor.power_consumption_low.state }}"
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.normal_tariff_meter_value_at_midnight
+          value: "{{ states.sensor.power_consumption_normal.state }}"
