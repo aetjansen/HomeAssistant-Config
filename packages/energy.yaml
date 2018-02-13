@@ -202,3 +202,4 @@ sensor:
         value_template: >
           {% if now().hour == 0 and now().minute == 0 %}
             {{ states.sensor.power_consumption_low.attributes.value | float }}
+          {%- endif %}
