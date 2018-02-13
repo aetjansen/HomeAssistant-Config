@@ -298,7 +298,7 @@ automation:
       - service: input_number.set_value
         data_template:
           entity_id: input_number.gas_meter_value_at_midnight
-          value: "{{ states.sensor.gas_consumption.state.state }}"
+          value: "{{ states.sensor.gas_consumption.state }}"
       - service: notify.pushover
         data_template:
           title: "Meterstanden"
