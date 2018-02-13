@@ -302,4 +302,4 @@ automation:
       - service: notify.pushover
         data_template:
           title: "Meterstanden"
-          message: "Hoog: {{ states('input_number.24hour_power_consumption_normal_tarrif') }}, Laag: {{ states('input_number.24hour_power_consumption_low_tarrif') }}, Gas: {{ states('input_number.24hour_gas_consumption') }}. Min-temp: {{ states.sensor.pws_temp_low_1d_c.state }}, Max-temp: {{ states.sensor.pws_temp_high_1d_c.state }}"
+          message: "Verbruikt op {{ now().year }}-{{ now().month }}-{{ (now().day)-1 }}. Hoog: {{ states('input_number.24hour_power_consumption_normal_tarrif') }}, Laag: {{ states('input_number.24hour_power_consumption_low_tarrif') }}, Gas: {{ states('input_number.24hour_gas_consumption') }}. Min-temp: {{ states.sensor.pws_temp_low_1d_c.state }}, Max-temp: {{ states.sensor.pws_temp_high_1d_c.state }}"
