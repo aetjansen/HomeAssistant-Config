@@ -198,3 +198,7 @@ sensor:
             {% elif is_state("sensor.power_tariff", "normal") %}
                 Normaal (€ 0,1781/kWh)
             {%- endif %}
+      low_tariff_meter_value_at_midnight:
+        value_template: >
+          {% if now().hour == 0 and now().minute == 0 %}
+            {{ states.sensor.power_consumption_low.attributes.value | float }}
