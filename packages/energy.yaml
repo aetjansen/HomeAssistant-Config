@@ -167,12 +167,12 @@ input_number:
     name: low_tariff_meter_value_at_midnight
     mode: box
     unit_of_measurement: kWh
-    icon: mdi-flash
+    icon: mdi:flash
   normal_tariff_meter_value_at_midnight:
     name: normal_tariff_meter_value_at_midnight
     mode: box
     unit_of_measurement: kWh
-    icon: mdi-flash
+    icon: mdi:flash
   gas_meter_value_at_midnight:
     name: gas_meter_value_at_midnight
     mode: box
@@ -181,16 +181,17 @@ input_number:
     name: 24hour_power_consumption_low_tarrif
     mode: box
     unit_of_measurement: kWh
-    icon: mdi-flash
+    icon: mdi:flash
   24hour_power_consumption_normal_tarrif:
     name: 24hour_power_consumption_normal_tarrif
     mode: box
     unit_of_measurement: kWh
-    icon: mdi-flash
+    icon: mdi:flash
   24hour_gas_consumption:
     name: 24hour_gas_consumption
     mode: box
     unit_of_measurement: m3
+
 ################################################
 ## Sensor
 ################################################
