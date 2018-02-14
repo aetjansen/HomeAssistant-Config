@@ -88,7 +88,7 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Iris"
 
-    light.leeslamp:
+    light.overloop_2:
       <<: *customize_contained
       friendly_name: "Leeslamp"
 
@@ -143,7 +143,7 @@ group:
       - light.woonkamer_dimmer_level
       - light.plafondlamp_speelkamer
       - light.iris
-      - light.leeslamp
+      - light.overloop_2
 
 ################################################
 ## Sensor
@@ -283,7 +283,7 @@ automation:
           brightness: 255
       - service: light.turn_on
         data_template:
-          entity_id: light.leeslamp
+          entity_id: light.overloop_2
           transition: 900
           brightness: 200
 
