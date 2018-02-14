@@ -73,8 +73,8 @@ mqtt:
   username: !secret mqtt_username
   password: !secret mqtt_password
 
-#influxdb:
-#  host: !secret influxDB_host
+influxdb:
+  host: !secret influxDB_host
 
 tts:
   - platform: google
