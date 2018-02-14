@@ -80,7 +80,7 @@ homeassistant:
     light.woonkamer_dimmer_step_size_5_6_4:
       hidden: true
 
-    light.plafondlamp_speelkamer:
+    light.hal:
       <<: *customize_contained
       friendly_name: "Speelhoek"
 
@@ -141,7 +141,7 @@ group:
       - sensor.livingroom_lightlevel
       - light.multisensor1led
       - light.woonkamer_dimmer_level
-      - light.plafondlamp_speelkamer
+      - light.hal
       - light.iris
       - light.overloop_2
 
