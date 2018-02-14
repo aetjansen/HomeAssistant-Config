@@ -201,13 +201,11 @@ automation:
           entity_id: 'input_boolean.night_mode'
           state: 'on'
     action:
-      - service: light.turn_on
+      - service: light.turn_off
         data_template:
           entity_id: light.hal
-          transition: 5
-          brightness: 0
-      - service: light.turn_on
+          transition: 2
+      - service: light.turn_off
         data_template:
           entity_id: light.overloop
-          transition: 5
-          brightness: 0
+          transition: 2
