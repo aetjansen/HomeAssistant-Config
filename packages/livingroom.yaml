@@ -272,20 +272,49 @@ automation:
           entity_id: 'sun.sun'
           state: 'above_horizon'
     action:
-      - service: homeassistant.turn_on
-        entity_id: switch.achterdeur_schakelaars_switch_2
-      - service: homeassistant.turn_on
-        entity_id: switch.tuinverlichting
       - service: light.turn_on
         data_template:
           entity_id: light.woonkamer_dimmer_level
-          transition: 900
+          transition: 60
           brightness: 255
       - service: light.turn_on
         data_template:
           entity_id: light.overloop_2
-          transition: 900
+          transition: 60
           brightness: 200
+
+  ################################################
+  ## When lightlevel>20 and sun above horizon, turn off
+  ## lights
+  ################################################
+  - alias: turn_on_light_when_dark_during_the_day
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.livingroom_lightlevel
+        below: 20
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'off'
+        - condition: state
+          entity_id: 'group.family'
+          state: 'home'
+        - condition: state
+          entity_id: 'sun.sun'
+          state: 'above_horizon'
+    action:
+      - service: light.turn_off
+        data_template:
+          entity_id: light.woonkamer_dimmer_level
+          transition: 60
+      - service: light.turn_off
+        data_template:
+          entity_id: light.overloop_2
+          transition: 60
 
   ################################################
   ## Notification at midnight with readings from the smart meter
