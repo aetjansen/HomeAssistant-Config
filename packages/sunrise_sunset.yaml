@@ -41,7 +41,7 @@ automation:
       - platform: numeric_state
         entity_id: sun.sun
         value_template: '{{ state.attributes.elevation }}'
-        below: 3.5
+        below: 1.5
     condition:
       condition: and
       conditions:
@@ -62,14 +62,14 @@ automation:
   ################################################
   ## when a bit darker again, switch on more lights
   ################################################
-  - alias: gardenlights_on_when_sun_sets
+  - alias: indoor_lights_on_when_sun_sets
     initial_state: 'on'
     hide_entity: False
     trigger:
       - platform: numeric_state
         entity_id: sun.sun
         value_template: '{{ state.attributes.elevation }}'
-        below: 1.5
+        below: -1
     condition:
       condition: and
       conditions:
