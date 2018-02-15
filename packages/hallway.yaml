@@ -172,13 +172,13 @@ automation:
         data_template:
           entity_id: light.hal_2
           color_name: red
-          brightness: 10
+          brightness: 1
           transition: 2
       - service: light.turn_on
         data_template:
           entity_id: light.overloop
           color_name: red
-          brightness: 10
+          brightness: 1
           transition: 2
 
 
