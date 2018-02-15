@@ -287,13 +287,13 @@ automation:
   ## When lightlevel>20 and sun above horizon, turn off
   ## lights
   ################################################
-  - alias: turn_on_light_when_dark_during_the_day
+  - alias: turn_off_light_when_get_lighter_in_day
     initial_state: 'on'
     hide_entity: False
     trigger:
       - platform: numeric_state
         entity_id: sensor.livingroom_lightlevel
-        below: 20
+        above: 20
     condition:
       condition: and
       conditions:
