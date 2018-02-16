@@ -169,6 +169,13 @@ automation:
         to: '0'
         for:
           minutes: 5
+    condition:
+      condition: and
+      conditions:
+        - condition: numeric_state
+          entity_id: sensor.mold_indicator
+          value_template: '{{ state.attributes.value }}'
+          above: '70'
     action:
       - service: homeassistant.turn_on
         entity_id: script.timed_ventilator
@@ -227,7 +234,7 @@ automation:
           state: 'nee'
         - condition: numeric_state
           entity_id: sensor.mold_indicator
-          value_template: '{{ state.attributes.value}}'
+          value_template: '{{ state.attributes.value }}'
           above: '70'
         - condition: state
           entity_id: switch.bathroom_vent_switch
