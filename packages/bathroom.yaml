@@ -33,34 +33,16 @@ homeassistant:
       icon: mdi:toys
       persistent: true
 
-    sensor.bathroom_vent_previous_reading_4:
+    sensor.bathroom_vent_previous_reading:
       hidden: true
 
     sensor.bathroom_vent_exporting:
       hidden: true
 
-    sensor.bathroom_vent_interval_2:
-      hidden: true
-
-    sensor.bathroom_vent_interval_3:
-      hidden: true
-
     sensor.bathroom_vent_interval:
       hidden: true
 
-    sensor.bathroom_vent_interval_4:
-      hidden: true
-
-    sensor.bathroom_vent_previous_reading_2:
-      hidden: true
-
     sensor.bathroom_vent_power_management:
-      hidden: true
-
-    sensor.bathroom_vent_previous_reading:
-      hidden: true
-
-    sensor.bathroom_vent_previous_reading_3:
       hidden: true
 
     sensor.bathroom_vent_sourcenodeid:
@@ -81,6 +63,7 @@ homeassistant:
     sensor.bathroom_motion_detector:
       <<: *customize_contained
       friendly_name: "Aanwezigheid"
+      device_class: motion
       icon: mdi:walk
 
     sensor.bathroom_sensor_burglar:
@@ -138,5 +121,5 @@ binary_sensor:
   - platform: template
     sensors:
       bathroom_vent_power_usage_templated:
-        value_template: "{{ states('sensor.bathroom_vent_power_6_8') | int < 5 }}"
-        entity_id: sensor.bathroom_vent_power_6_8
+        value_template: "{{ states('sensor.bathroom_vent_power') | int < 5 }}"
+        entity_id: sensor.bathroom_vent_power
