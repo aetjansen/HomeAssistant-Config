@@ -230,11 +230,10 @@ automation:
       condition: and
       conditions:
         - condition: state
-          entity_id: sensor.bathroom_motion_detector
-          state: 'nee'
+          entity_id: sensor.bathroom_sensor_burglar
+          state: '0'
         - condition: numeric_state
           entity_id: sensor.mold_indicator
-          value_template: '{{ state.attributes.value }}'
           above: '70'
         - condition: state
           entity_id: switch.bathroom_vent_switch
