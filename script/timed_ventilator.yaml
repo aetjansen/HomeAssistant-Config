@@ -1,0 +1,25 @@
+################################################################
+## Script / Timed ventilator
+################################################################
+
+timed_ventilator:
+  alias: "Turn on ventilator and set timer"
+  sequence:
+    # Cancel ev. old timers
+    - service: script.turn_off
+      data:
+         entity_id: script.timer_off
+    - service: homeassistant.turn_on
+      entity_id: switch.bathroom_vent_switch
+    # Set new timer
+    - service: script.turn_on
+      data:
+        entity_id: script.timer_ventilator_off
+
+timer_ventilator_off:
+  alias: "Turn off ventilator after 5 minutes"
+  sequence:
+    - delay:
+        minutes: 5
+    - service: switch.turn_off
+      entity_id: switch.bathroom_vent_switch

@@ -134,3 +134,42 @@ binary_sensor:
       bathroom_vent_power_usage_templated:
         value_template: "{{ states('sensor.bathroom_vent_power') | int < 5 }}"
         entity_id: sensor.bathroom_vent_power
+
+################################################
+## Automation
+################################################
+automation:
+  ################################################
+  ## When motion detected, switch off bathroom vent
+  ################################################
+  - alias: bathroom_vent_off_when_human_present
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.bathroom_sensor_burglar
+        to: '8'
+    action:
+      - service: homeassistant.turn_off
+        entity_id: switch.bathroom_vent_switch
+
+  ################################################
+  ## When no motion, and mold indicator >70, switch fan on
+  ################################################
+  - alias: bathroom_vent_on_when_high_mold
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.mold_indicator
+        value_template: '{{ state.attributes.value}}'
+        above: '70'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.bathroom_motion_detector
+          state: 'nee'
+    action:
+      - service: homeassistant.turn_on
+        entity_id: script.timed_ventilator
