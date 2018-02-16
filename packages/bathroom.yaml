@@ -154,9 +154,9 @@ automation:
         entity_id: switch.bathroom_vent_switch
 
   ################################################
-  ## When motion detected, switch off bathroom vent
+  ## When no more motion detected, switch on bathroom vent if needed
   ################################################
-  - alias: bathroom_vent_off_when_human_present
+  - alias: bathroom_vent_on_when_no_motion_and_too_humid
     initial_state: 'on'
     hide_entity: False
     trigger:
