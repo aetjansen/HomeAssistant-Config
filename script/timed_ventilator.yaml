@@ -17,9 +17,11 @@ timed_ventilator:
         entity_id: script.timer_ventilator_off
 
 timer_ventilator_off:
-  alias: "Turn off ventilator after 5 minutes"
+  alias: "Turn off ventilator after 15 minutes"
   sequence:
     - delay:
-        minutes: 5
+        minutes: 15
     - service: switch.turn_off
       entity_id: switch.bathroom_vent_switch
+    - delay:
+        minutes: 5

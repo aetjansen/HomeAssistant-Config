@@ -154,6 +154,22 @@ automation:
         entity_id: switch.bathroom_vent_switch
 
   ################################################
+  ## When motion detected, switch off bathroom vent
+  ################################################
+  - alias: bathroom_vent_off_when_human_present
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.bathroom_sensor_burglar
+        to: '0'
+        for:
+          minutes: 5
+    action:
+      - service: homeassistant.turn_on
+        entity_id: script.timed_ventilator
+
+  ################################################
   ## When no motion, and mold indicator >70, switch fan on
   ################################################
   - alias: bathroom_vent_on_when_high_mold
