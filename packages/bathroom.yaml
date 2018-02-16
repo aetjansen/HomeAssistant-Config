@@ -89,6 +89,11 @@ homeassistant:
       friendly_name: "Lichtniveau"
       icon: mdi:theme-light-dark
 
+    sensor.mold_indicator:
+      <<: *customize_contained
+      friendly_name: "Schimmelontwikkeling"
+      icon: mdi:water-percent
+
 ################################################
 ## Group
 ################################################
@@ -99,6 +104,7 @@ group:
       - sensor.bathroom_motion_detector
       - sensor.bathroom_sensor_temperature
       - sensor.bathroom_sensor_relative_humidity
+      - sensor.mold_indicator
       - sensor.bathroom_sensor_luminance
       - switch.bathroom_vent_switch
       - sensor.bathroom_vent_power_usage_templated
