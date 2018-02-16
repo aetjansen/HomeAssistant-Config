@@ -30,7 +30,7 @@ homeassistant:
     switch.bathroom_vent_switch:
       <<: *customize_contained
       friendly_name: "Ventilator"
-      icon: mdi:toys
+      icon: mdi:fan
       persistent: true
 
     sensor.bathroom_vent_previous_reading:
