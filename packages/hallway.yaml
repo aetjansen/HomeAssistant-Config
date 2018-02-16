@@ -107,12 +107,12 @@ automation:
       - service: light.turn_on
         data_template:
           entity_id: light.hal_2
-          rgb_color: 247,208,131
+          brightness: 150
           transition: 1
       - service: light.turn_on
         data_template:
           entity_id: light.overloop
-          rgb_color: 247,208,131
+          brightness: 150
           transition: 1
       #- service: python_script.dimmer
       #  data_template:
@@ -148,12 +148,12 @@ automation:
       - service: light.turn_on
         data_template:
           entity_id: light.hal_2
-          rgb_color: 179,150,94
+          brightness: 50
           transition: 1
       - service: light.turn_on
         data_template:
           entity_id: light.overloop
-          rgb_color: 179,150,94
+          brightness: 50
           transition: 1
       #- service: python_script.dimmer
       #  data_template:
