@@ -105,24 +105,24 @@ homeassistant:
       friendly_name: "Buitenlamp achterdeur"
       icon: mdi:lightbulb
 
-    sensor.vaatwasser_power:    # Dishwasher: Watts
+    sensor.bathroom_vent_power:    # Dishwasher: Watts
       <<: *customize_contained
-      friendly_name: "Vaatwasser"
+      friendly_name: "Badkamer ventilator"
       icon: mdi:power-plug
 
-    sensor.vaatwasser_voltage: # Dishwasher: Volts
+    sensor.bathroom_vent_voltage: # Dishwasher: Volts
       <<: *customize_contained
-      friendly_name: "Vaatwasser spanning"
+      friendly_name: "Badkamer ventilator spanning"
       icon: mdi:power-plug
 
-    sensor.vaatwasser_current: # Dishwasher: Amps
+    sensor.bathroom_vent_current: # Dishwasher: Amps
       <<: *customize_contained
-      friendly_name: "Vaatwasser stroom"
+      friendly_name: "Badkamer ventilator stroom"
       icon: mdi:power-plug
 
-    sensor.vaatwasser_energy: # Dishwasher: Current power usage
+    sensor.bathroom_vent_energy: # Dishwasher: Current power usage
       <<: *customize_contained
-      friendly_name: "Vaatwasser"
+      friendly_name: "Badkamer ventilator"
       icon: mdi:power-plug
 
     sensor.stats_mean:
@@ -172,7 +172,7 @@ group:
       - sensor.power_consumption_normal
       - sensor.stats_mean
       - sensor.energytariff_nl
-      - sensor.vaatwasser_energy   # Dishwasher kWh
+      - sensor.bathroom_vent_energy   # Dishwasher kWh
       - sensor.woonkamer_dimmer_energy
       - sensor.achterdeur_schakelaars_energy       # Scullery light
       - sensor.achterdeur_schakelaars_energy_2     # Backdoor outside light
@@ -182,9 +182,9 @@ group:
     entities:
       - sensor.hourly_gas_consumption
       - sensor.power_consumption
-      - sensor.vaatwasser_power    # Dishwasher: Watts
-      - sensor.vaatwasser_current # Dishwasher: Amps
-      - sensor.vaatwasser_voltage # Dishwasher: Volts
+      - sensor.bathroom_vent_power    # Dishwasher: Watts
+      - sensor.bathroom_vent_current # Dishwasher: Amps
+      - sensor.bathroom_vent_voltage # Dishwasher: Volts
       - sensor.woonkamer_dimmer_power_2
       - sensor.achterdeur_schakelaars_power        # Scullery light
       - sensor.achterdeur_schakelaars_power_2      # Backdoor outside light

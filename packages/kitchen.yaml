@@ -21,106 +21,14 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Keuken"
 
-    automation.notify_when_dishwasher_is_done:
-      <<: *customize
-      friendly_name: "Vaatwasser klaar notificatie"
-      icon: mdi:comment-alert-outline
-
-    switch.vaatwasser_switch:
-      <<: *customize_contained
-      friendly_name: "Vaatwassser"
-      icon: mdi:powerplug
-      persistent: true
-
-
-    sensor.vaatwasser_previous_reading_4:
-      hidden: true
-
-    sensor.vaatwasser_exporting:
-      hidden: true
-
-    sensor.vaatwasser_interval_2:
-      hidden: true
-
-    sensor.vaatwasser_interval_3:
-      hidden: true
-
-    sensor.vaatwasser_interval:
-      hidden: true
-
-    sensor.vaatwasser_interval_4:
-      hidden: true
-
-    sensor.vaatwasser_previous_reading_2:
-      hidden: true
-
-    sensor.vaatwasser_power_management:
-      hidden: true
-
-    sensor.vaatwasser_previous_reading:
-      hidden: true
-
-    sensor.vaatwasser_previous_reading_3:
-      hidden: true
-
-    sensor.vaatwasser_sourcenodeid:
-      hidden: true
-
-    sensor.vaatwasser_alarm_level:
-      hidden: true
-
-    sensor.vaatwasser_alarm_type:
-      hidden: true
-
-    binary_sensor.vaatwasser_power_usage_templated:
-      hidden: true
-
 ################################################
 ## Automation
 ################################################
-automation:
-
-  ################################################
-  ## Notification when the dishwasher is ready.
-  ## It's power usage drops to 0W when ready,
-  ## so if it is a 0W for 2 minutes, send a notification
-  ## (power consumption can briefly drop to (near) 0W
-  ## during a washing cycle for a few seconds, hence
-  ## the 2 minute wait time)
-  ################################################
-  - alias: notify_when_dishwasher_is_done
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.vaatwasser_power_usage_templated
-        from: 'off'
-        to: 'on'
-        for:
-          minutes: 2
-          seconds: 0
-    action:
-      service: notify.all_iphones
-      data_template:
-        title: "Vaatwasser klaar"
-        message: "De afwas is klaar :-)"
 
 ################################################
 ## Sensor
 ################################################
 
-binary_sensor:
-  - platform: template
-    sensors:
-      vaatwasser_power_usage_templated:
-        value_template: "{{ states('sensor.vaatwasser_power_6_8') | int < 5 }}"
-        entity_id: sensor.vaatwasser_power_6_8
-
 ################################################
 ## Group
 ################################################
-
-group:
-  kitchen:
-    control: hidden
-    entities:
-      - switch.vaatwasser_switch
-      - sensor.vaatwasser_power_usage_templated
