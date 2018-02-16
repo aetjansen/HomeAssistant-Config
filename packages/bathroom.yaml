@@ -224,3 +224,16 @@ automation:
     action:
       - service: homeassistant.turn_on
         entity_id: script.timed_ventilator
+
+  - alias: test_every_five_minutes
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: time
+        minutes: '/5'
+        seconds: 00
+    action:
+      service: notify.pushover
+      data_template:
+        title: "5 minutesn test"
+        message: "Er zijn weer 5 minuten voorbij"
