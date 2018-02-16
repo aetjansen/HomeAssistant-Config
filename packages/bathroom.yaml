@@ -111,7 +111,7 @@ sensor:
     indoor_temp_sensor: sensor.bathroom_sensor_temperature
     indoor_humidity_sensor: sensor.bathroom_sensor_relative_humidity
     outdoor_temp_sensor: sensor.pws_temp_c
-    calibration_factor: 2.0
+    calibration_factor: 1.22
   - platform: template
     sensors:
       bathroom_motion_detector:
