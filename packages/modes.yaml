@@ -47,7 +47,7 @@ homeassistant:
     input_boolean.night_mode:
       <<: *customize
       friendly_name: "Night Mode"
-      icon: mdi:moon 
+      icon: mdi:weather-night 
 
     input_boolean.to_bed_mode:
       <<: *customize
