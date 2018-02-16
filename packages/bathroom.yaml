@@ -11,17 +11,16 @@ homeassistant:
     ################################################
     ## Node Anchors
     ################################################
+    packages.bathroom: &customize
+      package: 'bathroom'
 
-    package.node_anchors:
-      customize: &customize
-        package: 'bathroom'
+    packages.bathroom_exposed: &customize_exposed
+      <<: *customize
 
-      expose: &expose
-        <<: *customize
-        haaska_hidden: false
-        homebridge_hidden: false
+    packages.bathroom_contained: &customize_contained
+      <<: *customize
 
-    group.livingroom:
+    group.bathroom:
       <<: *customize_contained
       friendly_name: "Badkamer"
 
