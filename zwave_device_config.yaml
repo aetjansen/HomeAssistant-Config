@@ -3,22 +3,22 @@
 ################################################################
 
 ################################################
-## Scullery multisensor
+## Bathroom multisensor
 ################################################
 
-binary_sensor.bijkeuken_sensor_sensor:
+binary_sensor.bathroom_sensor_sensor:
   ignored: true
 
-sensor.bijkeuken_sensor_alarm_level:
+sensor.bathroom_sensor_alarm_level:
   ignored: true
 
-sensor.bijkeuken_sensor_alarm_type:
+sensor.bathroom_sensor_alarm_type:
   ignored: true
 
-sensor.bijkeuken_sensor_sourcenodeid:
+sensor.bathroom_sensor_sourcenodeid:
   ignored: true
 
-sensor.bijkeuken_sensor_ultraviolet:
+sensor.bathroom_sensor_ultraviolet:
   ignored: true
 
 ################################################
