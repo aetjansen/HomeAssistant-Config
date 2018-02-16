@@ -189,3 +189,38 @@ automation:
     action:
       - service: homeassistant.turn_on
         entity_id: script.timed_ventilator
+
+  ################################################
+  ## Periodically check if fan needs to be switched on
+  ##
+  ## This is needed because the humidity updates
+  ## do not happen regularly, with no motion detected
+  ## after a while the fan will have finished a cycle
+  ## and may then sit idle for a long while. This is
+  ## time in which mold could develop.
+  ################################################
+  - alias: periodically_check_if_fan_needs_to_be_on
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: time
+        minutes: '/5'
+        seconds: 00
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.bathroom_motion_detector
+          state: 'nee'
+        - condition: numeric_state
+          entity_id: sensor.mold_indicator
+          value_template: '{{ state.attributes.value}}'
+          above: '70'
+        - condition: state
+          entity_id: switch.bathroom_vent_switch
+          state: 'off'
+          for:
+            minutes: 5
+    action:
+      - service: homeassistant.turn_on
+        entity_id: script.timed_ventilator
