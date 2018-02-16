@@ -31,7 +31,7 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Ventilator"
       icon: mdi:fan
-      persistent: true
+      initial_state: 'off'
 
     sensor.bathroom_vent_previous_reading:
       hidden: true
