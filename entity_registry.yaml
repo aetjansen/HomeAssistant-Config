@@ -31,16 +31,16 @@ sensor.iphone_van_arno_battery_state:
 sensor.iphone_van_arno_battery_level:
   platform: ios
   unique_id: level_iphone_van_arno
-sensor.bijkeuken_sensor_temperature:
+sensor.bathroom_sensor_temperature:
   platform: zwave
   unique_id: 2-72057594076479506
-sensor.bijkeuken_sensor_luminance:
+sensor.bathroom_sensor_luminance:
   platform: zwave
   unique_id: 2-72057594076479538
-sensor.bijkeuken_sensor_relative_humidity:
+sensor.bathroom_sensor_relative_humidity:
   platform: zwave
   unique_id: 2-72057594076479570
-sensor.bijkeuken_sensor_burglar:
+sensor.bathroom_sensor_burglar:
   platform: zwave
   unique_id: 2-72057594077528225
 sensor.hal_sensor_temperature:
@@ -136,58 +136,58 @@ sensor.woonkamer_dimmer_power_management:
 sensor.woonkamer_dimmer_system:
   platform: zwave
   unique_id: 5-72057594127859905
-switch.vaatwasser_switch:
+switch.bathroom_vent_switch:
   platform: zwave
   unique_id: 6-72057594143391744
-sensor.vaatwasser_energy:
+sensor.bathroom_vent_energy:
   platform: zwave
   unique_id: 6-72057594143604738
-sensor.vaatwasser_previous_reading:
+sensor.bathroom_vent_previous_reading:
   platform: zwave
   unique_id: 6-72057594143604754
-sensor.vaatwasser_interval:
+sensor.bathroom_vent_interval:
   platform: zwave
   unique_id: 6-72057594143604771
-sensor.vaatwasser_power:
+sensor.bathroom_vent_power:
   platform: zwave
   unique_id: 6-72057594143604866
-sensor.vaatwasser_previous_reading_2:
+sensor.bathroom_vent_previous_reading_2:
   platform: zwave
   unique_id: 6-72057594143604882
-sensor.vaatwasser_interval_2:
+sensor.bathroom_vent_interval_2:
   platform: zwave
   unique_id: 6-72057594143604899
-sensor.vaatwasser_voltage:
+sensor.bathroom_vent_voltage:
   platform: zwave
   unique_id: 6-72057594143604994
-sensor.vaatwasser_previous_reading_3:
+sensor.bathroom_vent_previous_reading_3:
   platform: zwave
   unique_id: 6-72057594143605010
-sensor.vaatwasser_interval_3:
+sensor.bathroom_vent_interval_3:
   platform: zwave
   unique_id: 6-72057594143605027
-sensor.vaatwasser_current:
+sensor.bathroom_vent_current:
   platform: zwave
   unique_id: 6-72057594143605058
-sensor.vaatwasser_previous_reading_4:
+sensor.bathroom_vent_previous_reading_4:
   platform: zwave
   unique_id: 6-72057594143605074
-sensor.vaatwasser_interval_4:
+sensor.bathroom_vent_interval_4:
   platform: zwave
   unique_id: 6-72057594143605091
-sensor.vaatwasser_exporting:
+sensor.bathroom_vent_exporting:
   platform: zwave
   unique_id: 6-72057594143605248
-sensor.vaatwasser_alarm_type:
+sensor.bathroom_vent_alarm_type:
   platform: zwave
   unique_id: 6-72057594144636929
-sensor.vaatwasser_alarm_level:
+sensor.bathroom_vent_alarm_level:
   platform: zwave
   unique_id: 6-72057594144636945
-sensor.vaatwasser_sourcenodeid:
+sensor.bathroom_vent_sourcenodeid:
   platform: zwave
   unique_id: 6-72057594144636961
-sensor.vaatwasser_power_management:
+sensor.bathroom_vent_power_management:
   platform: zwave
   unique_id: 6-72057594144637105
 binary_sensor.bathroom_sensor_sensor:
