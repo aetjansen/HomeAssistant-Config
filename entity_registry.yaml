@@ -1,0 +1,207 @@
+light.plafondlamp_slaapkamer:
+  platform: hue
+  unique_id: 00:17:88:01:10:59:29:ea-0b
+light.iris:
+  platform: hue
+  unique_id: 00:17:88:01:00:10:89:c7-0b
+light.hal:
+  platform: hue
+  unique_id: 00:17:88:01:10:2f:fa:cd-0b
+light.leeslamp:
+  platform: hue
+  unique_id: 00:17:88:01:10:31:57:35-0b
+light.plafondlamp_speelkamer:
+  platform: hue
+  unique_id: 00:17:88:01:10:31:53:3e-0b
+light.overloop_2:
+  platform: hue
+  unique_id: 00:17:88:01:10:59:24:d3-0b
+media_player.keuken:
+  platform: sonos
+  unique_id: RINCON_949F3E893C9201400
+sensor.iphone_van_heddy_battery_state:
+  platform: ios
+  unique_id: state_iphone_van_heddy
+sensor.iphone_van_heddy_battery_level:
+  platform: ios
+  unique_id: level_iphone_van_heddy
+sensor.iphone_van_arno_battery_state:
+  platform: ios
+  unique_id: state_iphone_van_arno
+sensor.iphone_van_arno_battery_level:
+  platform: ios
+  unique_id: level_iphone_van_arno
+sensor.bijkeuken_sensor_temperature:
+  platform: zwave
+  unique_id: 2-72057594076479506
+sensor.bijkeuken_sensor_luminance:
+  platform: zwave
+  unique_id: 2-72057594076479538
+sensor.bijkeuken_sensor_relative_humidity:
+  platform: zwave
+  unique_id: 2-72057594076479570
+sensor.bijkeuken_sensor_burglar:
+  platform: zwave
+  unique_id: 2-72057594077528225
+sensor.hal_sensor_temperature:
+  platform: zwave
+  unique_id: 3-72057594093256722
+sensor.hal_sensor_luminance:
+  platform: zwave
+  unique_id: 3-72057594093256754
+sensor.hal_sensor_relative_humidity:
+  platform: zwave
+  unique_id: 3-72057594093256786
+sensor.hal_sensor_burglar:
+  platform: zwave
+  unique_id: 3-72057594094305441
+switch.achterdeur_schakelaars_switch:
+  platform: zwave
+  unique_id: 4-72057594109837312
+switch.achterdeur_schakelaars_switch_2:
+  platform: zwave
+  unique_id: 4-144115188147765248
+sensor.achterdeur_schakelaars_energy:
+  platform: zwave
+  unique_id: 4-72057594110050306
+sensor.achterdeur_schakelaars_energy_2:
+  platform: zwave
+  unique_id: 4-144115188147978242
+sensor.achterdeur_schakelaars_power:
+  platform: zwave
+  unique_id: 4-72057594110050434
+sensor.achterdeur_schakelaars_previous_reading:
+  platform: zwave
+  unique_id: 4-72057594110050450
+sensor.achterdeur_schakelaars_interval:
+  platform: zwave
+  unique_id: 4-72057594110050467
+sensor.achterdeur_schakelaars_exporting:
+  platform: zwave
+  unique_id: 4-72057594110050816
+sensor.achterdeur_schakelaars_power_2:
+  platform: zwave
+  unique_id: 4-144115188147978370
+sensor.achterdeur_schakelaars_exporting_2:
+  platform: zwave
+  unique_id: 4-144115188147978752
+sensor.achterdeur_schakelaars_alarm_type:
+  platform: zwave
+  unique_id: 4-72057594111082497
+sensor.achterdeur_schakelaars_alarm_level:
+  platform: zwave
+  unique_id: 4-72057594111082513
+sensor.achterdeur_schakelaars_sourcenodeid:
+  platform: zwave
+  unique_id: 4-72057594111082529
+sensor.achterdeur_schakelaars_heat:
+  platform: zwave
+  unique_id: 4-72057594111082609
+sensor.achterdeur_schakelaars_power_management:
+  platform: zwave
+  unique_id: 4-72057594111082673
+light.woonkamer_dimmer_level:
+  platform: zwave
+  unique_id: 5-72057594126630913
+light.woonkamer_dimmer_level_2:
+  platform: zwave
+  unique_id: 5-144115188164558849
+sensor.woonkamer_dimmer_power:
+  platform: zwave
+  unique_id: 5-72057594126811202
+sensor.woonkamer_dimmer_energy:
+  platform: zwave
+  unique_id: 5-72057594126827522
+sensor.woonkamer_dimmer_power_2:
+  platform: zwave
+  unique_id: 5-72057594126827650
+sensor.woonkamer_dimmer_exporting:
+  platform: zwave
+  unique_id: 5-72057594126828032
+sensor.woonkamer_dimmer_alarm_type:
+  platform: zwave
+  unique_id: 5-72057594127859713
+sensor.woonkamer_dimmer_alarm_level:
+  platform: zwave
+  unique_id: 5-72057594127859729
+sensor.woonkamer_dimmer_sourcenodeid:
+  platform: zwave
+  unique_id: 5-72057594127859745
+sensor.woonkamer_dimmer_heat:
+  platform: zwave
+  unique_id: 5-72057594127859825
+sensor.woonkamer_dimmer_power_management:
+  platform: zwave
+  unique_id: 5-72057594127859889
+sensor.woonkamer_dimmer_system:
+  platform: zwave
+  unique_id: 5-72057594127859905
+switch.vaatwasser_switch:
+  platform: zwave
+  unique_id: 6-72057594143391744
+sensor.vaatwasser_energy:
+  platform: zwave
+  unique_id: 6-72057594143604738
+sensor.vaatwasser_previous_reading:
+  platform: zwave
+  unique_id: 6-72057594143604754
+sensor.vaatwasser_interval:
+  platform: zwave
+  unique_id: 6-72057594143604771
+sensor.vaatwasser_power:
+  platform: zwave
+  unique_id: 6-72057594143604866
+sensor.vaatwasser_previous_reading_2:
+  platform: zwave
+  unique_id: 6-72057594143604882
+sensor.vaatwasser_interval_2:
+  platform: zwave
+  unique_id: 6-72057594143604899
+sensor.vaatwasser_voltage:
+  platform: zwave
+  unique_id: 6-72057594143604994
+sensor.vaatwasser_previous_reading_3:
+  platform: zwave
+  unique_id: 6-72057594143605010
+sensor.vaatwasser_interval_3:
+  platform: zwave
+  unique_id: 6-72057594143605027
+sensor.vaatwasser_current:
+  platform: zwave
+  unique_id: 6-72057594143605058
+sensor.vaatwasser_previous_reading_4:
+  platform: zwave
+  unique_id: 6-72057594143605074
+sensor.vaatwasser_interval_4:
+  platform: zwave
+  unique_id: 6-72057594143605091
+sensor.vaatwasser_exporting:
+  platform: zwave
+  unique_id: 6-72057594143605248
+sensor.vaatwasser_alarm_type:
+  platform: zwave
+  unique_id: 6-72057594144636929
+sensor.vaatwasser_alarm_level:
+  platform: zwave
+  unique_id: 6-72057594144636945
+sensor.vaatwasser_sourcenodeid:
+  platform: zwave
+  unique_id: 6-72057594144636961
+sensor.vaatwasser_power_management:
+  platform: zwave
+  unique_id: 6-72057594144637105
+binary_sensor.bathroom_sensor_sensor:
+  platform: zwave
+  unique_id: 2-72057594076463104
+sensor.bathroom_sensor_ultraviolet:
+  platform: zwave
+  unique_id: 2-72057594076479922
+sensor.bathroom_sensor_alarm_type:
+  platform: zwave
+  unique_id: 2-72057594077528065
+sensor.bathroom_sensor_alarm_level:
+  platform: zwave
+  unique_id: 2-72057594077528081
+sensor.bathroom_sensor_sourcenodeid:
+  platform: zwave
+  unique_id: 2-72057594077528097
