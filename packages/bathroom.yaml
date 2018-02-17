@@ -154,8 +154,8 @@ automation:
         entity_id: switch.bathroom_vent_switch
       - service: notify.pushover
         data_template:
-          title: "Ventilator aan"
-          message: "bathroom_vent_off_when_human_present"
+          title: "Ventilator uit, mens gezien :-)"
+          message: "{{ states.sensor.mold_indicator.state }}"
 
   ################################################
   ## When no more motion detected, switch on bathroom vent if needed
