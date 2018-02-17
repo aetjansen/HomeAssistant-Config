@@ -71,9 +71,61 @@ group:
   scullery:
     control: hidden
     entities:
+      - sensor.bijkeuken_temperatuur
+      - sensor.bijkeuken_luchtvochtigheid
+      - sensor.bijkeuken_licht
+      - sensor.bijkeuken_beweging
+      - light.bijkeuken_led
       - switch.achterdeur_schakelaars_switch
       - switch.achterdeur_schakelaars_switch_2
 
+################################################
+## Sensor
+################################################
+sensor:
+  - platform: mqtt
+    state_topic: "ahpaleis/scullery"
+    name: "Bijkeuken luchtvochtigheid"
+    unit_of_measurement: "%"
+    value_template: '{{ value_json.humidity | round(1) }}'
+
+  - platform: mqtt
+    state_topic: "ahpaleis/scullery"
+    name: "Bijkeuken licht"
+    ##This sensor is not calibrated to actual LUX. Rather, this a map of the input voltage ranging from 0 - 1023.
+    unit_of_measurement: "LUX"
+    value_template: '{{ value_json.ldr }}'
+
+  - platform: mqtt
+    state_topic: "ahpaleis/scullery"
+    name: "Bijkeuken beweging"
+    value_template: '{{ value_json.motion }}'
+
+  - platform: mqtt
+    state_topic: "ahpaleis/scullery"
+    name: "Bijkeuken temperatuur"
+    unit_of_measurement: "°C"
+    value_template: '{{ value_json.temperature | round(1) }}'
+
+  - platform: mqtt
+    state_topic: "ahpaleis/scullery"
+    name: "Bijkeuken gevoelstemperatuur"
+    unit_of_measurement: "°C"
+    value_template: '{{ value_json.heatIndex | round(1) }}'
+
+################################################
+## Light
+################################################
+light:  
+  - platform: mqtt_json
+    name: "Bijkeuken Led"
+    state_topic: "ahpaleis/scullery"
+    command_topic: "ahpaleis/scullery/set"
+    brightness: true
+    flash: true
+    rgb: true
+    optimistic: false
+    qos: 0
 ################################################
 ## Automation
 ################################################
