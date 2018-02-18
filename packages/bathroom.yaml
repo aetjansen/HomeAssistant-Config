@@ -152,10 +152,6 @@ automation:
     action:
       - service: homeassistant.turn_off
         entity_id: switch.bathroom_vent_switch
-      - service: notify.pushover
-        data_template:
-          title: "Ventilator uit, mens gezien :-)"
-          message: "{{ states.sensor.mold_indicator.state }}"
 
   ################################################
   ## When no more motion detected, switch on bathroom vent if needed
@@ -179,11 +175,6 @@ automation:
     action:
       - service: homeassistant.turn_on
         entity_id: script.timed_ventilator
-      - service: notify.pushover
-        data_template:
-          title: "Ventilator aan"
-          message: "bathroom_vent_on_when_no_motion_and_too_humid"
-
 
   ################################################
   ## When no motion, and humidity>60%, switch fan on
@@ -205,10 +196,6 @@ automation:
     action:
       - service: homeassistant.turn_on
         entity_id: script.timed_ventilator
-      - service: notify.pushover
-        data_template:
-          title: "Ventilator aan"
-          message: "bathroom_vent_on_when_high_mold"
 
   ################################################
   ## Periodically check if fan needs to be switched on
@@ -244,7 +231,3 @@ automation:
     action:
       - service: homeassistant.turn_on
         entity_id: script.timed_ventilator
-      - service: notify.pushover
-        data_template:
-          title: "Ventilator aan"
-          message: "de 5 minuten check is geweest en de ventilator gaat nu aan"
