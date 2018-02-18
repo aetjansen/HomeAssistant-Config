@@ -239,8 +239,8 @@ automation:
         - condition: state
           entity_id: switch.bathroom_vent_switch
           state: 'off'
-          for:
-            minutes: 5
+          #for:
+          #  minutes: 5
     action:
       - service: homeassistant.turn_on
         entity_id: script.timed_ventilator
