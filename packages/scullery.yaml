@@ -116,7 +116,7 @@ sensor:
 ################################################
 ## Light
 ################################################
-light:  
+light:
   - platform: mqtt_json
     name: "Bijkeuken Led"
     state_topic: "ahpaleis/scullery"
@@ -126,6 +126,57 @@ light:
     rgb: true
     optimistic: false
     qos: 0
+
 ################################################
 ## Automation
 ################################################
+  ################################################
+  ## Light dimmed on in livingroom when motion detected and in night mode
+  ################################################
+  - alias: scullery_light_on_when_motion_detected
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.bijkeuken_beweging
+        to: 'motion detected'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'off'
+    action:
+      - service: switch.turn_on
+        data_template:
+          entity_id: switch.achterdeur_schakelaars_switch
+
+
+  ################################################
+  ## Livingroom light off when motion no longer detected and in night mode
+  ################################################
+  - alias: scullery_light_off_when_no_motion_detected
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.bijkeuken_beweging
+        to: 'standby'
+        for:
+          minutes: 2
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'off'
+    action:
+      - service: switch.turn_off
+        data_template:
+          entity_id: switch.achterdeur_schakelaars_switch
