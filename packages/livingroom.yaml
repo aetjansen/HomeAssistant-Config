@@ -139,7 +139,7 @@ group:
       - sensor.livingroom_temperature
       - sensor.livingroom_humidity
       - sensor.livingroom_lightlevel
-      - light.multisensor1led
+      - light.livingroomled
       - light.woonkamer_dimmer_level
       - light.hal
       - light.iris
@@ -150,31 +150,31 @@ group:
 ################################################
 sensor:
   - platform: mqtt
-    state_topic: "ahpaleis/multisensor1"
+    state_topic: "ahpaleis/livingroom"
     name: "livingroom_humidity"
     unit_of_measurement: "%"
     value_template: '{{ value_json.humidity | round(1) }}'
 
   - platform: mqtt
-    state_topic: "ahpaleis/multisensor1"
+    state_topic: "ahpaleis/livingroom"
     name: "livingroom_lightlevel"
     ##This sensor is not calibrated to actual LUX. Rather, this a map of the input voltage ranging from 0 - 1023.
     unit_of_measurement: "Lux"
     value_template: '{{ value_json.ldr }}'
 
   - platform: mqtt
-    state_topic: "ahpaleis/multisensor1"
+    state_topic: "ahpaleis/livingroom"
     name: "livingroom_motion"
     value_template: '{{ value_json.motion }}'
 
   - platform: mqtt
-    state_topic: "ahpaleis/multisensor1"
+    state_topic: "ahpaleis/livingroom"
     name: "livingroom_temperature"
     unit_of_measurement: "°C"
     value_template: '{{ value_json.temperature | round(1) }}'
 
   - platform: mqtt
-    state_topic: "ahpaleis/multisensor1"
+    state_topic: "ahpaleis/livingroom"
     name: "livingroom_heatindex"
     unit_of_measurement: "°C"
     value_template: '{{ value_json.heatIndex | round(1) }}'
@@ -329,7 +329,7 @@ automation:
     action:
       - service: light.toggle
         data_template:
-          entity_id: light.multisensor1led
+          entity_id: light.livingroomled
           transition: 2
       - service: tts.google_say
         data_template:
