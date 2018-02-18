@@ -11,9 +11,9 @@
   allow_hue_groups: false
 
 - platform: mqtt_json
-  name: "MultiSensor1-LED"
-  state_topic: "ahpaleis/multisensor1"
-  command_topic: "ahpaleis/multisensor1/set"
+  name: "Woonkamer-LED"
+  state_topic: "ahpaleis/livingroom"
+  command_topic: "ahpaleis/livingroom/set"
   brightness: true
   flash: true
   rgb: true
