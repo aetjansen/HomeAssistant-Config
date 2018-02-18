@@ -173,9 +173,9 @@ automation:
       condition: and
       conditions:
         - condition: numeric_state
-          entity_id: sensor.mold_indicator
-          value_template: '{{ state.attributes.value }}'
-          above: '70'
+          entity_id: sensor.bathroom_sensor_relative_humidity
+          value_template: '{{ states.bathroom_sensor_relative_humidity.state }}'
+          above: '60'
     action:
       - service: homeassistant.turn_on
         entity_id: script.timed_ventilator
@@ -186,16 +186,16 @@ automation:
 
 
   ################################################
-  ## When no motion, and mold indicator >70, switch fan on
+  ## When no motion, and humidity>60%, switch fan on
   ################################################
-  - alias: bathroom_vent_on_when_high_mold
+  - alias: bathroom_vent_on_when_too_humid
     initial_state: 'on'
     hide_entity: False
     trigger:
       - platform: numeric_state
-        entity_id: sensor.mold_indicator
-        value_template: '{{ state.attributes.value}}'
-        above: '70'
+        entity_id: sensor.bathroom_sensor_relative_humidity
+        value_template: '{{ states.bathroom_sensor_relative_humidity.state }}'
+        above: '60'
     condition:
       condition: and
       conditions:
@@ -230,11 +230,12 @@ automation:
       condition: and
       conditions:
         - condition: state
-          entity_id: sensor.bathroom_sensor_burglar
-          state: '0'
+          entity_id: sensor.bathroom_motion_detector
+          state: 'nee'
         - condition: numeric_state
-          entity_id: sensor.mold_indicator
-          above: '70'
+          entity_id: sensor.bathroom_sensor_relative_humidity
+          value_template: '{{ states.bathroom_sensor_relative_humidity.state }}'
+          above: '60'
         - condition: state
           entity_id: switch.bathroom_vent_switch
           state: 'off'
