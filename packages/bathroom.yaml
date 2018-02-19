@@ -182,7 +182,7 @@ automation:
     initial_state: 'on'
     hide_entity: False
     trigger:
-      - condition: numeric_state
+      - platform: numeric_state
         entity_id: sensor.bathroom_sensor_relative_humidity
         above: '60'
     condition:
@@ -202,7 +202,7 @@ automation:
     initial_state: 'on'
     hide_entity: False
     trigger:
-      - condition: numeric_state
+      - platform: numeric_state
         entity_id: sensor.bathroom_sensor_relative_humidity
         below: '60'
     condition:
