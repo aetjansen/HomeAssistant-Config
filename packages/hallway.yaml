@@ -109,7 +109,7 @@ automation:
           entity_id: sun.sun
           state: 'above_horizon'
         - condition: numeric_state
-          entity_id: 'hal_sensor_luminance'
+          entity_id: 'sensor.hal_sensor_luminance'
           below: '20'
     action:
       - service: light.turn_on
@@ -144,7 +144,7 @@ automation:
     action:
       - service: light.turn_off
         data_template:
-          entity_id: light.hal_2    
+          entity_id: light.hal_2
           transition: 3
 
   ################################################
