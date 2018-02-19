@@ -54,6 +54,11 @@ homeassistant:
       friendly_name: "Naar bed Mode"
       icon: mdi:hotel
 
+    input_boolean.test_switch:
+      <<: *customize
+      friendly_name: "Testswitch"
+      icon: mdi:test-tube
+
     ################################################
     ## Sensor
     ################################################
@@ -80,6 +85,7 @@ group:
       - input_boolean.to_bed_mode
       - input_boolean.night_mode
       - sensor.household
+      - input_boolean.test_switch
 
 ################################################
 ## Input Boolean
@@ -97,6 +103,9 @@ input_boolean:
 
   to_bed_mode:
     initial: off
+
+  test_switch:
+    initial: off 
 
 ################################################
 ## Sensor

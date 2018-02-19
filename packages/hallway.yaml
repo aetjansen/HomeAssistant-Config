@@ -84,6 +84,22 @@ sensor:
 ## a separate file: sunrise_sunset.yaml
 ################################################
 automation:
+  - alias: test_switch_automation
+    initial_state: 'on'
+    hide_entity: false
+    trigger:
+      - platform: state
+        entity_id: input_boolean.test_switch
+        to: 'on'
+    action:
+      - service: light.turn_on
+        data_template:
+          entity_id: light.hal_2
+          #rgb_color: 248,255,248
+          color_name: white
+          #brightness: 250
+          transition: 1
+
   ################################################
   ## Turn light full on during day when lightlevel<20
   ##
@@ -115,7 +131,8 @@ automation:
       - service: light.turn_on
         data_template:
           entity_id: light.hal_2
-          rgb_color: 248,255,248
+          #rgb_color: 248,255,248
+          brightness: 250
           transition: 1
 
   ################################################
