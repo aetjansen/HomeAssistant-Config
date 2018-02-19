@@ -47,7 +47,7 @@ homeassistant:
     input_boolean.night_mode:
       <<: *customize
       friendly_name: "Night Mode"
-      icon: mdi:weather-night 
+      icon: mdi:weather-night
 
     input_boolean.to_bed_mode:
       <<: *customize
@@ -175,7 +175,7 @@ automation:
       - service: homeassistant.turn_off
         entity_id: group.mediaplayers
 
-  - alias: If night mode is active, arm the house for the start of the day at 6 am
+  - alias: Arm the house for the start of the day at 6 am
     initial_state: 'on'
     trigger:
       - platform: time
@@ -186,10 +186,10 @@ automation:
       - service: homeassistant.turn_on
         entity_id: input_boolean.first_movement_of_the_day
 
-# If first_movement_of_the_day is armed, but not triggered at 9am, unarm (switch input_boolean off)
+# If first_movement_of_the_day is armed, but not triggered at 9am, disnarm (switch input_boolean off)
 # This prevents the automation to be triggered in the evening when the sun goes down in case the sun was already up before 6 am (when the input_boolean was armed)
 
-  - alias: If first_movement_of_the_day is not triggered at 9am, unarm.
+  - alias: If first_movement_of_the_day is not triggered at sunrise, disarm.
     initial_state: 'on'
     trigger:
       platform: sun
