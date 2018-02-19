@@ -164,13 +164,12 @@ automation:
         entity_id: sensor.bathroom_sensor_burglar
         to: '0'
         for:
-          minutes: 5
+          minutes: 3
     condition:
       condition: and
       conditions:
         - condition: numeric_state
           entity_id: sensor.bathroom_sensor_relative_humidity
-          value_template: '{{ states.bathroom_sensor_relative_humidity.state }}'
           above: '60'
     action:
       - service: homeassistant.turn_on
@@ -183,19 +182,38 @@ automation:
     initial_state: 'on'
     hide_entity: False
     trigger:
-      - platform: numeric_state
+      - condition: numeric_state
         entity_id: sensor.bathroom_sensor_relative_humidity
-        value_template: '{{ states.bathroom_sensor_relative_humidity.state }}'
         above: '60'
     condition:
       condition: and
       conditions:
         - condition: state
           entity_id: sensor.bathroom_motion_detector
-          state: 'nee'
+          state: 'Nee'
     action:
       - service: homeassistant.turn_on
         entity_id: script.timed_ventilator
+
+  ################################################
+  ## When humidity<60, switch fan off
+  ################################################
+  - alias: bathroom_vent_off_when_low_humid
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - condition: numeric_state
+        entity_id: sensor.bathroom_sensor_relative_humidity
+        below: '60'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: switch.bathroom_vent_switch
+          state: 'on'
+    action:
+      - service: switch.turn_off
+        entity_id: switch.bathroom_vent_switch
 
   ################################################
   ## Periodically check if fan needs to be switched on
@@ -211,56 +229,22 @@ automation:
     hide_entity: False
     trigger:
       - platform: time
-        minutes: '/5'
+        minutes: '/1'
         seconds: 00
     condition:
       condition: and
       conditions:
         - condition: state
           entity_id: sensor.bathroom_motion_detector
-          state: 'nee'
+          state: 'Nee'
         - condition: numeric_state
           entity_id: sensor.bathroom_sensor_relative_humidity
-          value_template: '{{ states.bathroom_sensor_relative_humidity.state }}'
           above: '60'
         - condition: state
           entity_id: switch.bathroom_vent_switch
           state: 'off'
-          #for:
-          #  minutes: 5
+          for:
+            minutes: 5
     action:
       - service: homeassistant.turn_on
         entity_id: script.timed_ventilator
-
-  ################################################
-  ## This automation is to debug the conditions
-  ## in the automation above that does not seem to
-  ## ever fire
-  ################################################
-  - alias: debugging_periodical_automation
-    initial_state: 'on'
-    hide_entity: False
-    trigger:
-      - platform: time
-        minutes: '/2'
-        seconds: 00
-    #condition:
-    #  condition: and
-    #  conditions:
-    #    - condition: state
-    #      entity_id: sensor.bathroom_motion_detector
-    #      state: 'nee'
-    #    - condition: numeric_state
-    #      entity_id: sensor.bathroom_sensor_relative_humidity
-    #      value_template: '{{ states.bathroom_sensor_relative_humidity.state }}'
-    #      above: '60'
-    #    - condition: state
-    #      entity_id: switch.bathroom_vent_switch
-    #      state: 'off'
-          #for:
-          #  minutes: 5
-    action:
-      - service: notify.pushover
-        data_template:
-          title: "Debugging periodical automation"
-          message: "This should fire every 2 minutes, no conditions"
