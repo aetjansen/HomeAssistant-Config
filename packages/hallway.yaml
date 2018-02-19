@@ -131,7 +131,7 @@ automation:
       - service: light.turn_on
         data_template:
           entity_id: light.hal_2
-          #rgb_color: 248,255,248
+          color_name: white
           brightness: 250
           transition: 1
 

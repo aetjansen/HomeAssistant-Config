@@ -12,24 +12,23 @@ timed_lamp:
     - service: light.turn_on
       entity_id: light.overloop
       data:
-        transition: 60
-        brightness: 50
+        transition: 10
+        brightness: 25
     - service: light.turn_on
       entity_id: light.hal
       data:
-        transition: 60
-        brightness: 50
+        transition: 10
+        brightness: 25
     - service: light.turn_on
       entity_id: light.plafondlamp_slaapkamer
       data:
-        transition: 60
-        brightness: 50
+        transition: 10
+        brightness: 5
     - service: light.turn_on
-      entity_id: light.living_room
+      entity_id: light.woonkamer_dimmer_level
       data:
-        transition: 60
-        brightness: 145
-        xy_color: [ 0.5529, 0.4107 ]
+        transition: 15
+        brightness: 25
     - service: light.turn_off
       entity_id: light.leeslamp
       data:
@@ -44,18 +43,26 @@ timed_lamp:
         entity_id: script.timer_off
 
 timer_off:
-  alias: "Turn off lamp after 15 minutes"
+  alias: "Turn house off in 10 minutes"
   sequence:
     - delay:
-        minutes: 15
+        minutes: 1
     - service: switch.turn_off
       entity_id: group.all_switches
     - service: light.turn_off
       data:
-        entity_id: light.overloop
+        entity_id: light.hal_2
+        transition: 540
     - service: light.turn_off
       data:
-        entity_id: light.hal
+        entity_id: light.overloop
+        transition: 540
+    - service: light.turn_off
+      entity_id: light.plafondlamp_slaapkamer
+      data:
+        transition: 540
+    - service: light.turn_off
+      entity_id: group.all_lights
     - service: homeassistant.turn_on
       data:
         entity_id: input_boolean.night_mode
