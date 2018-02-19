@@ -231,3 +231,36 @@ automation:
     action:
       - service: homeassistant.turn_on
         entity_id: script.timed_ventilator
+
+################################################
+## This automation is to debug the conditions
+## in the automation above that does not seem to
+## ever fire
+################################################
+- alias: debugging_periodical_automation
+  initial_state: 'on'
+  hide_entity: False
+  trigger:
+    - platform: time
+      minutes: '/2'
+      seconds: 00
+  #condition:
+  #  condition: and
+  #  conditions:
+  #    - condition: state
+  #      entity_id: sensor.bathroom_motion_detector
+  #      state: 'nee'
+  #    - condition: numeric_state
+  #      entity_id: sensor.bathroom_sensor_relative_humidity
+  #      value_template: '{{ states.bathroom_sensor_relative_humidity.state }}'
+  #      above: '60'
+  #    - condition: state
+  #      entity_id: switch.bathroom_vent_switch
+  #      state: 'off'
+        #for:
+        #  minutes: 5
+  action:
+    - service: notify.pushover
+      data_template:
+        title: "Debugging periodical automation"
+        message: "This should fire every 2 minutes, no conditions"
