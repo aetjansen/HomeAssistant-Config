@@ -95,7 +95,7 @@ automation:
   ##  Sun: Above horizon
   ##  Light level: <20
   ################################################
-  - alias: when_motion_detected_brighten_light
+  - alias: motion_light_on_during_the_day_when_too_dark
     initial_state: 'on'
     hide_entity: False
     trigger:
@@ -126,7 +126,7 @@ automation:
   ##  Sun: Above horizon
   ##  Light level: <20
   ################################################
-  - alias: when_motion_detected_brighten_light
+  - alias: motion_light_off_during_the_day_when_no_motion
     initial_state: 'on'
     hide_entity: False
     trigger:
