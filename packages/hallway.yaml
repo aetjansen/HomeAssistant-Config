@@ -115,7 +115,7 @@ automation:
       - service: light.turn_on
         data_template:
           entity_id: light.hal_2
-          rgb_color: 255,255,255
+          rgb_color: 248,255,248
           transition: 1
 
   ################################################
