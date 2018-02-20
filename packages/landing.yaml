@@ -70,7 +70,7 @@ sensor:
     value_template: '{{ value_json.heatIndex | round(1) }}'
 
 ################################################
-## Light
+## Light 
 ################################################
 light:
   - platform: mqtt_json
