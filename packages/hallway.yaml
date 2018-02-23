@@ -300,7 +300,7 @@ automation:
         entity_id: sensor.hal_sensor_burglar
         to: '0'
         for:
-          minutes: 2
+          minutes: 1
     condition:
       condition: and
       conditions:
@@ -311,11 +311,15 @@ automation:
           entity_id: 'input_boolean.night_mode'
           state: 'on'
     action:
-      - service: light.turn_off
+      - service: light.turn_on
         data_template:
           entity_id: light.hal_2
+          color_name: red
+          brightness: 0
           transition: 1
-      - service: light.turn_off
+      - service: light.turn_on
         data_template:
           entity_id: light.overloop
+          color_name: red
+          brightness: 0
           transition: 1
