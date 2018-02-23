@@ -192,13 +192,13 @@ automation:
       - service: light.turn_on
         data_template:
           entity_id: light.hal_2
-          color_name: ivory
+          color_name: wheat
           brightness: 150
           transition: 1
       - service: light.turn_on
         data_template:
           entity_id: light.overloop
-          color_name: ivory
+          color_name: wheat
           brightness: 150
           transition: 1
       #- service: python_script.dimmer
@@ -235,13 +235,13 @@ automation:
       - service: light.turn_on
         data_template:
           entity_id: light.hal_2
-          color_name: ivory
+          color_name: wheat
           brightness: 50
           transition: 1
       - service: light.turn_on
         data_template:
           entity_id: light.overloop
-          color_name: ivory
+          color_name: wheat
           brightness: 50
           transition: 1
       #- service: python_script.dimmer
