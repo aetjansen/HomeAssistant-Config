@@ -327,11 +327,11 @@ automation:
           scene_id: 14
           object_id: zwave.woonkamer_dimmer
     action:
-      - service: light.toggle
+      - service: input_boolean.turn_on
         data_template:
-          entity_id: light.livingroomled
-          transition: 2
+          entity_id: input_boolean.night_mode
       - service: tts.google_say
         data_template:
           entity_id: media_player.keuken
-          message: "Goedemorgen, het is buiten {{states('sensor.pws_temp_c')}} graden. Het voelt als {{states('sensor.pws_feelslike_c')}} en het is {{states('sensor.pws_weather')}}. Er worden temperaturen verwacht tussen de {{states('sensor.pws_temp_low_1d_c')}} en {{states('sensor.pws_temp_high_1d_c')}} graden. De weersverwachting voor vandaag is {{states('sensor.pws_weather_1d_metric')}}."
+          volume_level: 0.3
+          message: "Welterusten. Moet de vaatwasser nog aan? En een container aan de weg? Ik doe het licht wel uit over een paar minuten."
