@@ -14,6 +14,7 @@ echo "mqtt_broker: dummybroker" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "mqtt_port: 12345" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "mqtt_username: dummyuser" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "mqtt_password: dummypassword" >> $TRAVIS_BUILD_DIR/secrets.yaml
+echo "ifttt_key: klAB6fSvW4b3PSJ3x7DV_P" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zwave_usb_path: /dummy/zwave" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "zwave_config_path: /dummy/zwaveconfig" >> $TRAVIS_BUILD_DIR/secrets.yaml
 echo "rfxcom_config_path: /dummy/rfxcomconfig" >> $TRAVIS_BUILD_DIR/secrets.yaml
