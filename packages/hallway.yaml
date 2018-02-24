@@ -192,14 +192,13 @@ automation:
       - service: light.turn_on
         data_template:
           entity_id: light.hal_2
-          color_name: tan
-          brightness: 150
+          color_temp: 500
           transition: 1
+      - delay: '00:01:00'
       - service: light.turn_on
         data_template:
-          entity_id: light.overloop
-          color_name: tan
-          brightness: 150
+          entity_id: light.hal_2
+          color_temp: 275
           transition: 1
       #- service: python_script.dimmer
       #  data_template:
@@ -212,46 +211,7 @@ automation:
       #    action: dim_up
       #    level: 150
 
-  ################################################
-  ## Decrease brightness in hallway when motion no longer detected and not in night mode
-  ################################################
-  - alias: when_no_more_motion_dim_light
-    initial_state: 'on'
-    hide_entity: False
-    trigger:
-      - platform: state
-        entity_id: sensor.hal_sensor_burglar
-        to: '0'
-    condition:
-      condition: and
-      conditions:
-        - condition: state
-          entity_id: sun.sun
-          state: 'below_horizon'
-        - condition: state
-          entity_id: 'input_boolean.night_mode'
-          state: 'off'
-    action:
-      - service: light.turn_on
-        data_template:
-          entity_id: light.hal_2
-          color_temp: 500
-          transition: 1
-      - service: light.turn_on
-        data_template:
-          entity_id: light.overloop
-          color_temp: 500
-          transition: 1
-      #- service: python_script.dimmer
-      #  data_template:
-      #    entity_id: light.hal_2
-      #    action: dim_down
-      #    level: 150
-      #- service: python_script.dimmer
-      #  data_template:
-      #    entity_id: light.verloop
-      #    action: dim_down
-      #    level: 150
+  
 
   ################################################
   ## Light dimmed on in hallway when motion detected and in night mode
