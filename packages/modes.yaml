@@ -38,26 +38,37 @@ homeassistant:
       <<: *customize
       friendly_name: "Gast Mode"
       icon: mdi:account
+      persistent: true
 
     input_boolean.vacation_mode:
       <<: *customize
       friendly_name: "Vakantie Mode"
       icon: mdi:beach
+      persistent: true
 
     input_boolean.night_mode:
       <<: *customize
       friendly_name: "Night Mode"
       icon: mdi:weather-night
+      persistent: true
+
+    input_boolean.first_movement_of_the_day:
+      <<: *customize
+      friendly_name: "First movement of the day"
+      icon: mdi:weather-night
+      persistent: true
 
     input_boolean.to_bed_mode:
       <<: *customize
       friendly_name: "Naar bed Mode"
       icon: mdi:hotel
+      persistent: true
 
     input_boolean.test_switch:
       <<: *customize
       friendly_name: "Testswitch"
       icon: mdi:test-tube
+      persistent: true
 
     ################################################
     ## Sensor
@@ -249,41 +260,6 @@ automation:
           color_name: red
           brightness: 1
           transition: 1
-
-
-
-
-
-
-  - alias: Arm the house for the start of the day at 6 am
-    initial_state: 'on'
-    trigger:
-      - platform: time
-        at: '06:00:00'
-    action:
-      - service: homeassistant.turn_off
-        entity_id: input_boolean.night_mode
-      - service: homeassistant.turn_on
-        entity_id: input_boolean.first_movement_of_the_day
-      - service: light.turn_on
-        data_template:
-          entity_id: light.woonkamerled
-          color_name: green
-          brightness: 1
-          transition: 1
-      - service: light.turn_on
-        data_template:
-          entity_id: light.overloop_led
-          color_name: green
-          brightness: 1
-          transition: 1
-      - service: light.turn_on
-        data_template:
-          entity_id: light.bijkeuken_led
-          color_name: green
-          brightness: 1
-          transition: 1
-
 
 # If first_movement_of_the_day is armed, but not triggered at sunrise, disnarm (switch input_boolean off)
 # This prevents the automation to be triggered in the evening when the sun goes down in case the sun was already up before 6 am (when the input_boolean was armed)
