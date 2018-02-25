@@ -168,12 +168,12 @@ sensor:
 ## Automation
 ################################################
 automation:
-  - alias: Night Mode enabled, alles uit
+  - alias: "Going to bed sequence"
     initial_state: 'on'
     hide_entity: False
     trigger:
       - platform: state
-        entity_id: input_boolean.night_mode
+        entity_id: input_boolean.to_bed_mode
         to: 'on'
     action:
       - service: light.turn_on
