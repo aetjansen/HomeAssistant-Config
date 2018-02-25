@@ -306,6 +306,9 @@ automation:
         - condition: state
           entity_id: 'sun.sun'
           state: 'above_horizon'
+        - condition: time
+          after: '20:00:00'
+          before: '05:00:00'
     action:
       - service: light.turn_off
         data_template:
