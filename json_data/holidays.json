@@ -1,0 +1,45 @@
+{
+  "MAJOR_NL": {
+    "static": {
+      "1-1": "Nieuwjaars dag",
+      "6-1": "Driekoningen",
+      "14-4": "Valentijnsdag",
+      "27-4": "Koningsdag",
+      "1-5": "Dag van de Arbeid",
+      "4-5": "Dodenherdenking",
+      "5-5": "Bevrijdingsdag",
+      "4-10": "Dierendag",
+      "31-10": "Halloween",
+      "5-12": "Sinterklaas",
+      "25-12": "1e kerstdag",
+      "26-12": "2e kerstdag",
+      "31-12": "Oudjaars dag"
+    },
+    "dynamic": {
+      "25-3-2018": "Zomertijd",
+      "31-3-2019": "Zomertijd",
+      "30-3-2018": "Goede Vrijdag",
+      "19-4-2019": "Goede Vrijdag",
+      "1-4-2018": "1e Paasdag",
+      "21-4-2019": "1e Paasdag",
+      "2-4-2018": "2e Paasdag",
+      "22-4-2019": "2e Paasdag",
+      "10-5-2018": "Hemelvaartdag",
+      "30-5-2019": "Hemelvaartdag",
+      "13-5-2018": "Moederdag",
+      "12-5-2019": "Moederdag",
+      "20-5-2018": "1e Pinksterdag",
+      "9-6-2019": "1e Pinksterdag",
+      "21-5-2018": "2e Pinksterdag",
+      "10-6-2019": "2e Pinksterdag",
+      "17-6-2018": "Vaderdag",
+      "16-6-2019": "Vaderdag",
+      "18-9-2018": "Prinsjesdag",
+      "17-9-2019": "Prinsjesdag",
+      "28-10-2018": "Wintertijd",
+      "27-10-2019": "Wintertijd",
+      "9-12-2018": "Lichtjesdag",
+      "8-12-2018": "Lichtjesdag",
+    }
+  }
+}
