@@ -303,3 +303,5 @@ automation:
         data_template:
           title: "Meterstanden"
           message: "Verbruikt op {{ now().year }}-{{ now().month }}-{{ (now().day)-1 }}. Hoog: {{ states('input_number.24hour_power_consumption_normal_tarrif') }} kWh, Laag: {{ states('input_number.24hour_power_consumption_low_tarrif') }} kWh, Gas: {{ states('input_number.24hour_gas_consumption') }} m3. Min-temp: {{ states.sensor.pws_temp_low_1d_c.state }}C, Max-temp: {{ states.sensor.pws_temp_high_1d_c.state }}C"
+      - service: ifttt.trigger
+        data: {"event":"TestHA_Trigger", "value1":"First value", "value2":"Second value", "value3":"Third value"}
