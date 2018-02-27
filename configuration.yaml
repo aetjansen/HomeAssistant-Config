@@ -16,6 +16,26 @@ config:
 conversation:
 frontend:
 history:
+  include:
+    domains:
+      - sensor
+      - switch
+      - media_player
+      - light
+      - binary_sensor
+      - cover
+
+  exclude:
+    entities:
+     - sensor.last_boot
+     - sensor.date
+     - sensor.pihole_ads_blocked_today
+     - sensor.pihole_ads_percentage_blocked_today
+     - sensor.pihole_dns_queries_today
+     - sensor.since_last_boot
+     - sensor.since_last_boot_templated
+     - sensor.ha_uptime
+     - sensor.time
 sun:
 python_script:
 logger: !include logger.yaml
