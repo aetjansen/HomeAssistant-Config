@@ -18,6 +18,8 @@ frontend:
 history:
 sun:
 python_script:
+recorder:
+  purge_keep_days: 2
 discovery:
   ignore:
     - sonos
