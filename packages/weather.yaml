@@ -197,3 +197,16 @@ sensor:
       - weather_3n_metric
       - weather_4d_metric
       - weather_4n_metric
+      - dewpoint_c
+      - precip_today_metric
+      - pressure_mb
+      - pressure_trend
+      - solarradiation
+      - temp_high_avg_c
+      - temp_low_avg_c
+      - UV
+      - wind_degrees
+      - wind_dir
+      - wind_gust_kph
+      - wind_kph
+      - alerts
