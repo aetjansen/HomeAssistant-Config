@@ -18,6 +18,7 @@ frontend:
 history:
 sun:
 python_script:
+logger: !include logger.yaml
 recorder:
   purge_keep_days: 2
 discovery:
