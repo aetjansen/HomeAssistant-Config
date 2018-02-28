@@ -25,7 +25,7 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Studio"
 
-    light.ailight-1:
+    light.ailight1:
       <<: *customize_contained
       friendly_name: "Bureaulamp"
 
@@ -54,31 +54,31 @@ sensor:
     name: Epson Ink Level Black
     command: /usr/bin/curl -X GET http://10.0.1.9/PRESENTATION/HTML/TOP/PRTINFO.HTML  | awk -F"'" '/Ink_K.PNG/ && $6+0 == $6 { printf "%.0f\n", $6 / 50 * 100; exit }'
     unit_of_measurement: '%'
-    scan_interval: 14400
+    scan_interval: 60
 
   - platform: command_line
     name: Epson Ink Level Magenta
     command: /usr/bin/curl -X GET http://10.0.1.9/PRESENTATION/HTML/TOP/PRTINFO.HTML  | awk -F"'" '/Ink_M.PNG/ && $6+0 == $6 { printf "%.0f\n", $6 / 50 * 100 }'
     unit_of_measurement: '%'
-    scan_interval: 14400
+    scan_interval: 60
 
   - platform: command_line
     name: Epson Ink Level Yellow
     command: /usr/bin/curl -X GET http://10.0.1.9/PRESENTATION/HTML/TOP/PRTINFO.HTML  | awk -F"'" '/Ink_Y.PNG/ && $6+0 == $6 { printf "%.0f\n", $6 / 50 * 100 }'
     unit_of_measurement: '%'
-    scan_interval: 14400
+    scan_interval: 60
 
   - platform: command_line
     name: Epson Ink Level Cyan
     command: /usr/bin/curl -X GET http://10.0.1.9/PRESENTATION/HTML/TOP/PRTINFO.HTML  | awk -F"'" '/Ink_C.PNG/ && $6+0 == $6 { printf "%.0f\n", $6 / 50 * 100 }'
     unit_of_measurement: '%'
-    scan_interval: 14400
+    scan_interval: 60
 
   - platform: command_line
     name: Epson Ink Waste Level
     command: /usr/bin/curl -X GET http://10.0.1.9/PRESENTATION/HTML/TOP/PRTINFO.HTML  | awk -F"'" '/Ink_Waste.PNG/ {i++}i==2 && $6+0 == $6 { printf "%.0f\n", $6 / 50 * 100; exit }'
     unit_of_measurement: '%'
-    scan_interval: 14400
+    scan_interval: 60
 
 ################################################
 ## Light
