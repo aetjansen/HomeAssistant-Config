@@ -1,0 +1,47 @@
+################################################################
+## Packages / Studio
+################################################################
+
+
+################################################
+## Customize
+################################################
+homeassistant:
+  customize:
+    packages.studio: &customize
+      package: 'studio'
+
+    packages.studio_exposed: &customize_exposed
+      <<: *customize
+
+    packages.studio_contained: &customize_contained
+      <<: *customize
+
+    group.studio:
+      <<: *customize_contained
+      friendly_name: "Studio"
+
+
+    light.ailight-1:
+      <<: *customize_contained
+      friendly_name: "Bureaulamp"
+
+
+################################################
+## Group
+################################################
+group:
+  studio:
+    control: hidden
+    entities:
+      - light.ailight-1
+      - device_tracker.arcadecomputer
+      - device_tracker.macmini
+
+################################################
+## Sensor
+################################################
+
+################################################
+## Automation
+################################################
