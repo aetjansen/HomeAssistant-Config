@@ -32,13 +32,30 @@ group:
   studio:
     control: hidden
     entities:
-      - light.ailight-1
+      - light.studio_desklight
       - device_tracker.arcadecomputer
       - device_tracker.macmini
 
 ################################################
 ## Sensor
 ################################################
+
+################################################
+## Light
+################################################
+
+light:
+  platform: mqtt_json
+  name: 'Studio desklight'
+  state_topic: 'ahpaleis/studio/desklight'
+  command_topic: 'ahpaleis/studio/desklight/set'
+  color_temp: true
+  brightness: true
+  rgb: true
+  white_value: true
+  effect: false
+  optimistic: false
+  retain: true
 
 ################################################
 ## Automation
