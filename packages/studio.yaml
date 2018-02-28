@@ -39,6 +39,7 @@ group:
       - light.studio_desklight
       - device_tracker.arcadecomputer
       - device_tracker.macmini
+      - device_tracker.epsonprinter
       - sensor.epson_ink_level_black
       - sensor.epson_ink_level_cyan
       - sensor.epson_ink_level_magenta
