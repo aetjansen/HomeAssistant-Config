@@ -1,0 +1,139 @@
+################################################################
+## Packages / Test Light Control
+################################################################
+
+################################################
+## Customize
+################################################
+
+homeassistant:
+  customize:
+    ################################################
+    ## Node Anchors
+    ################################################
+
+    package.node_anchors:
+      customize: &customize
+        package: 'test_light_control'
+
+      expose: &expose
+        <<: *customize
+
+
+    ################################################
+    ## Automation
+    ################################################
+
+    automation.test_light_timer:
+      <<: *customize
+      friendly_name: "Test Light Timer"
+
+    ################################################
+    ## Binary Sensor
+    ################################################
+
+    binary_sensor.test_light_expected_state:
+      <<: *customize
+      friendly_name: "Test Light Expected State"
+      device_class: light
+      hidden: true
+
+    ################################################
+    ## Input Select
+    ################################################
+
+    input_select.test_light_time_off:
+      <<: *customize
+      friendly_name: "Test Light Time Off"
+
+    input_select.test_light_time_on:
+      <<: *customize
+      friendly_name: "Test Light Time On"
+
+    ################################################
+    ## Script
+    ################################################
+
+    script.test_light:
+      <<: *customize
+      friendly_name: "Test Light"
+      hidden: true
+      icon: mdi:lightbulb
+
+################################################
+## Automation
+################################################
+
+automation:
+  - alias: test_light_timer
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: sensor.time
+    condition:
+      - condition: or
+        conditions:
+          - condition: template
+            value_template: "{{ is_state('input_select.test_light_time_on', trigger.to_state.state) }}"
+          - condition: template
+            value_template: "{{ is_state('input_select.test_light_time_off', trigger.to_state.state) }}"
+    action:
+      - service: script.test_light_light
+
+################################################
+## Binary Sensor
+################################################
+
+binary_sensor:
+  - platform: template
+    sensors:
+      test_light_expected_state:
+        value_template: >-
+          {% set time_now = states('sensor.time').replace(':', '.')|float %}
+          {% set time_on = states('input_select.test_light_time_on').replace(':', '.')|float %}
+          {% set time_off = states('input_select.test_light_time_off').replace(':', '.')|float %}
+          {{ not time_off <= time_now < time_on }}
+
+################################################
+## Input Select
+################################################
+
+input_select:
+  test_light_time_on:
+    initial: '19:00'
+    options:
+      - '17:00'
+      - '17:30'
+      - '18:00'
+      - '18:30'
+      - '19:00'
+      - '19:30'
+      - '20:00'
+      - '20:30'
+      - '21:00'
+
+  test_light_time_off:
+    initial: '07:00'
+    options:
+      - '05:00'
+      - '05:30'
+      - '06:00'
+      - '06:30'
+      - '07:00'
+      - '07:30'
+      - '08:00'
+      - '08:30'
+      - '09:00'
+
+################################################
+## Script
+################################################
+
+script:
+  test_light:
+    sequence:
+      - service: script.light_control
+        data_template:
+          entity_id: light.studio_desklight
+          state: "{{ states('binary_sensor.test_light_expected_state') }}"
+          brightness: 255
