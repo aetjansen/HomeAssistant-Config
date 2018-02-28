@@ -1,0 +1,50 @@
+################################################################
+## Packages / HA Graph
+## Original author: @happyleavesaoc
+## URL: https://github.com/happyleavesaoc/home-assistant-graph
+################################################################
+
+################################################
+## Customize
+################################################
+
+homeassistant:
+  customize:
+    ################################################
+    ## Node Anchors
+    ################################################
+
+    package.node_anchors:
+      customize: &customize
+        package: 'hagraph'
+
+      expose: &expose
+        <<: *customize
+        haaska_hidden: false
+        homebridge_hidden: false
+
+    ################################################
+    ## Script
+    ################################################
+
+    script.generate_graph:
+      <<: *customize
+      friendly_name: "Generate Graph"
+      icon: mdi:vector-polyline
+
+################################################
+## Script
+################################################
+
+script:
+  generate_graph:
+    sequence:
+      - service: shell_command.generate_graph
+
+################################################
+## Shell Command
+################################################
+
+shell_command:
+  generate_graph: >-
+    python3 -m hagraph -i $HASS_CONFIG/configuration.yaml -o $HASS_CONFIG/www/img/graph.svg
