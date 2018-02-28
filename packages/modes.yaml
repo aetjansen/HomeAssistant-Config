@@ -194,8 +194,13 @@ automation:
           color_name: darkorange
           brightness: 1
           transition: 1
+      - service: remote.turn_on
+        entity_id: remote.harmony_hub
+        data:
+          activity: "1"
+      - delay: "00:00:10"
       - service: remote.turn_off
-        entity_id: remote.woonkamer
+        entity_id: remote.harmony_hub
       - service: homeassistant.turn_off
         entity_id: group.mediaplayers
       - service: homeassistant.turn_off
@@ -204,21 +209,20 @@ automation:
       - service: light.turn_on
         data_template:
           entity_id: light.woonkamer_dimmer_level
-          color_temp: 500
           brightness: 1
-          transition: 60
+          transition: 10
       - service: light.turn_on
         data_template:
           entity_id: light.hal_2
-          color_temp: 500
+          color_name: red
           brightness: 1
-          transition: 60
+          transition: 10
       - service: light.turn_on
         data_template:
           entity_id: light.overloop
-          color_temp: 500
+          color_name: red
           brightness: 1
-          transition: 60
+          transition: 10
       - service: light.turn_on
         data_template:
           entity_id: light.ouderslaapkamer
@@ -238,7 +242,7 @@ automation:
           color_name: red
           brightness: 1
           transition: 10
-      - delay: "00:00:30"
+      - delay: "00:01:00"
       - service: homeassistant.turn_off
         entity_id:
           -  group.all_lights
