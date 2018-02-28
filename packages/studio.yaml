@@ -86,8 +86,7 @@ sensor:
 
 light:
   platform: mqtt_json
-  name: "ailight-1"
-  friendly_name: 'Studio desklight'
+  name: "ailight1"
   state_topic: 'ahpaleis/studio/desklight/status'
   command_topic: 'ahpaleis/studio/desklight/set'
   color_temp: true
