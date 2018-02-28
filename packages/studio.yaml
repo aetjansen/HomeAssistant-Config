@@ -21,11 +21,9 @@ homeassistant:
       <<: *customize_contained
       friendly_name: "Studio"
 
-
     light.ailight-1:
       <<: *customize_contained
       friendly_name: "Bureaulamp"
-
 
 ################################################
 ## Group
@@ -34,7 +32,7 @@ group:
   studio:
     control: hidden
     entities:
-      - light.ailight-1
+      #- light.ailight-1
       - device_tracker.arcadecomputer
       - device_tracker.macmini
 
