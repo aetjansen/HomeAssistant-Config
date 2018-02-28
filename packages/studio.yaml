@@ -36,7 +36,7 @@ group:
   studio:
     control: hidden
     entities:
-      - light.ailight-1
+      - light.ailight1
       - device_tracker.arcadecomputer
       - device_tracker.macmini
       - device_tracker.epsonprinter
@@ -75,8 +75,8 @@ sensor:
     scan_interval: 14400
 
   - platform: command_line
-    name: Epson Ink Level Photo Black
-    command: /usr/bin/curl -X GET http://10.0.1.9/PRESENTATION/HTML/TOP/PRTINFO.HTML  | awk -F"'" '/Ink_K.PNG/ {i++}i==2 && $6+0 == $6 { printf "%.0f\n", $6 / 50 * 100; exit }'
+    name: Epson Ink Waste Level
+    command: /usr/bin/curl -X GET http://10.0.1.9/PRESENTATION/HTML/TOP/PRTINFO.HTML  | awk -F"'" '/Ink_Waste.PNG/ {i++}i==2 && $6+0 == $6 { printf "%.0f\n", $6 / 50 * 100; exit }'
     unit_of_measurement: '%'
     scan_interval: 14400
 
