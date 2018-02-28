@@ -43,6 +43,11 @@ homeassistant:
     ## Script
     ################################################
 
+    script.test_command:
+      <<: *customize
+      friendly_name: "Test Shell Commands"
+      icon: mdi:backup-restore
+
     script.manual_config_backup:
       <<: *customize
       friendly_name: "Manual Config Backup"
@@ -71,6 +76,7 @@ group:
   utilities:
     control: hidden
     entities:
+      - script.test_command
       - script.generate_graph
       - script.manual_config_backup
       - script.reload_config
@@ -95,6 +101,10 @@ automation:
 ################################################
 
 script:
+  test_command:
+    sequence:
+      - service: shell_command.test
+
   manual_config_backup:
     sequence:
       - service: shell_command.manual_config_backup
@@ -117,7 +127,10 @@ script:
 
 shell_command:
   manual_config_backup: >-
-    $HASS_CONFIG/bin/backup_config.sh
+    /home/homeassistant/.homeassistant/bin/backup_config.sh
 
   update_hass: >-
     /usr/bin/nohup $HASS_CONFIG/bin/update_hass.sh </dev/null >> $HASS_CONFIG/bin/update_hass.log 2>&1 &
+
+  test: >-
+    touch /home/homeassistant/.homeassistant/shell-command-test
