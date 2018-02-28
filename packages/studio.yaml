@@ -36,7 +36,7 @@ group:
   studio:
     control: hidden
     entities:
-      - light.studio_desklight
+      - light.ailight-1
       - device_tracker.arcadecomputer
       - device_tracker.macmini
       - device_tracker.epsonprinter
