@@ -176,6 +176,10 @@ automation:
         entity_id: input_boolean.to_bed_mode
         to: 'on'
     action:
+      - service: automation.turn_off
+        entity_id: automation.hallway_light_dimup_when_motion_and_sun_above_horizon_but_dark
+      - service: automation.turn_off
+        entity_id: automation.hallway_light_dimup_when_motion_and_sun_below_horizon
       - service: light.turn_on
         data_template:
           entity_id: light.woonkamerled
@@ -229,20 +233,7 @@ automation:
           color_temp: 500
           brightness: 1
           transition: 1
-      - delay: "00:09:00"
-      - service: light.turn_on
-        data_template:
-          entity_id: light.hal_2
-          color_name: red
-          brightness: 1
-          transition: 10
-      - service: light.turn_on
-        data_template:
-          entity_id: light.overloop
-          color_name: red
-          brightness: 1
-          transition: 10
-      - delay: "00:01:00"
+      - delay: "00:10:00"
       - service: homeassistant.turn_off
         entity_id:
           -  group.all_lights
@@ -264,6 +255,8 @@ automation:
           color_name: red
           brightness: 1
           transition: 1
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.night_mode
 
 # If first_movement_of_the_day is armed, but not triggered at sunrise, disnarm (switch input_boolean off)
 # This prevents the automation to be triggered in the evening when the sun goes down in case the sun was already up before 6 am (when the input_boolean was armed)
@@ -282,3 +275,5 @@ automation:
     action:
       - service: homeassistant.turn_off
         entity_id: input_boolean.first_movement_of_the_day
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.night_mode

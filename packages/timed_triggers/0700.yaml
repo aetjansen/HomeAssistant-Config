@@ -3,15 +3,18 @@ automation:
     initial_state: 'on'
     trigger:
       - platform: time
-        at: '08:00:00'
+        at: '07:00:00'
     condition:
       - condition: state
         entity_id: group.family
         state: home
       - condition: time
         weekday:
-          - sat
-          - sun
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
     action:
       - service: homeassistant.turn_off
         entity_id: input_boolean.night_mode
