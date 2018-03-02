@@ -158,23 +158,13 @@ automation:
           color_temp: 300
           brightness: 150
           transition: 1
-      - delay: '00:01:00'
+      - delay: '00:03:00'
       - service: light.turn_on
         data_template:
           entity_id: light.overloop
           color_temp: 300
           brightness: 50
           transition: 1
-      #- service: python_script.dimmer
-      #  data_template:
-      #    entity_id: light.hal_2
-      #    action: dim_up
-      #    level: 150
-      #- service: python_script.dimmer
-      #  data_template:
-      #    entity_id: light.verloop
-      #    action: dim_up
-      #    level: 150
 
 
   ################################################
@@ -203,7 +193,7 @@ automation:
           color_name: red
           brightness: 1
           transition: 1
-      - delay: "00:01:00"
+      - delay: "00:03:00"
       - service: light.turn_off
         data_template:
           entity_id: light.overloop
