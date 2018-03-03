@@ -116,14 +116,14 @@ automation:
           below: '20'
     action:
       - service: light.turn_on
-        data_template:
+        data:
           entity_id: light.overloop
           color_temp: 154
           brightness: 250
           transition: 1
       - delay: '00:05:00'
       - service: light.turn_off
-        data_template:
+        data:
           entity_id: light.overloop
           transition: 1
 
@@ -153,14 +153,14 @@ automation:
           state: 'off'
     action:
       - service: light.turn_on
-        data_template:
+        data:
           entity_id: light.overloop
           color_temp: 300
           brightness: 150
           transition: 1
       - delay: '00:03:00'
       - service: light.turn_on
-        data_template:
+        data:
           entity_id: light.overloop
           color_temp: 300
           brightness: 50
@@ -188,13 +188,13 @@ automation:
           state: 'on'
     action:
       - service: light.turn_on
-        data_template:
+        data:
           entity_id: light.overloop
           color_name: red
           brightness: 1
           transition: 1
       - delay: "00:03:00"
       - service: light.turn_off
-        data_template:
+        data:
           entity_id: light.overloop
           transition: 1
