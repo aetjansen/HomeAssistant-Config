@@ -164,7 +164,7 @@ automation:
   ################################################
   ## Light dimmed on in hallway when motion detected and in night mode
   ################################################
-  - alias: hallway_light_on_when_motion_detected
+  - alias: 'Hallway light on when motion detected at night'
     initial_state: 'on'
     hide_entity: False
     trigger:
