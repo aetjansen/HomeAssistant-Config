@@ -121,7 +121,26 @@ automation:
           color_temp: 154
           brightness: 250
           transition: 1
-      - delay: '00:05:00'
+
+  - alias: motion_light_off_during_the_day_when_too_dark
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.overloop_beweging
+        to: 'standby'
+        for:
+          minutes: 3
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'above_horizon'
+        - condition: numeric_state
+          entity_id: 'sensor.hal_sensor_luminance'
+          below: '20'
+    action:
       - service: light.turn_off
         data:
           entity_id: light.overloop
@@ -158,7 +177,26 @@ automation:
           color_temp: 300
           brightness: 150
           transition: 1
-      - delay: '00:03:00'
+
+  - alias: when_no_more_motion_detected_dim_light
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.overloop_beweging
+        to: 'standby'
+        for:
+          minutes: 3
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'off'
+    action:
       - service: light.turn_on
         data:
           entity_id: light.overloop
@@ -193,7 +231,26 @@ automation:
           color_name: red
           brightness: 1
           transition: 1
-      - delay: "00:03:00"
+
+  - alias: landing_light_off_when_no_more_motion_detected
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.overloop_beweging
+        to: 'standby'
+        for:
+          minutes: 1
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'on'
+    action:
       - service: light.turn_off
         data:
           entity_id: light.overloop

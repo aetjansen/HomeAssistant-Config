@@ -83,7 +83,7 @@ sensor:
 ################################################
 automation:
   ################################################
-  ## Turn light full on during day when lightlevel<20
+  ## Turn light full on/off during day when lightlevel<20
   ##
   ## When sun is below horizon, light level is obviously<20, but
   ## this is bright, daylight light, so we only want that when it is actually
@@ -116,14 +116,33 @@ automation:
           color_temp: 154
           brightness: 250
           transition: 1
-      - delay: '00:03:00'
+
+  - alias: 'Hallway light dim-down when motion and sun above horizon but dark'
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.hal_sensor_burglar
+        to: '0'
+        for:
+          minutes: 3
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'above_horizon'
+        - condition: numeric_state
+          entity_id: 'sensor.hal_sensor_luminance'
+          below: '20'
+    action:
       - service: light.turn_off
         data:
           entity_id: light.hal_2
           transition: 1
 
   ################################################
-  ## Increase brightness in hallway when motion detected and not in night mode
+  ## Increase/Decrease brightness in hallway when motion detected and not in night mode
   ##
   ## Trigger: motion
   ## Conditions:
@@ -153,7 +172,26 @@ automation:
           color_temp: 300
           brightness: 150
           transition: 1
-      - delay: '00:03:00'
+
+  - alias: 'Hallway light dim-up when motion and sun below horizon'
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.hal_sensor_burglar
+        to: '0'
+        for:
+          minutes: 1
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'off'
+    action:
       - service: light.turn_on
         data:
           entity_id: light.hal_2
@@ -187,7 +225,26 @@ automation:
           color_name: red
           brightness: 1
           transition: 1
-      - delay: '00:05:00'
+
+  - alias: 'Hallway light off when motion detected at night'
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: sensor.hal_sensor_burglar
+        to: '0'
+        for:
+          minutes: 1
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: 'input_boolean.night_mode'
+          state: 'on'
+    action:
       - service: light.turn_off
         data:
           entity_id: light.hal_2
