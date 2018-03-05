@@ -61,7 +61,7 @@ group:
       - sensor.hal_sensor_temperature
       - sensor.hal_sensor_relative_humidity
       - sensor.hal_sensor_luminance
-      - light.hal_2
+      - light.hallway
 
 
 ################################################
@@ -112,7 +112,7 @@ automation:
     action:
       - service: light.turn_on
         data:
-          entity_id: light.hal_2
+          entity_id: light.hallway
           color_temp: 154
           brightness: 250
           transition: 1
@@ -138,7 +138,7 @@ automation:
     action:
       - service: light.turn_off
         data:
-          entity_id: light.hal_2
+          entity_id: light.hallway
           transition: 1
 
   ################################################
@@ -168,7 +168,7 @@ automation:
     action:
       - service: light.turn_on
         data:
-          entity_id: light.hal_2
+          entity_id: light.hallway
           color_temp: 300
           brightness: 150
           transition: 1
@@ -194,7 +194,7 @@ automation:
     action:
       - service: light.turn_on
         data:
-          entity_id: light.hal_2
+          entity_id: light.hallway
           color_temp: 300
           brightness: 50
           transition: 1
@@ -221,7 +221,7 @@ automation:
     action:
       - service: light.turn_on
         data:
-          entity_id: light.hal_2
+          entity_id: light.hallway
           color_name: red
           brightness: 1
           transition: 1
@@ -247,5 +247,5 @@ automation:
     action:
       - service: light.turn_off
         data:
-          entity_id: light.hal_2
+          entity_id: light.hallway
           transition: 1

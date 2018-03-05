@@ -28,12 +28,12 @@ group:
   landing:
     control: hidden
     entities:
-      - sensor.overloop_temperatuur
-      - sensor.overloop_luchtvochtigheid
-      - sensor.overloop_licht
-      - sensor.overloop_beweging
-      - light.overloop_led
-      - light.overloop
+      - sensor.landing_temperature
+      - sensor.landing_humidity
+      - sensor.landing_light_level
+      - sensor.landing_motion
+      - light.landing_led
+      - light.landing
 
 ################################################
 ## Sensor
@@ -41,40 +41,39 @@ group:
 sensor:
   - platform: mqtt
     state_topic: "ahpaleis/landing"
-    name: "Overloop luchtvochtigheid"
+    name: landing humidity
+    friendly_name: "Overloop luchtvochtigheid"
     unit_of_measurement: "%"
     value_template: '{{ value_json.humidity | round(1) }}'
 
   - platform: mqtt
     state_topic: "ahpaleis/landing"
-    name: "Overloop licht"
+    name: landing light level
+    friendly_name: "Overloop licht"
     ##This sensor is not calibrated to actual LUX. Rather, this a map of the input voltage ranging from 0 - 1023.
     unit_of_measurement: "Lux"
     value_template: '{{ value_json.ldr }}'
 
   - platform: mqtt
     state_topic: "ahpaleis/landing"
-    name: "Overloop beweging"
+    name: landing motion
+    friendly_name: "Overloop beweging"
     value_template: '{{ value_json.motion }}'
 
   - platform: mqtt
     state_topic: "ahpaleis/landing"
-    name: "Overloop temperatuur"
+    name: landing temperature
+    friendly_name: "Overloop temperatuur"
     unit_of_measurement: "°C"
     value_template: '{{ value_json.temperature | round(1) }}'
-
-  - platform: mqtt
-    state_topic: "ahpaleis/landing"
-    name: "Overloop gevoelstemperatuur"
-    unit_of_measurement: "°C"
-    value_template: '{{ value_json.heatIndex | round(1) }}'
 
 ################################################
 ## Light
 ################################################
 light:
   - platform: mqtt_json
-    name: "Overloop Led"
+    name: landing led
+    friendly_name: "Overloop Led"
     state_topic: "ahpaleis/landing"
     command_topic: "ahpaleis/landing/set"
     brightness: true
@@ -117,7 +116,7 @@ automation:
     action:
       - service: light.turn_on
         data:
-          entity_id: light.overloop
+          entity_id: light.landing
           color_temp: 154
           brightness: 250
           transition: 1
@@ -143,7 +142,7 @@ automation:
     action:
       - service: light.turn_off
         data:
-          entity_id: light.overloop
+          entity_id: light.landing
           transition: 1
 
   ################################################
@@ -173,7 +172,7 @@ automation:
     action:
       - service: light.turn_on
         data:
-          entity_id: light.overloop
+          entity_id: light.landing
           color_temp: 300
           brightness: 150
           transition: 1
@@ -199,7 +198,7 @@ automation:
     action:
       - service: light.turn_on
         data:
-          entity_id: light.overloop
+          entity_id: light.landing
           color_temp: 300
           brightness: 50
           transition: 1
@@ -227,7 +226,7 @@ automation:
     action:
       - service: light.turn_on
         data:
-          entity_id: light.overloop
+          entity_id: light.landing
           color_name: red
           brightness: 1
           transition: 1
@@ -253,5 +252,5 @@ automation:
     action:
       - service: light.turn_off
         data:
-          entity_id: light.overloop
+          entity_id: light.landing
           transition: 1
