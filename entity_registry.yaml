@@ -1,21 +1,32 @@
-light.plafondlamp_slaapkamer:
+#light.plafondlamp_slaapkamer:
+light.bedroom_ceiling:
   platform: hue
   unique_id: 00:17:88:01:10:59:29:ea-0b
+  name: Plafond Slaapkamer
 light.iris:
   platform: hue
   unique_id: 00:17:88:01:00:10:89:c7-0b
-light.hal:
+  name: Iris
+#light.speelhoek:
+light.play_corner:
   platform: hue
   unique_id: 00:17:88:01:10:2f:fa:cd-0b
-light.leeslamp:
+  name: Speelhoek
+#light.overloop:
+light.landing:
   platform: hue
   unique_id: 00:17:88:01:10:31:57:35-0b
-light.plafondlamp_speelkamer:
+  name: Overloop
+#light.plafondlamp_speelkamer:
+light.hallway:
   platform: hue
   unique_id: 00:17:88:01:10:31:53:3e-0b
-light.overloop_2:
+  name: Hal
+#light.leeslamp:
+light.reading_light:
   platform: hue
   unique_id: 00:17:88:01:10:59:24:d3-0b
+  name: Leeslamp
 media_player.keuken:
   platform: sonos
   unique_id: RINCON_949F3E893C9201400
