@@ -4,6 +4,25 @@
 ## URL: https://github.com/dale3h/homeassistant-config/blob/master/packages/drop-in/light_control.yaml
 ################################################################
 
+# TODO:
+# Light control set global color_temp and brightness inline with sunrise/-set, see below
+#In the morning
+#Start at: {{ as_timestamp(states.sun.sun.attributes.next_dawn) | timestamp_custom('%H:%M:%S') }}
+#Transition (sec): {{ 2 * (((as_timestamp(states.sun.sun.attributes.next_rising))-( as_timestamp(states.sun.sun.attributes.next_dawn))) | int) }}
+#Color_temp from: 500 mireds
+#Color_temp to: 154 mireds
+
+#In the afternoon:
+#Start at: {{ (as_timestamp(states.sun.sun.attributes.next_setting) - (as_timestamp(states.sun.sun.attributes.next_dusk)-as_timestamp(states.sun.sun.attributes.next_setting))) | timestamp_custom('%H:%M:%S') }}
+#transition: {{ 2 * (((as_timestamp(states.sun.sun.attributes.next_dusk))-( as_timestamp(states.sun.sun.attributes.next_setting))) | int) }}
+#Color_temp from: 154 mireds
+#Color_temp to: 500 mireds
+
+# Start calculations between midnight and sunrise somehwere, e.g. 03:00.
+# Set global color to red at 03:00 and keep as long as night_mode is on
+# when night mode is off, set lighting according to global color_temp and brightness
+# Unless future party mode active, then ignore global setting and probably set some random colors or so
+
 ################################################
 ## Customize
 ################################################
@@ -91,12 +110,12 @@ script:
 
             {% if brightness is defined and brightness|int(-1) != -1 %}
               {{ brightness|int }}
-            {% elif states.input_slider[brightness_entity] is not none %}
-              {{ states('input_slider.' ~ brightness_entity)|int }}
+            {% elif states.input_number[brightness_entity] is not none %}
+              {{ states('input_number.' ~ brightness_entity)|int }}
             {% elif states.sensor[brightness_entity] is not none %}
               {{ states('sensor.' ~ brightness_entity)|int }}
-            {% elif states.input_slider.global_brightness is not none %}
-              {{ states('input_slider.global_brightness')|int }}
+            {% elif states.input_number.global_brightness is not none %}
+              {{ states('input_number.global_brightness')|int }}
             {% elif states.sensor.global_brightness is not none %}
               {{ states('sensor.global_brightness')|int }}
             {% else %}
