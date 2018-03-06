@@ -129,16 +129,13 @@ automation:
         entity_id: sensor.landing_motion
         to: 'standby'
         for:
-          minutes: 3
+          minutes: 1
     condition:
       condition: and
       conditions:
         - condition: state
           entity_id: sun.sun
           state: 'above_horizon'
-        - condition: numeric_state
-          entity_id: 'sensor.landing_light_level'
-          below: '20'
     action:
       - service: light.turn_off
         data:
