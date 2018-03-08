@@ -57,7 +57,7 @@ automation:
         data_template:
           entity_id: light.hal
           transition: 600
-          brightness: 100
+          brightness: 75
 
   ################################################
   ## when a bit darker again, switch on more lights
@@ -84,7 +84,7 @@ automation:
         data_template:
           entity_id: light.overloop
           transition: 600
-          brightness: 100
+          brightness: 50
       - service: light.turn_on
         data_template:
           entity_id: light.woonkamer_dimmer_level
@@ -94,7 +94,7 @@ automation:
         data_template:
           entity_id: light.leeslamp
           transition: 900
-          brightness: 200
+          brightness: 175
 
   ################################################
   ## Half hour after sunrise switch off various lights
