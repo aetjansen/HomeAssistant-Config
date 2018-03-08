@@ -246,3 +246,15 @@ automation:
         data:
           entity_id: light.hallway
           transition: 1
+
+  - alias: 'hallway temperature to mqtt'
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: sensor.hal_sensor_temperature
+    action:
+      - service: mqtt.publish
+        data:
+          topic: "AHPaleis/downstairs/hallway/temperature"
+          payload_template: "{% states('sensor.hal_sensor_temperature') %}"
+          retain: true
