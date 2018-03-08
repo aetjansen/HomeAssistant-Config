@@ -225,7 +225,7 @@ automation:
       - service: mqtt.publish
         data:
           topic: "AHPaleis/downstairs/hallway/motion"
-          payload_template: "motion"
+          payload: "motion"
           retain: true
 
   - alias: 'Hallway light off when motion detected at night'
@@ -254,7 +254,7 @@ automation:
       - service: mqtt.publish
         data:
           topic: "AHPaleis/downstairs/hallway/motion"
-          payload_template: "standby"
+          payload: "standby"
           retain: true
 
   - alias: 'hallway motion to mqtt'
