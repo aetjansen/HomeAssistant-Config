@@ -306,9 +306,25 @@ automation:
       - service: homeassistant.turn_on
         entity_id: input_boolean.night_mode
 
+  - alias: "Night Mode On"
+    initial_state: 'on'
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: input_boolean.night_mode
+        to: 'on'
+    action:
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.to_bed_mode
+      - service: homeassistant.turn_off
+        entity_id:
+          - group.all_lights
+          - remote.harmony_hub
+          - group.mediaplayers
+          - group.all_switches
+
 # If first_movement_of_the_day is armed, but not triggered at sunrise, disnarm (switch input_boolean off)
 # This prevents the automation to be triggered in the evening when the sun goes down in case the sun was already up before 6 am (when the input_boolean was armed)
-
   - alias: 'Disarm if first_movement_of_the_day is not triggered at sunrise'
     initial_state: 'on'
     trigger:
