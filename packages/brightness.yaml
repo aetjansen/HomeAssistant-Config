@@ -46,6 +46,10 @@ homeassistant:
       <<: *customize
       friendly_name: "Nightlight Brightness"
 
+    input_number.global_color_temp:
+      <<: *customize
+      friendly_name: "Global Color Temperature"
+
     ################################################
     ## Sensor
     ################################################
@@ -55,11 +59,54 @@ homeassistant:
       friendly_name: "Global Brightness"
       hidden: true
 
+    sensor.global_color_temp:
+      <<: *customize
+      friendly_name: "Global Color Temperature"
+      hidden: true
+
 ################################################
 ## Automation
 ################################################
 
 automation:
+  - alias: update_global_color_temp
+    trigger:
+      - platform: time
+        minutes: '/1'
+        seconds: '00'
+    action:
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.global_color_temp
+          value: >-
+            {% set color_temp = {
+              0: 500,
+              1: 500,
+              2: 500,
+              3: 500,
+              4: 500,
+              5: 500,
+              6: 500,
+              7: 350,
+              8: 275,
+              9: 200,
+              10: 154,
+              11: 154,
+              12: 154,
+              13: 154,
+              14: 154,
+              15: 154,
+              16: 154,
+              17: 154,
+              18: 154,
+              19: 154,
+              20: 250,
+              21: 350,
+              22: 450,
+              23: 500,
+            } %}
+            {{ color_temp[now().hour]|default(255) }}
+
   - alias: update_global_brightness
     trigger:
       - platform: time
@@ -116,6 +163,12 @@ input_number:
     max: 255
     step: 16
 
+  global_color_temp:
+    initial: 275
+    min: 154
+    max: 500
+    step: 1
+
 ################################################
 ## Sensor
 ################################################
@@ -140,4 +193,27 @@ sensor:
             128
           {% else %}
             64
+          {% endif %}
+
+      global_color_temp:
+        value_template: >-
+          {% set time_now = states('sensor.time').replace(':', '.')|float %}
+          {% if time_now < 7 %}
+            500
+          {% elif time_now < 8 %}
+            350
+          {% elif time_now < 9 %}
+            225
+          {% elif time_now < 10 %}
+            154
+          {% elif time_now < 20 %}
+            225
+          {% elif time_now < 21 %}
+            350
+          {% elif time_now < 22 %}
+            450
+          {% elif time_now < 23 %}
+            500
+          {% else %}
+            275
           {% endif %}
