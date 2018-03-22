@@ -328,10 +328,10 @@ automation:
   - alias: 'Disarm if first_movement_of_the_day is not triggered after sunrise'
     initial_state: 'on'
     trigger:
-      platform: numeric_state
-      entity_id: sun.sun
-      value_template: '{{ state.attributes.elevation }}'
-      above: 1.0
+      - platform: numeric_state
+        entity_id: sun.sun
+        value_template: '{{ state.attributes.elevation }}'
+        above: 1.0
     condition:
       condition: and
       conditions:
