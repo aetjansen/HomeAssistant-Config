@@ -186,7 +186,6 @@ sensor:
       - ping
       - download
       - upload
-  #- platform: cpuspeed
   - platform: systemmonitor
     resources:
       - type: disk_use_percent
