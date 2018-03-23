@@ -64,7 +64,7 @@ homeassistant:
     sensor.pihole_dns_queries_forwarded:
       <<: *customize
       friendly_name: "Aantal DNS queries forwarded"
-    
+
     sensor.pihole_dns_unique_domains:
       <<: *customize
       friendly_name: "PiHole Aantal unieke domeinen"
@@ -186,7 +186,7 @@ sensor:
       - ping
       - download
       - upload
-  - platform: cpuspeed
+  #- platform: cpuspeed
   - platform: systemmonitor
     resources:
       - type: disk_use_percent
